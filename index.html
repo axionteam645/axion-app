@@ -448,7 +448,7 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy reveal">
-          <div class="eyebrow">AXION Dashboard Live</div>
+          
           <div class="hero-title-row">
             <div class="hero-main-icon">
               <svg viewBox="0 0 24 24"><path d="M12 3l7 4v10l-7 4-7-4V7l7-4Z"/><path d="M8.5 9.5l3.5 2 3.5-2"/><path d="M12 11.5v5.5"/></svg>
@@ -615,9 +615,9 @@
                     <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
                   </div>
                   <div class="status-grid">
-                    <div class="status-chip"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
-                    <div class="status-chip"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
-                    <div class="status-chip"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>BNB currently held by official receiver</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>BNB currently held by official receiver</small></div>
                     <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatus">OPEN</span><small>Presale dashboard state for current session</small></div>
                   </div>
                 </div>
@@ -651,21 +651,21 @@
                   </div>
                   <h3>Market & Ecosystem Feed</h3>
                 </div>
-                <p>Core stats for the AXION app: live price, fee wallet balance, current contract reference, and quick actions that belong in the live dashboard.</p>
+                <p>Core stats for AXION: live price, 24H change, and quick actions for the dashboard.</p>
 
                 <div class="subcards">
                   <div class="mini-card"><strong>Live AX Price</strong><p id="axPrice">Loading live pair data...</p></div>
                   <div class="mini-card"><strong>24H Change</strong><p id="axPriceChange">Syncing...</p></div>
-                  <div class="mini-card"><strong>Fee Wallet Tracker</strong><p id="feeWalletBalance">Loading fee wallet balance...</p></div>
+                  <div class="mini-card" style="display:none;"><strong>Fee Wallet Tracker</strong><p id="feeWalletBalance">Loading fee wallet balance...</p></div>
                 </div>
 
-                <div class="contract-box">
+                <div class="contract-box" style="display:none;">
                   <span id="contractAddress">0x9e266c2C148df3456e170B759d77c91AbC67eEAB</span>
                   <button class="icon-copy-btn" id="copyContractBtn" type="button">⧉</button>
                 </div>
 
                 <div class="inline-actions">
-                  <a class="btn btn-secondary" href="https://bscscan.com/address/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open BscScan</a>
+                  <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open BscScan</a>
                   <a class="btn btn-secondary" href="https://github.com/axionteam645/axion-dashboard/blob/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">Open Whitepaper</a>
                 </div>
               </div>
@@ -694,8 +694,11 @@
               <div class="card-inner">
                 <div class="tag">Swap Access</div>
                 <div class="title-row">
-                  <div class="icon-badge" style="padding:0;overflow:hidden;">
-                    <img src="https://cryptologos.cc/logos/pancakeswap-cake-logo.png?v=040" alt="PancakeSwap logo" style="width:100%;height:100%;object-fit:cover;" />
+                  <div class="icon-badge" style="padding:0;overflow:visible;background:transparent;border:none;box-shadow:none;">
+                    <div style="position:relative;width:48px;height:48px;">
+                      <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AX logo" style="position:absolute;left:0;top:6px;width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.14);background:#0b1224;" />
+                      <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB logo" style="position:absolute;right:0;bottom:2px;width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.14);background:#0b1224;" />
+                    </div>
                   </div>
                   <h3>PancakeSwap Panel</h3>
                 </div>
