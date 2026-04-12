@@ -217,10 +217,13 @@
 
     .card-top-logo{display:flex;justify-content:center;align-items:center;margin-bottom:18px}
     .card-top-logo img{max-width:min(100%, 320px);max-height:84px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(78,216,255,.14))}
-    .success-card{display:none;margin-top:16px;padding:16px 18px;border-radius:18px;background:var(--success-bg);border:1px solid var(--success-border);color:var(--success-text);box-shadow:0 0 24px rgba(67,243,177,.08)}
+    .success-card{display:none;margin-top:16px;padding:18px 20px;border-radius:22px;background:linear-gradient(180deg, rgba(67,243,177,.20), rgba(13,118,83,.18)), linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(67,243,177,.34);color:#eafff2;box-shadow:0 0 0 1px rgba(67,243,177,.06),0 0 28px rgba(67,243,177,.14),0 18px 60px rgba(0,0,0,.42)}
     .success-card.show{display:block}
-    .success-card strong{display:block;margin-bottom:8px;font-size:16px;color:#fff}
-    .success-card p{color:#d8fff0;font-size:14px;line-height:1.7}
+    .success-card strong{display:block;margin-bottom:8px;font-size:18px;color:#f5fff9}
+    .success-card p{color:#dcfff0;font-size:14px;line-height:1.8}
+    .welcome-top-logo{display:flex;justify-content:center;align-items:center;padding:0 8px 2px}
+    .welcome-top-logo img{max-width:min(100%,320px);width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
+    @media (max-width: 640px){.welcome-top-logo img{max-width:240px}}
 
     .card-stack-top-logo{display:grid;gap:14px}
     .page-card-logo{display:flex;justify-content:center;align-items:center;padding:0 8px}
@@ -519,8 +522,8 @@
               </div>
 
               <div class="success-card" id="presaleSuccess">
-                <strong>Presale Flow Ready</strong>
-                <p>Approve the BNB transaction in your wallet to complete the presale payment. This interface previews your expected AX amount and keeps the official sale terms visible in the AXION app style.</p>
+                <strong>Congratulations</strong>
+                <p>You joined the presale and received 100 AX. Please check the wallet you used for payment on the distribution date. Thank you.</p>
               </div>
             </div>
             </article>
@@ -575,6 +578,9 @@
         </div>
 
         <div class="app-side-stack reveal">
+            <div class="welcome-top-logo">
+              <img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/AXION%20.png" alt="AXION Logo">
+            </div>
             <article class="card wallet-lite-gold" id="walletLite">
               <div class="card-inner">
               <div class="tag">Wallet Lite</div>
@@ -1129,10 +1135,12 @@
           value: ethers.utils.parseEther(String(bnb))
         });
         setBuyStatus(`Transaction submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good');
-        els.presaleSuccess.classList.add('show');
-        els.presaleSuccess.querySelector('strong').textContent = 'Transaction Submitted';
-        els.presaleSuccess.querySelector('p').innerHTML = `BNB transfer sent successfully. Track it on <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#9ed7ff;">BscScan</a>.`;
         await tx.wait();
+        const purchasedAx = Math.max(0, bnb * CONFIG.RATE_AX_PER_BNB);
+        const purchasedAxText = formatNumber(purchasedAx, 2).replace(/\.00$/, '');
+        els.presaleSuccess.classList.add('show');
+        els.presaleSuccess.querySelector('strong').textContent = 'Congratulations';
+        els.presaleSuccess.querySelector('p').innerHTML = `You joined the presale and received ${purchasedAxText} AX. Please check the wallet you used for payment on the distribution date. Thank you. <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#dcfff0;text-decoration:underline;">View transaction</a>.`;
         setBuyStatus('Transaction confirmed on BNB Smart Chain.', 'good');
         await Promise.all([refreshWalletBalances(), fetchPresaleProgress(), fetchTransferStream()]);
       } catch (err) {
