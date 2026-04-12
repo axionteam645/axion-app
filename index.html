@@ -214,10 +214,18 @@
     .legend-left{display:flex;align-items:center;gap:10px}
     .swatch{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 
+
+    .card-top-logo{display:flex;justify-content:center;align-items:center;margin-bottom:18px}
+    .card-top-logo img{max-width:min(100%, 320px);max-height:84px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(78,216,255,.14))}
     .success-card{display:none;margin-top:16px;padding:16px 18px;border-radius:18px;background:var(--success-bg);border:1px solid var(--success-border);color:var(--success-text);box-shadow:0 0 24px rgba(67,243,177,.08)}
     .success-card.show{display:block}
     .success-card strong{display:block;margin-bottom:8px;font-size:16px;color:#fff}
     .success-card p{color:#d8fff0;font-size:14px;line-height:1.7}
+
+    .card-stack-top-logo{display:grid;gap:14px}
+    .page-card-logo{display:flex;justify-content:center;align-items:center;padding:0 8px}
+    .page-card-logo img{max-width:min(100%,360px);width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
+    @media (max-width: 640px){.page-card-logo img{max-width:260px}}
 
     .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
@@ -450,8 +458,12 @@
         <div class="hero-copy reveal">
           
           
-          <article class="card reveal" id="presale">
-            <div class="card-inner">
+          <div class="card-stack-top-logo reveal">
+            <div class="page-card-logo">
+              <img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/AXION%20.png" alt="AXION Logo">
+            </div>
+            <article class="card" id="presale">
+              <div class="card-inner">
               <div class="tag">Highlighted Presale</div>
               <div class="title-row">
                 <div class="icon-badge" style="padding:0; overflow:hidden;">
@@ -504,7 +516,8 @@
                 <p>Approve the BNB transaction in your wallet to complete the presale payment. This interface previews your expected AX amount and keeps the official sale terms visible in the AXION app style.</p>
               </div>
             </div>
-          </article>
+            </article>
+          </div>
 
 
           <div class="hero-feature-cards">
@@ -555,8 +568,8 @@
         </div>
 
         <div class="app-side-stack reveal">
-          <article class="card reveal wallet-lite-gold" id="walletLite">
-            <div class="card-inner">
+            <article class="card wallet-lite-gold" id="walletLite">
+              <div class="card-inner">
               <div class="tag">Wallet Lite</div>
               <div class="title-row">
                 <div class="icon-badge">
@@ -621,7 +634,7 @@
                 <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer"><span>X</span><span>@axiondefi</span></a>
               </div>
             </div>
-          </article>
+            </article>
         </div>
       </div>
     </div>
