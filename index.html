@@ -356,6 +356,36 @@
       .ai-dashboard-hud .hud-ring{width:52vw;height:52vw;min-width:220px;min-height:220px}
       .ai-corner-brackets::before,.ai-corner-brackets::after{width:90px;height:90px}
     }
+  
+    .status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .status-chip{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
+    .status-chip strong{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b7c7e9;margin-bottom:8px}
+    .status-chip span{display:block;font-size:18px;font-weight:900;color:#fff}
+    .status-chip small{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.5}
+    .loading{opacity:.7}
+    .signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .signal-box{padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
+    .signal-box strong{display:block;font-size:14px;margin-bottom:8px;color:#fff}
+    .signal-box span{font-size:13px;color:#dce7ff;line-height:1.6}
+    .signal-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .signal-pill.good{background:rgba(67,243,177,.14);border:1px solid rgba(67,243,177,.28);color:#d9fff0}
+    .signal-pill.watch{background:rgba(255,201,92,.14);border:1px solid rgba(255,201,92,.28);color:#fff1c9}
+    .signal-pill.alert{background:rgba(255,92,120,.14);border:1px solid rgba(255,92,120,.28);color:#ffe1e7}
+    .tx-stream,.whale-list{display:grid;gap:10px;margin-top:16px}
+    .tx-item,.whale-item{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:14px;align-items:center}
+    .tx-item .tx-meta,.whale-item .tx-meta{min-width:0}
+    .tx-item strong,.whale-item strong{display:block;font-size:14px;color:#fff;margin-bottom:4px}
+    .tx-item span,.whale-item span{display:block;font-size:12px;color:#b7c7e9;line-height:1.5;word-break:break-word}
+    .tx-amount,.whale-amount{font-size:14px;font-weight:900;color:#fff;white-space:nowrap;text-align:right}
+    .micro-note{margin-top:10px;color:#9fb2d9;font-size:12px;line-height:1.6}
+    .trust-badges{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .trust-badge-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
+    .trust-badge-card strong{display:block;font-size:14px;margin-bottom:6px;color:#fff}
+    .trust-badge-card p{margin:0;font-size:12px;color:#b7c7e9;line-height:1.6}
+    .buy-status{margin-top:12px;font-size:13px;color:#dce7ff}
+    @media (max-width: 1180px){.status-grid,.trust-badges,.signal-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.status-grid,.trust-badges,.signal-grid{grid-template-columns:1fr}}
+
   </style>
 </head>
 <body>
@@ -414,7 +444,7 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy reveal">
-          <div class="eyebrow">AXION App Live</div>
+          <div class="eyebrow">AXION Dashboard Live</div>
           <div class="hero-title-row">
             <div class="hero-main-icon">
               <svg viewBox="0 0 24 24"><path d="M12 3l7 4v10l-7 4-7-4V7l7-4Z"/><path d="M8.5 9.5l3.5 2 3.5-2"/><path d="M12 11.5v5.5"/></svg>
@@ -577,7 +607,13 @@
                     <span id="allocationProgressText">0 AX sold · 0%</span>
                   </div>
                   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                  <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation is calculated live for a more app-like dashboard feel.</div>
+                  <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
+                  <div class="status-grid">
+                    <div class="status-chip"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
+                    <div class="status-chip"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
+                    <div class="status-chip"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>BNB currently held by official receiver</small></div>
+                    <div class="status-chip"><strong>Status</strong><span id="presaleStatus">Live</span><small>Presale dashboard state for current session</small></div>
+                  </div>
                 </div>
 
                 <div class="buy-inputs">
@@ -590,6 +626,7 @@
                     <button class="btn btn-buy" id="buyNowBtn" type="button">Buy AX</button>
                     <button class="btn btn-secondary" id="copyReceiverBtn" type="button">Copy Receiver</button>
                   </div>
+                  <div class="buy-status" id="buyStatus">Enter an amount, connect your wallet, and send BNB with one click.</div>
                 </div>
 
                 <div class="success-card" id="presaleSuccess">
@@ -681,6 +718,51 @@
               </div>
             </article>
 
+
+            <article class="card reveal" id="transferStream">
+              <div class="card-inner">
+                <div class="tag">On-Chain Flow</div>
+                <div class="title-row">
+                  <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/><path d="M11 18 5 12l6-6"/></svg></div>
+                  <h3>Live Transfer Stream</h3>
+                </div>
+                <p>Recent AXION transfers are read directly from BNB Smart Chain logs so the dashboard feels alive and on-chain.</p>
+                <div class="tx-stream" id="txStream">
+                  <div class="tx-item"><div class="tx-meta"><strong>Waiting for transfer data...</strong><span>Recent BSC transfer events will appear here.</span></div><div class="tx-amount">—</div></div>
+                </div>
+                <div class="micro-note">Transfers refresh automatically. Large transfers are promoted into the whale monitor below.</div>
+              </div>
+            </article>
+
+            <article class="card reveal" id="aiSignals">
+              <div class="card-inner">
+                <div class="tag">AI Monitor</div>
+                <div class="title-row">
+                  <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M12 15v6"/><path d="M3 12h6"/><path d="M15 12h6"/><path d="M7.5 7.5 9.8 9.8"/><path d="m14.2 14.2 2.3 2.3"/><path d="m7.5 16.5 2.3-2.3"/><path d="m14.2 9.8 2.3-2.3"/></svg></div>
+                  <h3>AI Signal Engine</h3>
+                </div>
+                <p>A lightweight scoring layer reads liquidity, volume, volatility, and whale activity to present a dashboard-native risk view.</p>
+                <div class="signal-grid">
+                  <div class="signal-box">
+                    <strong>Risk Score</strong>
+                    <div class="signal-pill good" id="riskPill">Healthy</div>
+                    <span id="riskScoreText">Analyzing liquidity and volume profile...</span>
+                  </div>
+                  <div class="signal-box">
+                    <strong>Momentum</strong>
+                    <span id="momentumText">Waiting for market sync...</span>
+                  </div>
+                  <div class="signal-box">
+                    <strong>Whale Pressure</strong>
+                    <span id="whalePressureText">Waiting for transfer scan...</span>
+                  </div>
+                </div>
+                <div class="whale-list" id="whaleList">
+                  <div class="whale-item"><div class="tx-meta"><strong>No whale alerts yet</strong><span>Large AX transfers will be highlighted here.</span></div><div class="whale-amount">—</div></div>
+                </div>
+              </div>
+            </article>
+
             <article class="card reveal" id="security">
               <div class="card-inner">
                 <div class="tag">Trust & Security</div>
@@ -689,6 +771,13 @@
                   <h3>AXION Trust Layer</h3>
                 </div>
                 <p>The app should feel safe, transparent, and intentional. These are the visible trust blocks that reinforce the presale and dashboard flow.</p>
+
+                <div class="trust-badges">
+                  <div class="trust-badge-card"><strong>Verified Contract</strong><p>Direct BscScan access is built into the dashboard for contract inspection.</p></div>
+                  <div class="trust-badge-card"><strong>No Mint</strong><p>Trust-focused presentation keeps fixed-supply messaging visible inside the app.</p></div>
+                  <div class="trust-badge-card"><strong>No Owner</strong><p>Ownerless trust posture can be communicated directly on the live dashboard surface.</p></div>
+                  <div class="trust-badge-card"><strong>Live on BSC</strong><p>Wallet, fee flow, transfers, and presale metrics are read from BNB Smart Chain.</p></div>
+                </div>
 
                 <div class="summary-list">
                   <div class="summary-item">
@@ -800,6 +889,8 @@
     let signer;
     let userAddress = null;
     let connectedWalletCount = 0;
+    let latestDexSnapshot = { price: 0, change: 0, liquidity: 0, volume: 0 };
+    let lastWhaleTransfers = [];
 
     const els = {
       walletBtn: document.getElementById('walletBtn'),
@@ -826,6 +917,17 @@
       presaleSuccess: document.getElementById('presaleSuccess'),
       progressFill: document.getElementById('progressFill'),
       allocationProgressText: document.getElementById('allocationProgressText'),
+      soldAmount: document.getElementById('soldAmount'),
+      remainingAmount: document.getElementById('remainingAmount'),
+      raisedBnb: document.getElementById('raisedBnb'),
+      presaleStatus: document.getElementById('presaleStatus'),
+      buyStatus: document.getElementById('buyStatus'),
+      riskPill: document.getElementById('riskPill'),
+      riskScoreText: document.getElementById('riskScoreText'),
+      momentumText: document.getElementById('momentumText'),
+      whalePressureText: document.getElementById('whalePressureText'),
+      txStream: document.getElementById('txStream'),
+      whaleList: document.getElementById('whaleList'),
       mobileToggle: document.getElementById('mobileToggle'),
       navLinks: document.getElementById('navLinks')
     };
@@ -843,6 +945,29 @@
       if (!isFinite(value)) return '—';
       return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: value < 1 ? 6 : 2 }).format(value);
     }
+    function escapeHtml(str){
+      return String(str || '').replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    function shortenMiddle(value, left = 6, right = 4){
+      if (!value) return '—';
+      return `${value.slice(0,left)}...${value.slice(-right)}`;
+    }
+
+    function formatRelativeTime(seconds){
+      if (!isFinite(seconds) || seconds < 0) return 'just now';
+      if (seconds < 60) return `${Math.floor(seconds)}s ago`;
+      if (seconds < 3600) return `${Math.floor(seconds/60)}m ago`;
+      if (seconds < 86400) return `${Math.floor(seconds/3600)}h ago`;
+      return `${Math.floor(seconds/86400)}d ago`;
+    }
+
+    function setBuyStatus(message, tone = 'neutral'){
+      if (!els.buyStatus) return;
+      els.buyStatus.textContent = message;
+      els.buyStatus.style.color = tone === 'good' ? '#d9fff0' : tone === 'alert' ? '#ffe1e7' : '#dce7ff';
+    }
+
 
     async function copyText(text){
       try{
@@ -875,6 +1000,7 @@
         els.walletAddressShort.textContent = shortAddress(userAddress);
         els.receiveWalletText.textContent = userAddress;
         els.walletBtn.textContent = 'Disconnect';
+        setBuyStatus('Wallet connected. You can now send BNB directly from the dashboard.', 'good');
         await refreshWalletBalances();
       } catch (err) {
         console.error('Wallet connect error', err);
@@ -891,6 +1017,7 @@
       els.axBalance.textContent = '-';
       els.bnbBalance.textContent = '-';
       els.usdtBalance.textContent = '-';
+      setBuyStatus('Wallet disconnected. Reconnect to continue.', 'neutral');
     }
 
     async function refreshWalletBalances(){
@@ -929,14 +1056,27 @@
       try {
         const rpc = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
         const axContract = new ethers.Contract(CONFIG.AX_TOKEN, ERC20_ABI, rpc);
-        const receiverBalanceRaw = await axContract.balanceOf(CONFIG.PRESALE_RECEIVER);
+        const [receiverBalanceRaw, raisedBnbRaw] = await Promise.all([
+          axContract.balanceOf(CONFIG.PRESALE_RECEIVER),
+          rpc.getBalance(CONFIG.PRESALE_RECEIVER)
+        ]);
         const receiverBalance = Number(ethers.utils.formatUnits(receiverBalanceRaw, CONFIG.AX_DECIMALS));
         const sold = Math.max(0, CONFIG.TOTAL_ALLOCATION_AX - receiverBalance);
+        const remaining = Math.max(0, receiverBalance);
+        const raisedBnb = Number(ethers.utils.formatEther(raisedBnbRaw));
         const progress = Math.min(100, (sold / CONFIG.TOTAL_ALLOCATION_AX) * 100);
         els.progressFill.style.width = `${progress.toFixed(2)}%`;
         els.allocationProgressText.textContent = `${formatNumber(sold, 2)} AX sold · ${progress.toFixed(2)}%`;
+        els.soldAmount.textContent = `${formatNumber(sold, 2)} AX`;
+        els.remainingAmount.textContent = `${formatNumber(remaining, 2)} AX`;
+        els.raisedBnb.textContent = `${formatNumber(raisedBnb, 4)} BNB`;
+        els.presaleStatus.textContent = progress >= 100 ? 'Closed' : 'Live';
       } catch (err) {
         els.allocationProgressText.textContent = 'Live sold amount unavailable';
+        els.soldAmount.textContent = 'Unavailable';
+        els.remainingAmount.textContent = 'Unavailable';
+        els.raisedBnb.textContent = 'Unavailable';
+        els.presaleStatus.textContent = 'Syncing';
       }
     }
 
@@ -951,6 +1091,7 @@
         const change = Number(pair.priceChange?.h24 || 0);
         const liquidity = Number(pair.liquidity?.usd || 0);
         const volume = Number(pair.volume?.h24 || 0);
+        latestDexSnapshot = { price, change, liquidity, volume };
 
         const changeClass = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
         const changeText = `${change > 0 ? '▲' : change < 0 ? '▼' : '•'} ${formatNumber(change, 2)}%`;
@@ -963,6 +1104,7 @@
         els.marketBarChange.className = `price-change ${changeClass}`;
         els.marketBarLiquidity.textContent = formatCurrency(liquidity);
         els.marketBarVolume.textContent = formatCurrency(volume);
+        updateAISignals();
       } catch (err) {
         els.axPrice.textContent = 'Live price unavailable';
         els.axPriceChange.textContent = 'Data unavailable';
@@ -970,6 +1112,7 @@
         els.marketBarChange.textContent = 'Unavailable';
         els.marketBarLiquidity.textContent = 'Unavailable';
         els.marketBarVolume.textContent = 'Unavailable';
+        updateAISignals();
       }
     }
 
@@ -977,6 +1120,149 @@
       const bnb = Number(els.bnbAmount.value || 0);
       const ax = bnb * CONFIG.RATE_AX_PER_BNB;
       els.axReceivePreview.textContent = `${formatNumber(ax, 2)} AX`;
+    }
+
+
+    async function sendPresaleTransaction(){
+      const bnb = Number(els.bnbAmount.value || 0);
+      if (!bnb || bnb <= 0) {
+        setBuyStatus('Enter a valid BNB amount first.', 'alert');
+        return;
+      }
+      if (!window.ethereum || !provider || !signer || !userAddress) {
+        setBuyStatus('Connect your wallet before sending BNB.', 'alert');
+        await connectWallet();
+        return;
+      }
+      try {
+        els.buyNowBtn.disabled = true;
+        els.buyNowBtn.textContent = 'Processing...';
+        setBuyStatus('Preparing transaction in your wallet...', 'neutral');
+        const tx = await signer.sendTransaction({
+          to: CONFIG.PRESALE_RECEIVER,
+          value: ethers.utils.parseEther(String(bnb))
+        });
+        setBuyStatus(`Transaction submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good');
+        els.presaleSuccess.classList.add('show');
+        els.presaleSuccess.querySelector('strong').textContent = 'Transaction Submitted';
+        els.presaleSuccess.querySelector('p').innerHTML = `BNB transfer sent successfully. Track it on <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#9ed7ff;">BscScan</a>.`;
+        await tx.wait();
+        setBuyStatus('Transaction confirmed on BNB Smart Chain.', 'good');
+        await Promise.all([refreshWalletBalances(), fetchPresaleProgress(), fetchTransferStream()]);
+      } catch (err) {
+        console.error('Presale transaction failed', err);
+        setBuyStatus('Transaction cancelled or failed. Please try again.', 'alert');
+      } finally {
+        els.buyNowBtn.disabled = false;
+        els.buyNowBtn.textContent = 'Buy AX';
+      }
+    }
+
+    function renderTransferStream(items){
+      if (!els.txStream) return;
+      if (!items.length) {
+        els.txStream.innerHTML = '<div class="tx-item"><div class="tx-meta"><strong>No recent transfers</strong><span>Waiting for BSC activity.</span></div><div class="tx-amount">—</div></div>';
+        return;
+      }
+      els.txStream.innerHTML = items.map(item => `
+        <div class="tx-item">
+          <div class="tx-meta">
+            <strong>${escapeHtml(item.direction)}</strong>
+            <span>${escapeHtml(shortenMiddle(item.from))} → ${escapeHtml(shortenMiddle(item.to))} · ${escapeHtml(item.when)}</span>
+          </div>
+          <div class="tx-amount">${escapeHtml(item.amount)}</div>
+        </div>`).join('');
+    }
+
+    function renderWhaleList(items){
+      if (!els.whaleList) return;
+      if (!items.length) {
+        els.whaleList.innerHTML = '<div class="whale-item"><div class="tx-meta"><strong>No whale alerts yet</strong><span>Large AX transfers will appear here when they are detected.</span></div><div class="whale-amount">—</div></div>';
+        els.whalePressureText.textContent = 'No whale-sized transfers detected in the latest scan.';
+        return;
+      }
+      els.whaleList.innerHTML = items.map(item => `
+        <div class="whale-item">
+          <div class="tx-meta">
+            <strong>${escapeHtml(item.direction)}</strong>
+            <span>${escapeHtml(shortenMiddle(item.from))} → ${escapeHtml(shortenMiddle(item.to))} · ${escapeHtml(item.when)}</span>
+          </div>
+          <div class="whale-amount">${escapeHtml(item.amount)}</div>
+        </div>`).join('');
+      const totalWhale = items.reduce((sum, i) => sum + i.rawAmount, 0);
+      els.whalePressureText.textContent = `${formatNumber(totalWhale, 0)} AX moved across ${items.length} whale-sized transfers in the latest scan.`;
+    }
+
+    function updateAISignals(){
+      const { price, change, liquidity, volume } = latestDexSnapshot;
+      const whaleCount = lastWhaleTransfers.length;
+      let score = 72;
+      if (liquidity > 10000) score += 8;
+      if (volume > 5000) score += 6;
+      if (Math.abs(change) > 18) score -= 10;
+      if (whaleCount >= 3) score -= 8;
+      if (whaleCount === 0) score += 4;
+      score = Math.max(5, Math.min(98, Math.round(score)));
+
+      let tone = 'watch';
+      let label = 'Watch';
+      if (score >= 78) { tone = 'good'; label = 'Healthy'; }
+      else if (score < 55) { tone = 'alert'; label = 'High Risk'; }
+
+      els.riskPill.className = `signal-pill ${tone}`;
+      els.riskPill.textContent = label;
+      els.riskScoreText.textContent = `AI score ${score}/100 based on liquidity, volume, 24h move, and whale activity.`;
+
+      const momentum = change > 3 ? 'Momentum is positive with buyers in control.' :
+                       change < -3 ? 'Momentum is weak and needs caution.' :
+                       'Momentum is balanced with no strong directional edge.';
+      els.momentumText.textContent = `${momentum} 24H change: ${change > 0 ? '+' : ''}${formatNumber(change, 2)}%.`;
+    }
+
+    async function fetchTransferStream(){
+      try {
+        const rpc = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+        const iface = new ethers.utils.Interface(['event Transfer(address indexed from,address indexed to,uint256 value)']);
+        const currentBlock = await rpc.getBlockNumber();
+        const transferTopic = ethers.utils.id('Transfer(address,address,uint256)');
+        const logs = await rpc.getLogs({
+          address: CONFIG.AX_TOKEN,
+          fromBlock: Math.max(1, currentBlock - 1800),
+          toBlock: currentBlock,
+          topics: [transferTopic]
+        });
+        const sliced = logs.slice(-8).reverse();
+        const blockCache = {};
+        const items = [];
+        for (const log of sliced) {
+          const parsed = iface.parseLog(log);
+          if (!blockCache[log.blockNumber]) {
+            blockCache[log.blockNumber] = await rpc.getBlock(log.blockNumber);
+          }
+          const block = blockCache[log.blockNumber];
+          const rawAmount = Number(ethers.utils.formatUnits(parsed.args.value, CONFIG.AX_DECIMALS));
+          const direction =
+            parsed.args.to.toLowerCase() === CONFIG.PRESALE_RECEIVER.toLowerCase() ? 'Into Presale Receiver' :
+            parsed.args.from.toLowerCase() === CONFIG.PRESALE_RECEIVER.toLowerCase() ? 'From Presale Receiver' :
+            'Token Transfer';
+          items.push({
+            from: parsed.args.from,
+            to: parsed.args.to,
+            rawAmount,
+            amount: `${formatNumber(rawAmount, 0)} AX`,
+            when: formatRelativeTime(Math.max(0, Math.floor(Date.now()/1000) - block.timestamp)),
+            direction
+          });
+        }
+        renderTransferStream(items);
+        lastWhaleTransfers = items.filter(item => item.rawAmount >= 100000).slice(0, 3);
+        renderWhaleList(lastWhaleTransfers);
+        updateAISignals();
+      } catch (err) {
+        if (els.txStream) {
+          els.txStream.innerHTML = '<div class="tx-item"><div class="tx-meta"><strong>Transfer stream unavailable</strong><span>Public RPC did not return recent logs.</span></div><div class="tx-amount">—</div></div>';
+        }
+      }
     }
 
     function initChart(){
@@ -1025,9 +1311,9 @@
       els.walletBtn.addEventListener('click', () => userAddress ? disconnectWallet() : connectWallet());
       els.connectReceiveBtn.addEventListener('click', connectWallet);
       els.copyReceiveAddressBtn.addEventListener('click', () => copyText(userAddress || ''));
-      els.copyContractBtn.addEventListener('click', () => copyText(CONFIG.AX_TOKEN));
-      els.copyReceiverBtn.addEventListener('click', () => copyText(CONFIG.PRESALE_RECEIVER));
-      els.buyNowBtn.addEventListener('click', () => els.presaleSuccess.classList.add('show'));
+      els.copyContractBtn.addEventListener('click', () => { copyText(CONFIG.AX_TOKEN); setBuyStatus('Contract address copied.', 'good'); });
+      els.copyReceiverBtn.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Presale receiver copied.', 'good'); });
+      els.buyNowBtn.addEventListener('click', sendPresaleTransaction);
       els.bnbAmount.addEventListener('input', updateReceivePreview);
       els.mobileToggle.addEventListener('click', () => els.navLinks.classList.toggle('open'));
       document.querySelectorAll('.nav-links a').forEach(link => {
@@ -1051,10 +1337,11 @@
       initChart();
       initEvents();
       updateReceivePreview();
-      await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress()]);
+      await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress(), fetchTransferStream()]);
       setInterval(fetchDexData, 30000);
       setInterval(fetchFeeWalletBalance, 45000);
       setInterval(fetchPresaleProgress, 45000);
+      setInterval(fetchTransferStream, 60000);
     }
 
     init();
