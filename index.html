@@ -115,6 +115,27 @@
     .btn-secondary:hover{background:rgba(255,255,255,.08)}
     .btn-buy{color:#fff;background:linear-gradient(90deg, var(--buy1), var(--buy2), var(--buy3));box-shadow:0 14px 34px rgba(255,104,74,.35);border:1px solid rgba(255,255,255,.12)}
 
+    #presale{position:relative;overflow:hidden;border-color:rgba(255,201,92,.20);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(255,201,92,.08)}
+    #presale::after{content:"";position:absolute;inset:auto -12% -38% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.18), rgba(255,140,31,.08), transparent 68%);filter:blur(12px);pointer-events:none;animation:presaleGlow 4.8s ease-in-out infinite}
+    #presale .tag{position:relative;overflow:hidden;background:linear-gradient(90deg, rgba(255,201,92,.16), rgba(255,140,31,.12));border-color:rgba(255,201,92,.26);box-shadow:0 0 20px rgba(255,201,92,.10)}
+    #presale .tag::after{content:"";position:absolute;top:0;left:-38%;width:36%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);transform:skewX(-24deg);animation:tagSweep 3.4s linear infinite}
+    #presale:hover{transform:translateY(-6px);border-color:rgba(255,201,92,.34);box-shadow:0 26px 75px rgba(0,0,0,.50),0 0 32px rgba(255,201,92,.14),0 0 52px rgba(255,104,74,.10)}
+    #presale .presale-row:first-child{background:linear-gradient(90deg, rgba(255,201,92,.14), rgba(255,140,31,.10));border-color:rgba(255,201,92,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+    .btn-buy{position:relative;overflow:hidden;background-size:200% 100%;animation:buyGradientFlow 4s linear infinite, buyPulse 2.6s ease-in-out infinite}
+    .btn-buy::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.24) 48%, transparent 76%);transform:translateX(-140%);animation:buyShine 2.8s ease-in-out infinite}
+    .btn-buy:hover{box-shadow:0 18px 42px rgba(255,104,74,.42),0 0 20px rgba(255,201,92,.18);filter:saturate(1.08)}
+    .slogan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:2px 0 2px}
+    .slogan-card{position:relative;text-align:center;padding:10px 12px;border-radius:14px;background:linear-gradient(180deg, rgba(78,216,255,.11), rgba(168,92,255,.08));border:1px solid rgba(95,140,255,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 16px rgba(78,216,255,.05);overflow:hidden;transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
+    .slogan-card::before{content:"";position:absolute;inset:-1px;background:linear-gradient(135deg, rgba(78,216,255,.20), rgba(95,140,255,.06), rgba(168,92,255,.16), rgba(255,92,184,.10));opacity:.85;pointer-events:none}
+    .slogan-card::after{content:"";position:absolute;inset:auto -10% -65% auto;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle, rgba(78,216,255,.22), transparent 70%);filter:blur(10px);animation:aiOrb 5s ease-in-out infinite}
+    .slogan-card > *{position:relative;z-index:1}
+    .slogan-card strong{font-size:13px;margin-bottom:4px;color:#f5fbff;letter-spacing:.01em}
+    .slogan-card p{font-size:11px;line-height:1.45;color:#d5e7ff}
+    .slogan-card:hover{transform:translateY(-3px);border-color:rgba(78,216,255,.34);box-shadow:0 14px 30px rgba(0,0,0,.26),0 0 20px rgba(78,216,255,.10),0 0 26px rgba(168,92,255,.08)}
+    .slogan-card:nth-child(2)::after{animation-delay:-1.3s}
+    .slogan-card:nth-child(3)::after{animation-delay:-2.1s}
+    .slogan-card:nth-child(4)::after{animation-delay:-3.2s}
+
     .hero{padding:84px 0 30px;position:relative;overflow:hidden}
     .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:28px;align-items:start}
     .hero-copy h1{margin:0 0 18px;font-size:clamp(46px, 7vw, 88px);line-height:.96;letter-spacing:-.06em}
@@ -270,6 +291,13 @@
     @keyframes aiHudRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
     @keyframes aiScanMove{0%,100%{top:8%;opacity:.18}50%{top:78%;opacity:.55}}
     @keyframes aiNodePulse{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(1.35);opacity:1}}
+
+    @keyframes buyGradientFlow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+    @keyframes buyShine{0%,18%{transform:translateX(-140%)}55%,100%{transform:translateX(160%)}}
+    @keyframes buyPulse{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1px) scale(1.018)}}
+    @keyframes presaleGlow{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.88;transform:scale(1.08)}}
+    @keyframes tagSweep{0%{left:-38%}100%{left:118%}}
+    @keyframes aiOrb{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.45}50%{transform:translate3d(-10px,-8px,0) scale(1.14);opacity:.9}}
 
     @media (max-width: 1180px){
       .hero-grid,.presale-layout{grid-template-columns:1fr}
@@ -471,11 +499,11 @@
             <div class="page-card-logo">
               <img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/AXION%20.png" alt="AXION Logo">
             </div>
-            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:2px 0 2px;">
-              <div class="mini-card" style="text-align:center;background:rgba(255,255,255,.045);padding:10px 12px;border-radius:14px;"><strong style="font-size:13px;margin-bottom:4px;">No Mint</strong><p style="font-size:11px;line-height:1.45;">No hidden supply</p></div>
-              <div class="mini-card" style="text-align:center;background:rgba(255,255,255,.045);padding:10px 12px;border-radius:14px;"><strong style="font-size:13px;margin-bottom:4px;">No Rug</strong><p style="font-size:11px;line-height:1.45;">Secure structure</p></div>
-              <div class="mini-card" style="text-align:center;background:rgba(255,255,255,.045);padding:10px 12px;border-radius:14px;"><strong style="font-size:13px;margin-bottom:4px;">AI Powered</strong><p style="font-size:11px;line-height:1.45;">Smart analytics layer</p></div>
-              <div class="mini-card" style="text-align:center;background:rgba(255,255,255,.045);padding:10px 12px;border-radius:14px;"><strong style="font-size:13px;margin-bottom:4px;">Fully Transparent</strong><p style="font-size:11px;line-height:1.45;">On-chain visibility</p></div>
+            <div class="slogan-grid">
+              <div class="slogan-card"><strong>No Mint</strong><p>No hidden supply</p></div>
+              <div class="slogan-card"><strong>No Rug</strong><p>Secure structure</p></div>
+              <div class="slogan-card"><strong>AI Powered</strong><p>Smart analytics layer</p></div>
+              <div class="slogan-card"><strong>Fully Transparent</strong><p>On-chain visibility</p></div>
             </div>
             <article class="card" id="presale">
               <div class="card-inner">
