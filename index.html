@@ -553,12 +553,22 @@
 
               <div class="feature-list">
                 <div class="feature">
-                  <strong>AX Receive</strong>
-                  <p id="receiveWalletText">Connect wallet to view your receive address.</p>
-                  <div class="inline-actions">
-                    <button class="btn btn-secondary" id="connectReceiveBtn" type="button">Connect for Receive</button>
-                    <button class="btn btn-secondary" id="copyReceiveAddressBtn" type="button">Copy Address</button>
+                  <strong>AX Send</strong>
+                  <p>Send AX directly from the connected wallet. The transaction opens in your wallet for approval before broadcasting.</p>
+                  <div class="buy-inputs" style="margin-top:14px;">
+                    <div class="buy-field">
+                      <label for="axSendTo">Recipient Wallet</label>
+                      <input id="axSendTo" type="text" placeholder="0x..." />
+                    </div>
+                    <div class="buy-field">
+                      <label for="axSendAmount">AX Amount</label>
+                      <input id="axSendAmount" type="number" min="0" step="any" placeholder="Enter AX amount" />
+                    </div>
                   </div>
+                  <div class="inline-actions">
+                    <button class="btn btn-buy" id="sendAxBtn" type="button">Send AX</button>
+                  </div>
+                  <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AX transfer in your wallet.</div>
                 </div>
               </div>
 
@@ -631,12 +641,12 @@
                     <button class="btn btn-buy" id="buyNowBtn" type="button">Buy AX</button>
                     <button class="btn btn-secondary" id="copyReceiverBtn" type="button">Copy Receiver</button>
                   </div>
-                  <div class="buy-status" id="buyStatus">Enter an amount, connect your wallet, and send BNB with one click.</div>
+                  <div class="buy-status" id="buyStatus">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</div>
                 </div>
 
                 <div class="success-card" id="presaleSuccess">
                   <strong>Presale Flow Ready</strong>
-                  <p>Open your wallet and send BNB to the official receiver address. This interface previews your expected AX amount and keeps the official sale terms visible in the AXION app style.</p>
+                  <p>Approve the BNB transaction in your wallet to complete the presale payment. This interface previews your expected AX amount and keeps the official sale terms visible in the AXION app style.</p>
                 </div>
               </div>
             </article>
@@ -839,7 +849,8 @@
     const ERC20_ABI = [
       'function balanceOf(address owner) view returns (uint256)',
       'function decimals() view returns (uint8)',
-      'function symbol() view returns (string)'
+      'function symbol() view returns (string)',
+      'function transfer(address to, uint256 value) returns (bool)'
     ];
 
     let provider;
@@ -851,13 +862,14 @@
 
     const els = {
       walletBtn: document.getElementById('walletBtn'),
-      connectReceiveBtn: document.getElementById('connectReceiveBtn'),
-      copyReceiveAddressBtn: document.getElementById('copyReceiveAddressBtn'),
+      sendAxBtn: document.getElementById('sendAxBtn'),
+      axSendTo: document.getElementById('axSendTo'),
+      axSendAmount: document.getElementById('axSendAmount'),
+      sendStatus: document.getElementById('sendStatus'),
       copyContractBtn: document.getElementById('copyContractBtn'),
       copyReceiverBtn: document.getElementById('copyReceiverBtn'),
       buyNowBtn: document.getElementById('buyNowBtn'),
       walletAddressShort: document.getElementById('walletAddressShort'),
-      receiveWalletText: document.getElementById('receiveWalletText'),
       walletCountLive: document.getElementById('walletCountLive'),
       axBalance: document.getElementById('axBalance'),
       bnbBalance: document.getElementById('bnbBalance'),
@@ -925,6 +937,11 @@
       els.buyStatus.style.color = tone === 'good' ? '#d9fff0' : tone === 'alert' ? '#ffe1e7' : '#dce7ff';
     }
 
+    function setSendStatus(message, tone = 'neutral'){
+      if (!els.sendStatus) return;
+      els.sendStatus.textContent = message;
+      els.sendStatus.style.color = tone === 'good' ? '#d9fff0' : tone === 'alert' ? '#ffe1e7' : '#dce7ff';
+    }
 
     async function copyText(text){
       try{
@@ -955,9 +972,9 @@
         connectedWalletCount += 1;
         els.walletCountLive.textContent = connectedWalletCount;
         els.walletAddressShort.textContent = shortAddress(userAddress);
-        els.receiveWalletText.textContent = userAddress;
         els.walletBtn.textContent = 'Disconnect';
         setBuyStatus('Wallet connected. You can now send BNB directly from the dashboard.', 'good');
+        setSendStatus('Wallet connected. AX balances now reflect the connected wallet.', 'good');
         await refreshWalletBalances();
       } catch (err) {
         console.error('Wallet connect error', err);
@@ -969,12 +986,12 @@
       signer = null;
       userAddress = null;
       els.walletAddressShort.textContent = 'Not connected';
-      els.receiveWalletText.textContent = 'Connect wallet to view your receive address.';
       els.walletBtn.textContent = 'Connect Wallet';
       els.axBalance.textContent = '-';
       els.bnbBalance.textContent = '-';
       els.usdtBalance.textContent = '-';
       setBuyStatus('Wallet disconnected. Reconnect to continue.', 'neutral');
+      setSendStatus('Wallet disconnected. Reconnect to send AX.', 'neutral');
     }
 
     async function refreshWalletBalances(){
@@ -1113,6 +1130,47 @@
       } finally {
         els.buyNowBtn.disabled = false;
         els.buyNowBtn.textContent = 'Buy AX';
+      }
+    }
+
+    async function sendAxTransaction(){
+      const recipient = (els.axSendTo?.value || '').trim();
+      const amount = Number(els.axSendAmount?.value || 0);
+
+      if (!recipient || !ethers.utils.isAddress(recipient)) {
+        setSendStatus('Enter a valid recipient wallet address.', 'alert');
+        return;
+      }
+      if (!amount || amount <= 0) {
+        setSendStatus('Enter a valid AX amount first.', 'alert');
+        return;
+      }
+      if (!window.ethereum || !provider || !signer || !userAddress) {
+        setSendStatus('Connect your wallet before sending AX.', 'alert');
+        await connectWallet();
+        return;
+      }
+
+      try {
+        els.sendAxBtn.disabled = true;
+        els.sendAxBtn.textContent = 'Processing...';
+        setSendStatus('Preparing AX transfer in your wallet...', 'neutral');
+
+        const axContract = new ethers.Contract(CONFIG.AX_TOKEN, ERC20_ABI, signer);
+        const tx = await axContract.transfer(recipient, ethers.utils.parseUnits(String(amount), CONFIG.AX_DECIMALS));
+
+        setSendStatus(`AX transfer submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good');
+        await tx.wait();
+
+        setSendStatus('AX transfer confirmed on BNB Smart Chain.', 'good');
+        if (els.axSendAmount) els.axSendAmount.value = '';
+        await Promise.all([refreshWalletBalances(), fetchTransferStream()]);
+      } catch (err) {
+        console.error('AX transfer failed', err);
+        setSendStatus('AX transfer cancelled or failed. Please try again.', 'alert');
+      } finally {
+        els.sendAxBtn.disabled = false;
+        els.sendAxBtn.textContent = 'Send AX';
       }
     }
 
@@ -1267,8 +1325,7 @@
 
     function initEvents(){
       els.walletBtn.addEventListener('click', () => userAddress ? disconnectWallet() : connectWallet());
-      els.connectReceiveBtn.addEventListener('click', connectWallet);
-      els.copyReceiveAddressBtn.addEventListener('click', () => copyText(userAddress || ''));
+      els.sendAxBtn?.addEventListener('click', sendAxTransaction);
       els.copyContractBtn.addEventListener('click', () => { copyText(CONFIG.AX_TOKEN); setBuyStatus('Contract address copied.', 'good'); });
       els.copyReceiverBtn.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Presale receiver copied.', 'good'); });
       els.buyNowBtn.addEventListener('click', sendPresaleTransaction);
@@ -1283,8 +1340,8 @@
           else {
             userAddress = accounts[0];
             els.walletAddressShort.textContent = shortAddress(userAddress);
-            els.receiveWalletText.textContent = userAddress;
-            await refreshWalletBalances();
+                await refreshWalletBalances();
+            setSendStatus('Wallet changed. AX balances now reflect the newly connected wallet.', 'good');
           }
         });
       }
