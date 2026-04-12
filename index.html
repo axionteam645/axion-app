@@ -307,7 +307,8 @@
     }
     .pancake-actions{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:minmax(220px, 320px);
+      justify-content:center;
       gap:12px;
       margin-top:16px;
     }
@@ -401,6 +402,10 @@
     .buy-status{margin-top:12px;font-size:13px;color:#dce7ff}
     @media (max-width: 1180px){.status-grid,.trust-badges,.signal-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width: 640px){.status-grid,.trust-badges,.signal-grid{grid-template-columns:1fr}}
+
+    .ai-monitor-compact .signal-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .ai-monitor-compact .signal-box{height:100%;display:flex;flex-direction:column;justify-content:center}
+    @media (max-width: 640px){.ai-monitor-compact .signal-grid{grid-template-columns:1fr;}}
 
   </style>
 </head>
@@ -578,9 +583,6 @@
         </div>
 
         <div class="app-side-stack reveal">
-            <div class="welcome-top-logo">
-              <img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/AXION%20.png" alt="AXION Logo">
-            </div>
             <article class="card wallet-lite-gold" id="walletLite">
               <div class="card-inner">
               <div class="tag">Wallet Lite</div>
@@ -733,32 +735,14 @@
           </div>
 
           <div class="app-side-stack">
-            <article class="card reveal">
-              <div class="card-inner">
-                <div class="tag">Quick Actions</div>
-                <div class="title-row">
-                  <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></div>
-                  <h3>App Access</h3>
-                </div>
-                <p>Fast navigation for the live app flow without changing the original AXION visual direction.</p>
-                <div class="social-links">
-                  <a class="quick-link" href="#presale"><span>Go to Presale</span><span>Live flow</span></a>
-                  <a class="quick-link" href="#walletLite"><span>Wallet Lite</span><span>Balances</span></a>
-                  <a class="quick-link" href="#security"><span>Trust Layer</span><span>AXION</span></a>
-                </div>
-              </div>
-            </article>
-
-
-
-<article class="card reveal" id="aiSignals">
+            <article class="card reveal ai-monitor-compact" id="aiSignals">
               <div class="card-inner">
                 <div class="tag">AI Monitor</div>
                 <div class="title-row">
                   <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M12 15v6"/><path d="M3 12h6"/><path d="M15 12h6"/><path d="M7.5 7.5 9.8 9.8"/><path d="m14.2 14.2 2.3 2.3"/><path d="m7.5 16.5 2.3-2.3"/><path d="m14.2 9.8 2.3-2.3"/></svg></div>
                   <h3>AI Signal Engine</h3>
                 </div>
-                <p>A lightweight scoring layer reads liquidity, volume, volatility, and whale activity to present a dashboard-native risk view.</p>
+                <p>A lightweight scoring layer reads liquidity, volume, and volatility to present a clean dashboard-native signal view.</p>
                 <div class="signal-grid">
                   <div class="signal-box">
                     <strong>Risk Score</strong>
@@ -769,13 +753,6 @@
                     <strong>Momentum</strong>
                     <span id="momentumText">Waiting for market sync...</span>
                   </div>
-                  <div class="signal-box">
-                    <strong>Whale Pressure</strong>
-                    <span id="whalePressureText">Waiting for transfer scan...</span>
-                  </div>
-                </div>
-                <div class="whale-list" id="whaleList">
-                  <div class="whale-item"><div class="tx-meta"><strong>No whale alerts yet</strong><span>Large AX transfers will be highlighted here.</span></div><div class="whale-amount">—</div></div>
                 </div>
               </div>
             </article>
