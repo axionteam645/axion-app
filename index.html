@@ -399,6 +399,16 @@
     }
   
     .status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+
+    .ai-tokenomics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+    .ai-tokenomics-card{position:relative;padding:18px 18px 16px;border-radius:20px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.028));border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 46px rgba(0,0,0,.24), 0 0 24px rgba(78,216,255,.05)}
+    .ai-tokenomics-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(78,216,255,.09), transparent 35%, transparent 68%, rgba(168,92,255,.09)),radial-gradient(circle at 100% 0%, rgba(255,92,184,.10), transparent 26%);pointer-events:none}
+    .ai-tokenomics-card::after{content:"";position:absolute;left:-10%;right:-10%;top:0;height:1px;background:linear-gradient(90deg, transparent, rgba(78,216,255,.8), rgba(168,92,255,.75), transparent);opacity:.55;animation:aiTokenFlow 4.8s linear infinite}
+    .ai-tokenomics-card strong,.ai-tokenomics-card span,.ai-tokenomics-card small{position:relative;z-index:1;display:block}
+    .ai-tokenomics-card strong{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b7c7e9;margin-bottom:10px}
+    .ai-tokenomics-card span{font-size:22px;font-weight:900;line-height:1.15;color:#fff;margin-bottom:8px}
+    .ai-tokenomics-card small{font-size:12px;line-height:1.6;color:#c7d8f8}
+    @keyframes aiTokenFlow{0%{transform:translateX(-18%);opacity:.18}50%{opacity:.75}100%{transform:translateX(18%);opacity:.18}}
     .status-chip{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
     .status-chip strong{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b7c7e9;margin-bottom:8px}
     .status-chip span{display:block;font-size:18px;font-weight:900;color:#fff}
@@ -428,8 +438,8 @@
     .trust-badge-card strong{display:block;font-size:14px;margin-bottom:6px;color:#fff}
     .trust-badge-card p{margin:0;font-size:12px;color:#b7c7e9;line-height:1.6}
     .buy-status{margin-top:12px;font-size:13px;color:#dce7ff}
-    @media (max-width: 1180px){.status-grid,.trust-badges,.signal-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width: 640px){.status-grid,.trust-badges,.signal-grid{grid-template-columns:1fr}}
+    @media (max-width: 1180px){.status-grid,.trust-badges,.signal-grid,.ai-tokenomics-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.status-grid,.trust-badges,.signal-grid,.ai-tokenomics-grid{grid-template-columns:1fr}}
 
     .ai-monitor-compact .signal-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .ai-monitor-compact .signal-box{height:100%;display:flex;flex-direction:column;justify-content:center}
@@ -717,6 +727,29 @@
             </article>
         </div>
       </div>
+
+      <div class="ai-tokenomics-grid reveal">
+        <div class="ai-tokenomics-card">
+          <strong>Presale Allocation</strong>
+          <span>5,000,000 AX</span>
+          <small>Reserved for the official AXION presale round.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Circulating Supply</strong>
+          <span>200,000,000 AX</span>
+          <small>Current AX available in active market circulation.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Total Supply</strong>
+          <span>1,000,000,000 AX</span>
+          <small>Fixed supply structure with no inflation layer.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Network</strong>
+          <span>BNB Smart Chain</span>
+          <small>Built for fast and scalable DeFi access.</small>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -788,6 +821,29 @@
 </div>
         </div>
       </div>
+
+      <div class="ai-tokenomics-grid reveal">
+        <div class="ai-tokenomics-card">
+          <strong>Presale Allocation</strong>
+          <span>5,000,000 AX</span>
+          <small>Reserved for the official AXION presale round.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Circulating Supply</strong>
+          <span>200,000,000 AX</span>
+          <small>Current AX available in active market circulation.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Total Supply</strong>
+          <span>1,000,000,000 AX</span>
+          <small>Fixed supply structure with no inflation layer.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Network</strong>
+          <span>BNB Smart Chain</span>
+          <small>Built for fast and scalable DeFi access.</small>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -831,6 +887,29 @@
             </div>
           </div>
         </article>
+      </div>
+
+      <div class="ai-tokenomics-grid reveal">
+        <div class="ai-tokenomics-card">
+          <strong>Presale Allocation</strong>
+          <span>5,000,000 AX</span>
+          <small>Reserved for the official AXION presale round.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Circulating Supply</strong>
+          <span>200,000,000 AX</span>
+          <small>Current AX available in active market circulation.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Total Supply</strong>
+          <span>1,000,000,000 AX</span>
+          <small>Fixed supply structure with no inflation layer.</small>
+        </div>
+        <div class="ai-tokenomics-card">
+          <strong>Network</strong>
+          <span>BNB Smart Chain</span>
+          <small>Built for fast and scalable DeFi access.</small>
+        </div>
       </div>
     </div>
   </section>
