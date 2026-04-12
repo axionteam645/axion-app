@@ -3,8 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AXION Dashboard</title>
-  <meta name="description" content="AXION dashboard with wallet connection, presale access, live balances, fee wallet tracking, and real-time ecosystem data on BNB Smart Chain." />
+  <title>AXION App | AI-Powered DeFi Dashboard on BNB Smart Chain</title>
+  <meta name="description" content="AXION App is an AI-powered DeFi dashboard on BNB Smart Chain with wallet connection, presale access, live balances, tokenomics, PancakeSwap access, and real-time ecosystem data." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#040814" />
+  <link rel="canonical" href="https://app.axiondefi.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AXION" />
+  <meta property="og:title" content="AXION App | AI-Powered DeFi Dashboard on BNB Smart Chain" />
+  <meta property="og:description" content="Explore the official AXION App with presale access, live wallet balances, tokenomics, PancakeSwap access, and real-time BNB Smart Chain data." />
+  <meta property="og:url" content="https://app.axiondefi.com/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AXION App | AI-Powered DeFi Dashboard on BNB Smart Chain" />
+  <meta name="twitter:description" content="Official AXION App with presale access, tokenomics, live balances, PancakeSwap access, and real-time DeFi data." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "AXION",
+          "url": "https://www.axiondefi.com/",
+          "logo": "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png",
+          "sameAs": [
+            "https://t.me/axiondefi",
+            "https://x.com/axiondefi"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "AXION",
+          "url": "https://www.axiondefi.com/"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "AXION App",
+          "url": "https://app.axiondefi.com/",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "description": "AI-powered DeFi dashboard with presale access, live balances, tokenomics, and PancakeSwap access on BNB Smart Chain.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "AXION"
+          }
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
@@ -303,9 +352,20 @@
       .hero-grid,.presale-layout{grid-template-columns:1fr}
       .tokenomics-grid{grid-template-columns:1fr}
       .hero-market-bar{grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px}
+      .listing-ready-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
       .market-divider{display:none}
     }
     
+
+
+    .listing-ready-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:760px;margin-top:16px}
+    .listing-pill{position:relative;padding:14px 16px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.028));border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 34px rgba(0,0,0,.22)}
+    .listing-pill::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(78,216,255,.10), transparent 35%, transparent 68%, rgba(255,92,184,.08));pointer-events:none}
+    .listing-pill strong,.listing-pill span{position:relative;z-index:1;display:block}
+    .listing-pill strong{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#dff3ff;margin-bottom:6px}
+    .listing-pill span{font-size:13px;line-height:1.55;color:#c8d7f6}
+    .listing-pill.alpha{border-color:rgba(255,201,92,.22);box-shadow:0 14px 34px rgba(0,0,0,.22),0 0 20px rgba(255,201,92,.08)}
+    .listing-pill.alpha::before{background:linear-gradient(135deg, rgba(255,201,92,.16), rgba(255,140,31,.06), transparent 75%), radial-gradient(circle at 100% 0%, rgba(255,201,92,.10), transparent 26%)}
     .pancake-panel{
       background:
         linear-gradient(180deg, rgba(255,201,92,.14), rgba(255,140,0,.10)),
@@ -371,6 +431,7 @@
     }
     @media (max-width: 640px){
       .container{width:min(calc(100% - 20px), var(--max))}
+      .listing-ready-bar{grid-template-columns:1fr}
       .section{padding-top:72px}
       .hero{padding-top:60px}
       .card-inner{padding:18px}
@@ -567,7 +628,7 @@
 
               <div class="success-card" id="presaleSuccess">
                 <strong>Congratulations</strong>
-                <p>You joined the presale and received 100 AX. Please check the wallet you used for payment on the distribution date. Thank you.</p>
+                <p id="presaleSuccessMessage">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
               </div>
             </div>
             </article>
@@ -617,6 +678,24 @@
             <div class="market-item">
               <span class="market-label">Volume</span>
               <strong id="marketBarVolume">Loading...</strong>
+            </div>
+          </div>
+          <div class="listing-ready-bar reveal" aria-label="Listing readiness highlights">
+            <div class="listing-pill">
+              <strong>CMC / CoinGecko</strong>
+              <span>Structured metadata and official app domain ready for listing visibility.</span>
+            </div>
+            <div class="listing-pill alpha">
+              <strong>Binance Alpha Style</strong>
+              <span>Premium market-facing layout with live data, tokenomics, and trust-focused UX.</span>
+            </div>
+            <div class="listing-pill">
+              <strong>Official App Domain</strong>
+              <span>app.axiondefi.com strengthens project trust and improves shareability.</span>
+            </div>
+            <div class="listing-pill">
+              <strong>Public Trust Assets</strong>
+              <span>Whitepaper, social links, tokenomics, and PancakeSwap access are all visible.</span>
             </div>
           </div>
         </div>
@@ -961,6 +1040,18 @@
     let connectedWalletCount = 0;
     let latestDexSnapshot = { price: 0, change: 0, liquidity: 0, volume: 0 };
     let lastWhaleTransfers = [];
+
+    function formatAxAmount(value){
+      const numeric = Number(value || 0);
+      if (!Number.isFinite(numeric)) return '0';
+      return new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 }).format(numeric);
+    }
+
+    function updatePresaleSuccessMessage(axAmount){
+      const node = document.getElementById('presaleSuccessMessage');
+      if (!node) return;
+      node.textContent = `You joined the presale and received ${formatAxAmount(axAmount)} AX. Please check the wallet you used for payment on the distribution date. Thank you.`;
+    }
 
     const els = {
       walletBtn: document.getElementById('walletBtn'),
