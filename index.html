@@ -362,6 +362,10 @@
     .status-chip strong{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b7c7e9;margin-bottom:8px}
     .status-chip span{display:block;font-size:18px;font-weight:900;color:#fff}
     .status-chip small{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.5}
+    .status-chip.status-open{background:rgba(67,243,177,.14);border:1px solid rgba(67,243,177,.34);box-shadow:0 0 18px rgba(67,243,177,.10)}
+    .status-chip.status-open strong{color:#c9ffe6}
+    .status-chip.status-open span{color:#eafff3}
+    .status-chip.status-open small{color:#d8fff0}
     .loading{opacity:.7}
     .signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
     .signal-box{padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
@@ -431,7 +435,7 @@
         <a href="#walletLite">Wallet Lite</a>
         <a href="#liveData">Live Data</a>
         <a href="#pancakeSwap">PancakeSwap</a>
-        <a href="#security">Security</a>
+        
       </div>
 
       <div class="nav-actions">
@@ -480,7 +484,7 @@
                 <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 15l3-3 3 2 4-5"/></svg></div>
                 <strong>Live On-Chain Data</strong>
               </div>
-              <p>Live price, 24h change, fee wallet balance, contract box, and quick access to BscScan and whitepaper.</p>
+              <p>Live price, 24h change, liquidity, and volume are synced from the active DexScreener pair, with quick access to BscScan and whitepaper.</p>
             </div>
           </div>
 
@@ -602,17 +606,19 @@
                 </div>
 
                 <div class="presale-progress">
-                  <div class="progress-top">
-                    <strong>Allocation Progress</strong>
-                    <span id="allocationProgressText">0 AX sold · 0%</span>
+                  <div style="display:none;">
+                    <div class="progress-top">
+                      <strong>Allocation Progress</strong>
+                      <span id="allocationProgressText">0 AX sold · 0%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
                   </div>
-                  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                  <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
                   <div class="status-grid">
                     <div class="status-chip"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
                     <div class="status-chip"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
                     <div class="status-chip"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>BNB currently held by official receiver</small></div>
-                    <div class="status-chip"><strong>Status</strong><span id="presaleStatus">Live</span><small>Presale dashboard state for current session</small></div>
+                    <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatus">OPEN</span><small>Presale dashboard state for current session</small></div>
                   </div>
                 </div>
 
@@ -654,12 +660,12 @@
                 </div>
 
                 <div class="contract-box">
-                  <span id="contractAddress">0x0B9378b8618CF6617818C307a9facDEFa978967d</span>
+                  <span id="contractAddress">0x9e266c2C148df3456e170B759d77c91AbC67eEAB</span>
                   <button class="icon-copy-btn" id="copyContractBtn" type="button">⧉</button>
                 </div>
 
                 <div class="inline-actions">
-                  <a class="btn btn-secondary" href="https://bscscan.com/address/0x0B9378b8618CF6617818C307a9facDEFa978967d" target="_blank" rel="noopener noreferrer">Open BscScan</a>
+                  <a class="btn btn-secondary" href="https://bscscan.com/address/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open BscScan</a>
                   <a class="btn btn-secondary" href="https://github.com/axionteam645/axion-dashboard/blob/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">Open Whitepaper</a>
                 </div>
               </div>
@@ -703,38 +709,20 @@
 
                 <div class="presale-box">
                   <div class="presale-row"><strong>Token</strong><span>AXION (AX)</span></div>
-                  <div class="presale-row"><strong>Contract</strong><span style="word-break:break-all;text-align:right;">0x0B9378b8618CF6617818C307a9facDEFa978967d</span></div>
+                  <div class="presale-row"><strong>Contract</strong><span style="word-break:break-all;text-align:right;">0x9e266c2C148df3456e170B759d77c91AbC67eEAB</span></div>
                   <div class="presale-row"><strong>DEX</strong><span>PancakeSwap</span></div>
                 </div>
 
                 <div class="pancake-actions">
-                  <a class="btn btn-buy" href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0x0B9378b8618CF6617818C307a9facDEFa978967d" target="_blank" rel="noopener noreferrer">Open Swap</a>
-                  <a class="btn btn-secondary" href="https://pancakeswap.finance/add/BNB/0x0B9378b8618CF6617818C307a9facDEFa978967d?chain=bsc" target="_blank" rel="noopener noreferrer">Open Liquidity</a>
-                </div>
+                  <a class="btn btn-buy" href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open Swap</a>
+</div>
 
                 <div class="pancake-note">
                   This panel keeps the AXION dashboard design while giving users a direct path to PancakeSwap. For the most reliable wallet connection, the swap opens on PancakeSwap in a new tab.
                 </div>
               </div>
             </article>
-
-
-            <article class="card reveal" id="transferStream">
-              <div class="card-inner">
-                <div class="tag">On-Chain Flow</div>
-                <div class="title-row">
-                  <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/><path d="M11 18 5 12l6-6"/></svg></div>
-                  <h3>Live Transfer Stream</h3>
-                </div>
-                <p>Recent AXION transfers are read directly from BNB Smart Chain logs so the dashboard feels alive and on-chain.</p>
-                <div class="tx-stream" id="txStream">
-                  <div class="tx-item"><div class="tx-meta"><strong>Waiting for transfer data...</strong><span>Recent BSC transfer events will appear here.</span></div><div class="tx-amount">—</div></div>
-                </div>
-                <div class="micro-note">Transfers refresh automatically. Large transfers are promoted into the whale monitor below.</div>
-              </div>
-            </article>
-
-            <article class="card reveal" id="aiSignals">
+<article class="card reveal" id="aiSignals">
               <div class="card-inner">
                 <div class="tag">AI Monitor</div>
                 <div class="title-row">
@@ -762,40 +750,7 @@
                 </div>
               </div>
             </article>
-
-            <article class="card reveal" id="security">
-              <div class="card-inner">
-                <div class="tag">Trust & Security</div>
-                <div class="title-row">
-                  <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-                  <h3>AXION Trust Layer</h3>
-                </div>
-                <p>The app should feel safe, transparent, and intentional. These are the visible trust blocks that reinforce the presale and dashboard flow.</p>
-
-                <div class="trust-badges">
-                  <div class="trust-badge-card"><strong>Verified Contract</strong><p>Direct BscScan access is built into the dashboard for contract inspection.</p></div>
-                  <div class="trust-badge-card"><strong>No Mint</strong><p>Trust-focused presentation keeps fixed-supply messaging visible inside the app.</p></div>
-                  <div class="trust-badge-card"><strong>No Owner</strong><p>Ownerless trust posture can be communicated directly on the live dashboard surface.</p></div>
-                  <div class="trust-badge-card"><strong>Live on BSC</strong><p>Wallet, fee flow, transfers, and presale metrics are read from BNB Smart Chain.</p></div>
-                </div>
-
-                <div class="summary-list">
-                  <div class="summary-item">
-                    <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></div>
-                    <div><strong>No Hidden Mint</strong><p>Fixed-supply positioning with transparent contract messaging built into the app presentation.</p></div>
-                  </div>
-                  <div class="summary-item">
-                    <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M12 4v16"/></svg></div>
-                    <div><strong>Transparent Fee Logic</strong><p>Fee wallet visibility remains on-screen so users can audit the ecosystem flow faster.</p></div>
-                  </div>
-                  <div class="summary-item">
-                    <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M6 18 18 6"/><path d="M7 7h5v5"/></svg></div>
-                    <div><strong>Official Links Only</strong><p>Telegram, X, BscScan, and whitepaper are placed directly inside the live app surface.</p></div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
+</div>
         </div>
       </div>
     </div>
@@ -868,7 +823,7 @@
 
   <script>
     const CONFIG = {
-      AX_TOKEN: '0x0B9378b8618CF6617818C307a9facDEFa978967d',
+      AX_TOKEN: '0x9e266c2C148df3456e170B759d77c91AbC67eEAB',
       FEE_WALLET: '0xd543A36c00C478D211f9eB99b45B839474cea384',
       PRESALE_RECEIVER: '0x570ecca843baa357502c1e24c508576cff49f47c',
       BSC_CHAIN_ID: '0x38',
@@ -876,7 +831,7 @@
       RATE_AX_PER_BNB: 10000,
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
-      DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/tokens/0x0B9378b8618CF6617818C307a9facDEFa978967d'
+      DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de'
     };
 
     const ERC20_ABI = [
@@ -1070,13 +1025,13 @@
         els.soldAmount.textContent = `${formatNumber(sold, 2)} AX`;
         els.remainingAmount.textContent = `${formatNumber(remaining, 2)} AX`;
         els.raisedBnb.textContent = `${formatNumber(raisedBnb, 4)} BNB`;
-        els.presaleStatus.textContent = progress >= 100 ? 'Closed' : 'Live';
+        els.presaleStatus.textContent = 'OPEN';
       } catch (err) {
         els.allocationProgressText.textContent = 'Live sold amount unavailable';
         els.soldAmount.textContent = 'Unavailable';
         els.remainingAmount.textContent = 'Unavailable';
         els.raisedBnb.textContent = 'Unavailable';
-        els.presaleStatus.textContent = 'Syncing';
+        els.presaleStatus.textContent = 'OPEN';
       }
     }
 
@@ -1084,8 +1039,9 @@
       try {
         const res = await fetch(CONFIG.DEXSCREENER_PAIR_URL);
         const data = await res.json();
-        const pairs = Array.isArray(data?.pairs) ? data.pairs : [];
-        const pair = pairs.find(p => String(p.chainId).toLowerCase() === 'bsc') || pairs[0];
+        const pair =
+          data?.pair ||
+          (Array.isArray(data?.pairs) ? data.pairs.find(p => String(p.chainId).toLowerCase() === 'bsc') || data.pairs[0] : null);
         if (!pair) throw new Error('No pair found');
         const price = Number(pair.priceUsd || 0);
         const change = Number(pair.priceChange?.h24 || 0);
