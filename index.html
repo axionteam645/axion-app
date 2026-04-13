@@ -541,11 +541,61 @@
     .receiver-info-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:stretch;margin-top:12px}
     .receiver-info-box{display:flex;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(78,216,255,.08);border:1px solid rgba(78,216,255,.18);color:#dff3ff;font-size:13px;font-weight:700;line-height:1.6;min-height:54px}
     .inline-actions.inline-actions-wide{display:block;margin-top:0}
-    .buy-panel-btn{width:100%;min-height:68px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:18px;font-size:18px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff6ea;background:linear-gradient(180deg, rgba(110,60,22,.96), rgba(73,38,14,.96));border:1px solid rgba(255,201,92,.22);box-shadow:0 0 0 1px rgba(255,201,92,.06),0 0 24px rgba(255,201,92,.10),0 18px 44px rgba(0,0,0,.32);position:relative;overflow:hidden}
-    .buy-panel-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg, rgba(255,201,92,.12), transparent 30%, transparent 70%, rgba(95,140,255,.06)),radial-gradient(circle at 100% 100%, rgba(255,201,92,.08), transparent 24%);pointer-events:none}
-    .buy-panel-btn::after{content:"";position:absolute;inset:auto -16% -52% auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.20), rgba(255,140,31,.10), transparent 70%);filter:blur(10px);animation:statusOrb 4.6s ease-in-out infinite;pointer-events:none}
+    .buy-panel-btn{
+      width:100%;
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      border-radius:18px;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#eef7ff;
+      background:
+        linear-gradient(180deg, rgba(78,216,255,.28), rgba(36,98,255,.20)),
+        linear-gradient(90deg, #183e9f 0%, #1f56d8 35%, #3178ff 68%, #4ed8ff 100%);
+      border:1px solid rgba(120,195,255,.34);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.08),
+        0 0 22px rgba(78,216,255,.14),
+        0 16px 40px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    .buy-panel-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(140deg, rgba(255,255,255,.10), transparent 28%, transparent 68%, rgba(78,216,255,.14)),
+        radial-gradient(circle at 100% 100%, rgba(78,216,255,.12), transparent 26%);
+      pointer-events:none;
+    }
+    .buy-panel-btn::after{
+      content:"";
+      position:absolute;
+      inset:auto -16% -52% auto;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(78,216,255,.22), rgba(95,140,255,.12), transparent 70%);
+      filter:blur(10px);
+      animation:statusOrb 4.6s ease-in-out infinite;
+      pointer-events:none;
+    }
     .buy-panel-btn span{position:relative;z-index:1}
-    .buy-panel-btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,201,92,.08),0 0 28px rgba(255,201,92,.14),0 22px 50px rgba(0,0,0,.36)}
+    .buy-panel-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.10),
+        0 0 28px rgba(78,216,255,.20),
+        0 22px 50px rgba(0,0,0,.36);
+    }
+
     @media (max-width: 640px){.receiver-info-row{grid-template-columns:1fr}}
 
   
@@ -607,7 +657,89 @@
       }
     }
 
-  </style>
+  
+    
+    .presale-note-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,201,92,.22), rgba(255,140,31,.16));
+      border:1px solid rgba(255,201,92,.28);
+      box-shadow:0 0 14px rgba(255,201,92,.08), inset 0 1px 0 rgba(255,255,255,.10);
+      color:#fff4d6;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      min-height:28px;
+      line-height:1;
+    }
+    .presale-note-badges{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .buy-panel-btn{
+      width:100%;
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      border-radius:18px;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#eef7ff;
+      background:
+        linear-gradient(180deg, rgba(78,216,255,.28), rgba(36,98,255,.20)),
+        linear-gradient(90deg, #183e9f 0%, #1f56d8 35%, #3178ff 68%, #4ed8ff 100%);
+      border:1px solid rgba(120,195,255,.34);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.08),
+        0 0 22px rgba(78,216,255,.14),
+        0 16px 40px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    .buy-panel-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(140deg, rgba(255,255,255,.10), transparent 28%, transparent 68%, rgba(78,216,255,.14)),
+        radial-gradient(circle at 100% 100%, rgba(78,216,255,.12), transparent 26%);
+      pointer-events:none;
+    }
+    .buy-panel-btn::after{
+      content:"";
+      position:absolute;
+      inset:auto -16% -52% auto;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(78,216,255,.22), rgba(95,140,255,.12), transparent 70%);
+      filter:blur(10px);
+      animation:statusOrb 4.6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .buy-panel-btn span{position:relative;z-index:1}
+    .buy-panel-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.10),
+        0 0 28px rgba(78,216,255,.20),
+        0 22px 50px rgba(0,0,0,.36);
+    }
+</style>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute">
@@ -825,6 +957,7 @@
                   <h3>AXION Presale</h3>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">A highly advantageous price before upcoming exchange listings. This round gives participants another strong entry window ahead of the next market phase.</p>
+                <div class="presale-note-badges"><div class="presale-note-badge">CEX Ready</div><div class="presale-note-badge">Smart Entry</div></div>
 
                 <div class="presale-box">
                   <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
