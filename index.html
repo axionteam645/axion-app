@@ -510,6 +510,27 @@
     .ai-monitor-compact .signal-box{height:100%;display:flex;flex-direction:column;justify-content:center}
     @media (max-width: 640px){.ai-monitor-compact .signal-grid{grid-template-columns:1fr;}}
 
+  
+    .hero-grid-custom{grid-template-columns:1fr;}
+    .hero-layout-stack,.full-width-stack{display:grid;gap:18px;}
+    .top-control-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}
+    .action-panel-card{min-height:100%;}
+    .quick-action-buttons{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .featured-sales-head{display:grid;justify-items:center;text-align:center;gap:10px;padding:8px 0 2px}
+    .featured-sales-head h2{margin:0;font-size:clamp(28px,4vw,52px);line-height:1}
+    .full-width-stack .card{width:100%;}
+    #hero #liveData .card-inner,#hero #pancakeSwap .card-inner{padding:24px;}
+    #hero #walletLite{margin:0;}
+    .dashboard-grid > .hero-feature-cards,.dashboard-grid > .hero-market-bar,.dashboard-grid > .listing-ready-bar{max-width:none}
+    .dashboard-grid > .hero-feature-cards{margin-top:0}
+    .dashboard-grid > .hero-market-bar,.dashboard-grid > .listing-ready-bar{width:100%}
+    @media (max-width: 1180px){.top-control-grid{grid-template-columns:1fr;}}
+    @media (max-width: 640px){
+      .quick-action-buttons{justify-content:stretch}
+      .quick-action-buttons .btn{width:100%}
+      .featured-sales-head h2{font-size:32px}
+    }
+
   </style>
 </head>
 <body>
@@ -565,205 +586,13 @@
     </nav>
   </div>
 
+  
   <section class="hero" id="hero">
     <div class="container">
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          
-          
-          <div class="card-stack-top-logo reveal">
-            <div class="page-card-logo">
-              <img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/AXION%20.png" alt="AXION Logo">
-            </div>
-            <div class="slogan-grid">
-              <div class="slogan-card"><strong>No Mint</strong><p>No hidden supply</p></div>
-              <div class="slogan-card"><strong>No Rug</strong><p>Secure structure</p></div>
-              <div class="slogan-card"><strong>AI Powered</strong><p>Smart analytics layer</p></div>
-              <div class="slogan-card"><strong>Fully Transparent</strong><p>On-chain visibility</p></div>
-            </div>
-            <div class="presale-round-grid">
-            <article class="card" id="presale">
-              <div class="card-inner">
-              <div class="tag">Round 1</div>
-              <div class="title-row">
-                <div class="icon-badge" style="padding:0; overflow:hidden;">
-                  <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
-                </div>
-                <h3>AXION Presale Round 1</h3>
-              </div>
-              <p style="margin-top:6px;max-width:760px;">Secure early allocation access for AXION on BNB Smart Chain. This app keeps the same AXION design language while making the presale and wallet flow the main focus.</p>
-
-              <div class="presale-box">
-                <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
-                <div class="presale-row"><strong>Total Allocation</strong><span>7,500,000 AX</span></div>
-                <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
-                <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
-                <div class="presale-row"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
-              </div>
-
-              <div class="presale-progress">
-                <div style="display:none;">
-                  <div class="progress-top">
-                    <strong>Allocation Progress</strong>
-                    <span id="allocationProgressText">0 AX sold · 0%</span>
-                  </div>
-                  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                  <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
-                </div>
-                <div class="status-grid">
-                  <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
-                  <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
-                  <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>BNB currently held by official receiver</small></div>
-                  <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatus">OPEN</span><small>Presale dashboard state for current session</small></div>
-                </div>
-              </div>
-
-              <div class="buy-inputs">
-                <div class="buy-field">
-                  <label for="bnbAmount">Enter BNB Amount</label>
-                  <input id="bnbAmount" type="number" min="0" step="0.01" placeholder="Example: 1" />
-                </div>
-                <div class="buy-preview">You Receive: <strong id="axReceivePreview">0 AX</strong></div>
-                <div class="inline-actions">
-                  <button class="btn btn-buy" id="buyNowBtn" type="button">Buy AX</button>
-                  <button class="btn btn-secondary" id="copyReceiverBtn" type="button">Copy Receiver</button>
-                </div>
-                <div class="buy-status" id="buyStatus">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</div>
-              </div>
-
-              <div class="success-card" id="presaleSuccess">
-                <strong>Congratulations</strong>
-                <p id="presaleSuccessMessage">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
-              </div>
-            </div>
-            </article>
-
-            <article class="card" id="presaleRound2">
-              <div class="card-inner">
-              <div class="tag">Round 2</div>
-              <div class="title-row">
-                <div class="icon-badge" style="padding:0; overflow:hidden;">
-                  <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
-                </div>
-                <h3>AXION Presale Round 2</h3>
-              </div>
-              <p style="margin-top:6px;max-width:760px;">Secure early allocation access for AXION on BNB Smart Chain. This second presale round keeps the same AXION design language with its own rate, reserve address, and distribution date.</p>
-
-              <div class="presale-box">
-                <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
-                <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
-                <div class="presale-row"><strong>End Date</strong><span>OPEN</span></div>
-                <div class="presale-row"><strong>Distribution</strong><span>22 May 2026</span></div>
-                <div class="presale-row"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
-              </div>
-
-              <div class="presale-progress">
-                <div style="display:none;">
-                  <div class="progress-top">
-                    <strong>Allocation Progress</strong>
-                    <span id="allocationProgressTextRound2">0 AX sold · 0%</span>
-                  </div>
-                  <div class="progress-bar"><div class="progress-fill" id="progressFillRound2"></div></div>
-                  <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
-                </div>
-                <div class="status-grid">
-                  <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmountRound2">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
-                  <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmountRound2">Loading...</span><small>Current allocation still available</small></div>
-                  <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnbRound2">Loading...</span><small>BNB currently held by official receiver</small></div>
-                  <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatusRound2">OPEN</span><small>Presale dashboard state for current session</small></div>
-                </div>
-              </div>
-
-              <div class="buy-inputs">
-                <div class="buy-field">
-                  <label for="bnbAmountRound2">Enter BNB Amount</label>
-                  <input id="bnbAmountRound2" type="number" min="0" step="0.01" placeholder="Example: 1" />
-                </div>
-                <div class="buy-preview">You Receive: <strong id="axReceivePreviewRound2">0 AX</strong></div>
-                <div class="inline-actions">
-                  <button class="btn btn-buy" id="buyNowBtnRound2" type="button">Buy AX</button>
-                  <button class="btn btn-secondary" id="copyReceiverBtnRound2" type="button">Copy Receiver</button>
-                </div>
-                <div class="buy-status" id="buyStatusRound2">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</div>
-              </div>
-
-              <div class="success-card" id="presaleSuccessRound2">
-                <strong>Congratulations</strong>
-                <p id="presaleSuccessMessageRound2">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
-              </div>
-            </div>
-            </article>
-            </div>
-          </div>
-
-
-          <div class="hero-feature-cards">
-            <div class="hero-feature-card">
-              <div class="hero-feature-card-head">
-                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 10l6-6 6 6"/><path d="M6 14l6 6 6-6"/></svg></div>
-                <strong>Live Presale</strong>
-              </div>
-              <p>Early allocation flow with conversion preview, receiver address, and progress tracking kept inside the AXION app style.</p>
-            </div>
-            <div class="hero-feature-card">
-              <div class="hero-feature-card-head">
-                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/></svg></div>
-                <strong>Wallet Lite</strong>
-              </div>
-              <p>Connected wallet view for AX, BNB, and USDT with quick access to your receive address and session status.</p>
-            </div>
-            <div class="hero-feature-card">
-              <div class="hero-feature-card-head">
-                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 15l3-3 3 2 4-5"/></svg></div>
-                <strong>Live On-Chain Data</strong>
-              </div>
-              <p>Live price, 24h change, liquidity, and volume are synced from the active DexScreener pair, with quick access to BscScan and whitepaper.</p>
-            </div>
-          </div>
-
-          <div class="hero-market-bar reveal">
-            <div class="market-item">
-              <span class="market-label">AX Price</span>
-              <strong id="marketBarPrice">Loading...</strong>
-            </div>
-            <div class="market-divider"></div>
-            <div class="market-item">
-              <span class="market-label">24H Change</span>
-              <strong id="marketBarChange" class="price-change neutral">Syncing...</strong>
-            </div>
-            <div class="market-divider"></div>
-            <div class="market-item">
-              <span class="market-label">Liquidity</span>
-              <strong id="marketBarLiquidity">Loading...</strong>
-            </div>
-            <div class="market-divider"></div>
-            <div class="market-item">
-              <span class="market-label">Volume</span>
-              <strong id="marketBarVolume">Loading...</strong>
-            </div>
-          </div>
-          <div class="listing-ready-bar reveal" aria-label="Listing readiness highlights">
-            <div class="listing-pill">
-              <strong>CMC / CoinGecko</strong>
-              <span>Structured metadata and official app domain ready for listing visibility.</span>
-            </div>
-            <div class="listing-pill alpha">
-              <strong>Binance Alpha Style</strong>
-              <span>Premium market-facing layout with live data, tokenomics, and trust-focused UX.</span>
-            </div>
-            <div class="listing-pill">
-              <strong>Official App Domain</strong>
-              <span>app.axiondefi.com strengthens project trust and improves shareability.</span>
-            </div>
-            <div class="listing-pill">
-              <strong>Public Trust Assets</strong>
-              <span>Whitepaper, social links, tokenomics, and PancakeSwap access are all visible.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="app-side-stack reveal">
-            <article class="card wallet-lite-gold" id="walletLite">
+      <div class="hero-grid hero-grid-custom">
+        <div class="hero-layout-stack reveal">
+          <div class="top-control-grid">
+            <article class="card wallet-lite-gold reveal" id="walletLite">
               <div class="card-inner">
               <div class="tag">Wallet Lite</div>
               <div class="title-row">
@@ -803,34 +632,207 @@
                 </div>
               </div>
 
-              <div class="feature-list">
-                <div class="feature">
-                  <strong>AX Send</strong>
-                  <p>Send AX directly from the connected wallet. The transaction opens in your wallet for approval before broadcasting.</p>
-                  <div class="buy-inputs" style="margin-top:14px;">
-                    <div class="buy-field">
-                      <label for="axSendTo">Recipient Wallet</label>
-                      <input id="axSendTo" type="text" placeholder="0x..." />
-                    </div>
-                    <div class="buy-field">
-                      <label for="axSendAmount">AX Amount</label>
-                      <input id="axSendAmount" type="number" min="0" step="any" placeholder="Enter AX amount" />
-                    </div>
-                  </div>
-                  <div class="inline-actions">
-                    <button class="btn btn-buy" id="sendAxBtn" type="button">Send AX</button>
-                  </div>
-                  <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AX transfer in your wallet.</div>
-                </div>
-              </div>
-
               <div class="social-links">
                 <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@axiondefi</span></a>
                 <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer"><span>X</span><span>@axiondefi</span></a>
               </div>
             </div>
             </article>
+            
+<article class="card reveal action-panel-card" id="quickActionsPanel">
+  <div class="card-inner">
+    <div class="tag">Quick Actions</div>
+    <div class="title-row">
+      <div class="icon-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 10l6-6 6 6"/><path d="M6 14l6 6 6-6"/></svg>
+      </div>
+      <h3>AX Send & Connect</h3>
+    </div>
+    <p>Keep wallet actions in one place. Connect your wallet, send AX, and approve transactions directly in your wallet.</p>
 
+    <div class="quick-action-buttons">
+      <button class="btn btn-secondary" type="button" onclick="document.getElementById('axSendTo').focus()">AX Send</button>
+      <button class="btn" type="button" onclick="document.getElementById('walletBtn').click()">Connect</button>
+    </div>
+
+    <div class="feature-list">
+      <div class="feature">
+        <strong>AX Send</strong>
+        <p>Send AX directly from the connected wallet. The transaction opens in your wallet for approval before broadcasting.</p>
+        <div class="buy-inputs" style="margin-top:14px;">
+          <div class="buy-field">
+            <label for="axSendTo">Recipient Wallet</label>
+            <input id="axSendTo" type="text" placeholder="0x..." />
+          </div>
+          <div class="buy-field">
+            <label for="axSendAmount">AX Amount</label>
+            <input id="axSendAmount" type="number" min="0" step="any" placeholder="Enter AX amount" />
+          </div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn-buy" id="sendAxBtn" type="button">Send AX</button>
+        </div>
+        <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AX transfer in your wallet.</div>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@axiondefi</span></a>
+      <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer"><span>X</span><span>@axiondefi</span></a>
+    </div>
+  </div>
+</article>
+
+          </div>
+
+          <div class="featured-sales-head reveal">
+            <div class="eyebrow">Featured Sales</div>
+            <h2 class="gradient-title">Round Access</h2>
+          </div>
+
+          <div class="presale-round-grid">
+            <article class="card" id="presale">
+              <div class="card-inner">
+                <div class="tag">Round 1</div>
+                <div class="title-row">
+                  <div class="icon-badge" style="padding:0; overflow:hidden;">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
+                  </div>
+                  <h3>AXION Presale Round 1</h3>
+                </div>
+                <p style="margin-top:6px;max-width:760px;">Secure early allocation access for AXION on BNB Smart Chain. This app keeps the same AXION design language while making the presale and wallet flow the main focus.</p>
+
+                <div class="presale-box">
+                  <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
+                  <div class="presale-row"><strong>Total Allocation</strong><span>7,500,000 AX</span></div>
+                  <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
+                  <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
+                  <div class="presale-row"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+                </div>
+
+                <div class="presale-progress">
+                  <div style="display:none;">
+                    <div class="progress-top">
+                      <strong>Allocation Progress</strong>
+                      <span id="allocationProgressText">0 AX sold · 0%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
+                  </div>
+                  <div class="status-grid">
+                    <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>BNB currently held by official receiver</small></div>
+                    <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatus">OPEN</span><small>Presale dashboard state for current session</small></div>
+                  </div>
+                </div>
+
+                <div class="buy-inputs">
+                  <div class="buy-field">
+                    <label for="bnbAmount">Enter BNB Amount</label>
+                    <input id="bnbAmount" type="number" min="0" step="0.01" placeholder="Example: 1" />
+                  </div>
+                  <div class="buy-preview">You Receive: <strong id="axReceivePreview">0 AX</strong></div>
+                  <div class="inline-actions">
+                    <button class="btn btn-buy" id="buyNowBtn" type="button">Buy AX</button>
+                    <button class="btn btn-secondary" id="copyReceiverBtn" type="button">Copy Receiver</button>
+                  </div>
+                  <div class="buy-status" id="buyStatus">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</div>
+                </div>
+
+                <div class="success-card" id="presaleSuccess">
+                  <strong>Congratulations</strong>
+                  <p id="presaleSuccessMessage">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="card" id="presaleRound2">
+              <div class="card-inner">
+                <div class="tag">Round 2</div>
+                <div class="title-row">
+                  <div class="icon-badge" style="padding:0; overflow:hidden;">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
+                  </div>
+                  <h3>AXION Presale Round 2</h3>
+                </div>
+                <p style="margin-top:6px;max-width:760px;">Secure early allocation access for AXION on BNB Smart Chain. This second presale round keeps the same AXION design language with its own rate, reserve address, and distribution date.</p>
+
+                <div class="presale-box">
+                  <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
+                  <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
+                  <div class="presale-row"><strong>End Date</strong><span>OPEN</span></div>
+                  <div class="presale-row"><strong>Distribution</strong><span>22 May 2026</span></div>
+                  <div class="presale-row"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
+                </div>
+
+                <div class="presale-progress">
+                  <div style="display:none;">
+                    <div class="progress-top">
+                      <strong>Allocation Progress</strong>
+                      <span id="allocationProgressTextRound2">0 AX sold · 0%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="progressFillRound2"></div></div>
+                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
+                  </div>
+                  <div class="status-grid">
+                    <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmountRound2">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmountRound2">Loading...</span><small>Current allocation still available</small></div>
+                    <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnbRound2">Loading...</span><small>BNB currently held by official receiver</small></div>
+                    <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatusRound2">OPEN</span><small>Presale dashboard state for current session</small></div>
+                  </div>
+                </div>
+
+                <div class="buy-inputs">
+                  <div class="buy-field">
+                    <label for="bnbAmountRound2">Enter BNB Amount</label>
+                    <input id="bnbAmountRound2" type="number" min="0" step="0.01" placeholder="Example: 1" />
+                  </div>
+                  <div class="buy-preview">You Receive: <strong id="axReceivePreviewRound2">0 AX</strong></div>
+                  <div class="inline-actions">
+                    <button class="btn btn-buy" id="buyNowBtnRound2" type="button">Buy AX</button>
+                    <button class="btn btn-secondary" id="copyReceiverBtnRound2" type="button">Copy Receiver</button>
+                  </div>
+                  <div class="buy-status" id="buyStatusRound2">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</div>
+                </div>
+
+                <div class="success-card" id="presaleSuccessRound2">
+                  <strong>Congratulations</strong>
+                  <p id="presaleSuccessMessageRound2">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="full-width-stack reveal">
+            <article class="card reveal" id="liveData">
+              <div class="card-inner">
+                <div class="tag">Live Data</div>
+                <div class="title-row">
+                  <div class="icon-badge">
+                    <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 15l3-3 3 2 4-5"/></svg>
+                  </div>
+                  <h3>Market & Ecosystem Feed</h3>
+                </div>
+                <p>Core stats for AXION: live price, 24H change, and quick actions for the dashboard.</p>
+
+                <div class="subcards">
+                  <div class="mini-card"><strong>Live AX Price</strong><p id="axPrice">Loading live pair data...</p></div>
+                  <div class="mini-card"><strong>24H Change</strong><p id="axPriceChange">Syncing...</p></div>
+                  <div class="mini-card" style="display:none;"><strong>Fee Wallet Tracker</strong><p id="feeWalletBalance">Loading fee wallet balance...</p></div>
+                </div>
+
+                <div class="contract-box" style="display:none;">
+                  <span id="contractAddress">0x9e266c2C148df3456e170B759d77c91AbC67eEAB</span>
+                  <button class="icon-copy-btn" id="copyContractBtn" type="button">⧉</button>
+                </div>
+
+                <div class="inline-actions">
+                  <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open BscScan</a>
+                  <a class="btn btn-secondary" href="https://github.com/axionteam645/axion-dashboard/blob/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">Open Whitepaper</a>
+                </div>
+              </div>
+            </article>
             <article class="card reveal pancake-panel" id="pancakeSwap">
               <div class="card-inner">
                 <div class="tag">Swap Access</div>
@@ -866,10 +868,9 @@
                 </div>
               </div>
             </article>
-        </div>
-      </div>
+          </div>
 
-      <div class="ai-tokenomics-grid reveal">
+          <div class="ai-tokenomics-grid reveal">
         <div class="ai-tokenomics-card">
           <strong>Presale Allocation</strong>
           <span>7,500,000 AX</span>
@@ -891,54 +892,74 @@
           <small>Built for fast and scalable DeFi access.</small>
         </div>
       </div>
+        </div>
+      </div>
     </div>
   </section>
+
+
 
   <section class="section" id="dashboard">
     <div class="container">
       <div class="section-head reveal">
         <div>
           <div class="eyebrow">Dashboard</div>
-          <h2 class="gradient-title">App Core</h2>
+          <h2 class="gradient-title">Additional Overview</h2>
         </div>
       </div>
 
       <div class="dashboard-grid">
-        <div class="presale-layout">
-          <div class="presale-main-stack">
-
-            <article class="card reveal" id="liveData">
-              <div class="card-inner">
-                <div class="tag">Live Data</div>
-                <div class="title-row">
-                  <div class="icon-badge">
-                    <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 15l3-3 3 2 4-5"/></svg>
-                  </div>
-                  <h3>Market & Ecosystem Feed</h3>
-                </div>
-                <p>Core stats for AXION: live price, 24H change, and quick actions for the dashboard.</p>
-
-                <div class="subcards">
-                  <div class="mini-card"><strong>Live AX Price</strong><p id="axPrice">Loading live pair data...</p></div>
-                  <div class="mini-card"><strong>24H Change</strong><p id="axPriceChange">Syncing...</p></div>
-                  <div class="mini-card" style="display:none;"><strong>Fee Wallet Tracker</strong><p id="feeWalletBalance">Loading fee wallet balance...</p></div>
-                </div>
-
-                <div class="contract-box" style="display:none;">
-                  <span id="contractAddress">0x9e266c2C148df3456e170B759d77c91AbC67eEAB</span>
-                  <button class="icon-copy-btn" id="copyContractBtn" type="button">⧉</button>
-                </div>
-
-                <div class="inline-actions">
-                  <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open BscScan</a>
-                  <a class="btn btn-secondary" href="https://github.com/axionteam645/axion-dashboard/blob/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">Open Whitepaper</a>
-                </div>
+        <div class="hero-feature-cards">
+            <div class="hero-feature-card">
+              <div class="hero-feature-card-head">
+                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 10l6-6 6 6"/><path d="M6 14l6 6 6-6"/></svg></div>
+                <strong>Live Presale</strong>
               </div>
-            </article>
+              <p>Early allocation flow with conversion preview, receiver address, and progress tracking kept inside the AXION app style.</p>
+            </div>
+            <div class="hero-feature-card">
+              <div class="hero-feature-card-head">
+                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/></svg></div>
+                <strong>Wallet Lite</strong>
+              </div>
+              <p>Connected wallet view for AX, BNB, and USDT with quick access to your receive address and session status.</p>
+            </div>
+            <div class="hero-feature-card">
+              <div class="hero-feature-card-head">
+                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 15l3-3 3 2 4-5"/></svg></div>
+                <strong>Live On-Chain Data</strong>
+              </div>
+              <p>Live price, 24h change, liquidity, and volume are synced from the active DexScreener pair, with quick access to BscScan and whitepaper.</p>
+            </div>
           </div>
-
-          <div class="app-side-stack">
-            <article class="card reveal ai-monitor-compact" id="aiSignals">
+        <div class="hero-market-bar reveal">
+            <div class="market-item">
+              <span class="market-label">AX Price</span>
+              <strong id="marketBarPrice">Loading...</strong>
+            </div>
+            <div class="market-divider"></div>
+            <div class="market-item">
+              <span class="market-label">24H Change</span>
+              <strong id="marketBarChange" class="price-change neutral">Syncing...</strong>
+            </div>
+            <div class="market-divider"></div>
+            <div class="market-item">
+              <span class="market-label">Liquidity</span>
+              <strong id="marketBarLiquidity">Loading...</strong>
+            </div>
+            <div class="market-divider"></div>
+            <div class="market-item">
+              <span class="market-label">Volume</span>
+              <strong id="marketBarVolume">Loading...</strong>
+            </div>
+          </div>
+        <div class="listing-ready-bar reveal" aria-label="Listing readiness highlights">
+            <div class="listing-pill">
+              <strong>CMC / CoinGecko</strong>
+              <span>Structured metadata and official app domain ready for listing visibility.</span>
+            </div>
+        <div class="app-side-stack">
+          <article class="card reveal ai-monitor-compact" id="aiSignals">
               <div class="card-inner">
                 <div class="tag">AI Monitor</div>
                 <div class="title-row">
@@ -959,34 +980,11 @@
                 </div>
               </div>
             </article>
-</div>
-        </div>
-      </div>
-
-      <div class="ai-tokenomics-grid reveal">
-        <div class="ai-tokenomics-card">
-          <strong>Presale Allocation</strong>
-          <span>7,500,000 AX</span>
-          <small>Reserved for the official AXION presale rounds.</small>
-        </div>
-        <div class="ai-tokenomics-card">
-          <strong>Circulating Supply</strong>
-          <span>200,000,000 AX</span>
-          <small>Current AX available in active market circulation.</small>
-        </div>
-        <div class="ai-tokenomics-card">
-          <strong>Total Supply</strong>
-          <span>1,000,000,000 AX</span>
-          <small>Fixed supply structure with no inflation layer.</small>
-        </div>
-        <div class="ai-tokenomics-card">
-          <strong>Network</strong>
-          <span>BNB Smart Chain</span>
-          <small>Built for fast and scalable DeFi access.</small>
         </div>
       </div>
     </div>
   </section>
+
 
   <section class="section" id="tokenomics">
     <div class="container">
