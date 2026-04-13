@@ -1440,22 +1440,89 @@
       }
     }
 
-    async function connectWallet(){
-      if (!window.ethereum) {
+
+    function isMobileDevice(){
+      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function isInIframe(){
+      try {
+        return window.self !== window.top;
+      } catch (err) {
+        return true;
+      }
+    }
+
+    function openMetaMaskMobile(){
+      const currentUrl = window.location.href;
+      const cleanUrl = currentUrl.replace(/^https?:\/\//, '');
+      window.location.href = `https://metamask.app.link/dapp/${cleanUrl}`;
+    }
+
+    function openStandalonePage(){
+      window.open(window.location.href, '_blank', 'noopener,noreferrer');
+    }
+
+    async function handleMissingProvider(){
+      if (isInIframe()) {
+        const openExternal = window.confirm('Wallet providers usually do not work inside embedded views. Open this page in a standalone tab?');
+        if (openExternal) openStandalonePage();
+        return false;
+      }
+
+      if (isMobileDevice()) {
+        const goMetaMask = window.confirm('No wallet provider detected. Open this page in MetaMask Mobile?');
+        if (goMetaMask) openMetaMaskMobile();
+      } else {
         alert('No wallet provider detected. Open this page in MetaMask, Trust Wallet, or another Web3 browser.');
-        return;
+      }
+
+      return false;
+    }
+
+    function getInjectedProvider(){
+      const eth = window.ethereum;
+      if (!eth) return null;
+      if (Array.isArray(eth.providers) && eth.providers.length) {
+        return eth.providers.find((p) => p.isMetaMask) || eth.providers[0];
+      }
+      return eth;
+    }
+
+
+
+    async function connectWallet(){
+      const injected = getInjectedProvider();
+      if (!injected) {
+        return handleMissingProvider();
       }
       try {
-        provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
-        await provider.send('eth_requestAccounts', []);
-        const network = await provider.getNetwork();
-        if (network.chainId !== 56) {
-          try {
-            await window.ethereum.request({ method:'wallet_switchEthereumChain', params:[{ chainId: CONFIG.BSC_CHAIN_ID }] });
-          } catch (switchErr) {
+        provider = new ethers.providers.Web3Provider(injected, 'any');
+        try {
+          await injected.request({ method:'wallet_switchEthereumChain', params:[{ chainId: CONFIG.BSC_CHAIN_ID }] });
+        } catch (switchErr) {
+          if (switchErr?.code === 4902) {
+            try {
+              await injected.request({
+                method:'wallet_addEthereumChain',
+                params:[{
+                  chainId: CONFIG.BSC_CHAIN_ID,
+                  chainName: 'BNB Smart Chain',
+                  nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+                  rpcUrls: ['https://bsc-dataseed.binance.org/'],
+                  blockExplorerUrls: ['https://bscscan.com']
+                }]
+              });
+            } catch (addErr) {
+              console.warn('Chain add failed', addErr);
+              alert('Please switch your wallet to BNB Smart Chain.');
+              return false;
+            }
+          } else {
             console.warn('Chain switch failed', switchErr);
           }
         }
+        await provider.send('eth_requestAccounts', []);
         signer = provider.getSigner();
         userAddress = await signer.getAddress();
         connectedWalletCount += 1;
@@ -1465,10 +1532,16 @@
         setAllBuyStatuses('Wallet connected. You can now send BNB directly from the dashboard.', 'good');
         setSendStatus('Wallet connected. AX balances now reflect the connected wallet.', 'good');
         await refreshWalletBalances();
+        return true;
       } catch (err) {
         console.error('Wallet connect error', err);
+        if (err?.code === 4001) {
+          alert('Wallet connection request was cancelled.');
+        }
+        return false;
       }
     }
+
 
     function disconnectWallet(){
       provider = null;
@@ -1892,8 +1965,9 @@
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => els.navLinks.classList.remove('open'));
       });
-      if (window.ethereum) {
-        window.ethereum.on?.('accountsChanged', async (accounts) => {
+      const injected = getInjectedProvider();
+      if (injected) {
+        injected.on?.('accountsChanged', async (accounts) => {
           if (!accounts || !accounts.length) disconnectWallet();
           else {
             userAddress = accounts[0];
