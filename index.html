@@ -296,6 +296,8 @@
     @media (max-width: 640px){.welcome-top-logo img{max-width:240px}}
 
     .card-stack-top-logo{display:grid;gap:14px}
+    .presale-round-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    @media (max-width: 940px){.presale-round-grid{grid-template-columns:1fr;}}
     .page-card-logo{display:flex;justify-content:center;align-items:center;padding:0 8px}
     .page-card-logo img{max-width:min(100%,360px);width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
     @media (max-width: 640px){.page-card-logo img{max-width:260px}}
@@ -579,20 +581,21 @@
               <div class="slogan-card"><strong>AI Powered</strong><p>Smart analytics layer</p></div>
               <div class="slogan-card"><strong>Fully Transparent</strong><p>On-chain visibility</p></div>
             </div>
+            <div class="presale-round-grid">
             <article class="card" id="presale">
               <div class="card-inner">
-              <div class="tag">Highlighted Presale</div>
+              <div class="tag">Round 1</div>
               <div class="title-row">
                 <div class="icon-badge" style="padding:0; overflow:hidden;">
                   <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                 </div>
-                <h3>AXION Presale</h3>
+                <h3>AXION Presale Round 1</h3>
               </div>
               <p style="margin-top:6px;max-width:760px;">Secure early allocation access for AXION on BNB Smart Chain. This app keeps the same AXION design language while making the presale and wallet flow the main focus.</p>
 
               <div class="presale-box">
                 <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
-                <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
+                <div class="presale-row"><strong>Total Allocation</strong><span>7,500,000 AX</span></div>
                 <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                 <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
                 <div class="presale-row"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
@@ -634,6 +637,63 @@
               </div>
             </div>
             </article>
+
+            <article class="card" id="presaleRound2">
+              <div class="card-inner">
+              <div class="tag">Round 2</div>
+              <div class="title-row">
+                <div class="icon-badge" style="padding:0; overflow:hidden;">
+                  <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
+                </div>
+                <h3>AXION Presale Round 2</h3>
+              </div>
+              <p style="margin-top:6px;max-width:760px;">Secure early allocation access for AXION on BNB Smart Chain. This second presale round keeps the same AXION design language with its own rate, reserve address, and distribution date.</p>
+
+              <div class="presale-box">
+                <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
+                <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
+                <div class="presale-row"><strong>End Date</strong><span>OPEN</span></div>
+                <div class="presale-row"><strong>Distribution</strong><span>22 May 2026</span></div>
+                <div class="presale-row"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
+              </div>
+
+              <div class="presale-progress">
+                <div style="display:none;">
+                  <div class="progress-top">
+                    <strong>Allocation Progress</strong>
+                    <span id="allocationProgressTextRound2">0 AX sold · 0%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" id="progressFillRound2"></div></div>
+                  <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
+                </div>
+                <div class="status-grid">
+                  <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmountRound2">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
+                  <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmountRound2">Loading...</span><small>Current allocation still available</small></div>
+                  <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnbRound2">Loading...</span><small>BNB currently held by official receiver</small></div>
+                  <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatusRound2">OPEN</span><small>Presale dashboard state for current session</small></div>
+                </div>
+              </div>
+
+              <div class="buy-inputs">
+                <div class="buy-field">
+                  <label for="bnbAmountRound2">Enter BNB Amount</label>
+                  <input id="bnbAmountRound2" type="number" min="0" step="0.01" placeholder="Example: 1" />
+                </div>
+                <div class="buy-preview">You Receive: <strong id="axReceivePreviewRound2">0 AX</strong></div>
+                <div class="inline-actions">
+                  <button class="btn btn-buy" id="buyNowBtnRound2" type="button">Buy AX</button>
+                  <button class="btn btn-secondary" id="copyReceiverBtnRound2" type="button">Copy Receiver</button>
+                </div>
+                <div class="buy-status" id="buyStatusRound2">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</div>
+              </div>
+
+              <div class="success-card" id="presaleSuccessRound2">
+                <strong>Congratulations</strong>
+                <p id="presaleSuccessMessageRound2">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
+              </div>
+            </div>
+            </article>
+            </div>
           </div>
 
 
@@ -812,8 +872,8 @@
       <div class="ai-tokenomics-grid reveal">
         <div class="ai-tokenomics-card">
           <strong>Presale Allocation</strong>
-          <span>5,000,000 AX</span>
-          <small>Reserved for the official AXION presale round.</small>
+          <span>7,500,000 AX</span>
+          <small>Reserved for the official AXION presale rounds.</small>
         </div>
         <div class="ai-tokenomics-card">
           <strong>Circulating Supply</strong>
@@ -906,8 +966,8 @@
       <div class="ai-tokenomics-grid reveal">
         <div class="ai-tokenomics-card">
           <strong>Presale Allocation</strong>
-          <span>5,000,000 AX</span>
-          <small>Reserved for the official AXION presale round.</small>
+          <span>7,500,000 AX</span>
+          <small>Reserved for the official AXION presale rounds.</small>
         </div>
         <div class="ai-tokenomics-card">
           <strong>Circulating Supply</strong>
@@ -973,8 +1033,8 @@
       <div class="ai-tokenomics-grid reveal">
         <div class="ai-tokenomics-card">
           <strong>Presale Allocation</strong>
-          <span>5,000,000 AX</span>
-          <small>Reserved for the official AXION presale round.</small>
+          <span>7,500,000 AX</span>
+          <small>Reserved for the official AXION presale rounds.</small>
         </div>
         <div class="ai-tokenomics-card">
           <strong>Circulating Supply</strong>
@@ -1021,9 +1081,14 @@
       AX_TOKEN: '0x9e266c2C148df3456e170B759d77c91AbC67eEAB',
       FEE_WALLET: '0xd543A36c00C478D211f9eB99b45B839474cea384',
       PRESALE_RECEIVER: '0x570ecca843baa357502c1e24c508576cff49f47c',
+      PRESALE_RECEIVER_ROUND_2: '0x4c2ac3eb05585b1b22c7227728d454f0193c8c11',
       BSC_CHAIN_ID: '0x38',
       TOTAL_ALLOCATION_AX: 5000000,
+      TOTAL_ALLOCATION_AX_ROUND_2: 2500000,
       RATE_AX_PER_BNB: 10000,
+      RATE_AX_PER_BNB_ROUND_2: 7500,
+      ROUND_1_DISTRIBUTION: '09.10.2026',
+      ROUND_2_DISTRIBUTION: '22 May 2026',
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
       DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de'
@@ -1049,10 +1114,11 @@
       return new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 }).format(numeric);
     }
 
-    function updatePresaleSuccessMessage(axAmount){
-      const node = document.getElementById('presaleSuccessMessage');
+    function updatePresaleSuccessMessage(axAmount, round = 1){
+      const node = document.getElementById(round === 2 ? 'presaleSuccessMessageRound2' : 'presaleSuccessMessage');
+      const distributionDate = round === 2 ? CONFIG.ROUND_2_DISTRIBUTION : CONFIG.ROUND_1_DISTRIBUTION;
       if (!node) return;
-      node.textContent = `You joined the presale and received ${formatAxAmount(axAmount)} AX. Please check the wallet you used for payment on the distribution date. Thank you.`;
+      node.textContent = `You joined the presale and received ${formatAxAmount(axAmount)} AX. Please check the wallet you used for payment on the distribution date (${distributionDate}). Thank you.`;
     }
 
     const els = {
@@ -1063,7 +1129,9 @@
       sendStatus: document.getElementById('sendStatus'),
       copyContractBtn: document.getElementById('copyContractBtn'),
       copyReceiverBtn: document.getElementById('copyReceiverBtn'),
+      copyReceiverBtnRound2: document.getElementById('copyReceiverBtnRound2'),
       buyNowBtn: document.getElementById('buyNowBtn'),
+      buyNowBtnRound2: document.getElementById('buyNowBtnRound2'),
       walletAddressShort: document.getElementById('walletAddressShort'),
       walletCountLive: document.getElementById('walletCountLive'),
       axBalance: document.getElementById('axBalance'),
@@ -1077,15 +1145,25 @@
       marketBarLiquidity: document.getElementById('marketBarLiquidity'),
       marketBarVolume: document.getElementById('marketBarVolume'),
       bnbAmount: document.getElementById('bnbAmount'),
+      bnbAmountRound2: document.getElementById('bnbAmountRound2'),
       axReceivePreview: document.getElementById('axReceivePreview'),
+      axReceivePreviewRound2: document.getElementById('axReceivePreviewRound2'),
       presaleSuccess: document.getElementById('presaleSuccess'),
+      presaleSuccessRound2: document.getElementById('presaleSuccessRound2'),
       progressFill: document.getElementById('progressFill'),
+      progressFillRound2: document.getElementById('progressFillRound2'),
       allocationProgressText: document.getElementById('allocationProgressText'),
+      allocationProgressTextRound2: document.getElementById('allocationProgressTextRound2'),
       soldAmount: document.getElementById('soldAmount'),
+      soldAmountRound2: document.getElementById('soldAmountRound2'),
       remainingAmount: document.getElementById('remainingAmount'),
+      remainingAmountRound2: document.getElementById('remainingAmountRound2'),
       raisedBnb: document.getElementById('raisedBnb'),
+      raisedBnbRound2: document.getElementById('raisedBnbRound2'),
       presaleStatus: document.getElementById('presaleStatus'),
+      presaleStatusRound2: document.getElementById('presaleStatusRound2'),
       buyStatus: document.getElementById('buyStatus'),
+      buyStatusRound2: document.getElementById('buyStatusRound2'),
       riskPill: document.getElementById('riskPill'),
       riskScoreText: document.getElementById('riskScoreText'),
       momentumText: document.getElementById('momentumText'),
@@ -1126,10 +1204,11 @@
       return `${Math.floor(seconds/86400)}d ago`;
     }
 
-    function setBuyStatus(message, tone = 'neutral'){
-      if (!els.buyStatus) return;
-      els.buyStatus.textContent = message;
-      els.buyStatus.style.color = tone === 'good' ? '#d9fff0' : tone === 'alert' ? '#ffe1e7' : '#dce7ff';
+    function setBuyStatus(message, tone = 'neutral', round = 1){
+      const target = round === 2 ? els.buyStatusRound2 : els.buyStatus;
+      if (!target) return;
+      target.textContent = message;
+      target.style.color = tone === 'good' ? '#d9fff0' : tone === 'alert' ? '#ffe1e7' : '#dce7ff';
     }
 
     function setSendStatus(message, tone = 'neutral'){
@@ -1221,32 +1300,45 @@
       }
     }
 
-    async function fetchPresaleProgress(){
+    async function fetchPresaleProgressRound(round = 1){
+      const receiver = round === 2 ? CONFIG.PRESALE_RECEIVER_ROUND_2 : CONFIG.PRESALE_RECEIVER;
+      const totalAllocation = round === 2 ? CONFIG.TOTAL_ALLOCATION_AX_ROUND_2 : CONFIG.TOTAL_ALLOCATION_AX;
+      const progressFill = round === 2 ? els.progressFillRound2 : els.progressFill;
+      const allocationProgressText = round === 2 ? els.allocationProgressTextRound2 : els.allocationProgressText;
+      const soldAmount = round === 2 ? els.soldAmountRound2 : els.soldAmount;
+      const remainingAmount = round === 2 ? els.remainingAmountRound2 : els.remainingAmount;
+      const raisedBnb = round === 2 ? els.raisedBnbRound2 : els.raisedBnb;
+      const presaleStatus = round === 2 ? els.presaleStatusRound2 : els.presaleStatus;
+
       try {
         const rpc = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
         const axContract = new ethers.Contract(CONFIG.AX_TOKEN, ERC20_ABI, rpc);
         const [receiverBalanceRaw, raisedBnbRaw] = await Promise.all([
-          axContract.balanceOf(CONFIG.PRESALE_RECEIVER),
-          rpc.getBalance(CONFIG.PRESALE_RECEIVER)
+          axContract.balanceOf(receiver),
+          rpc.getBalance(receiver)
         ]);
         const receiverBalance = Number(ethers.utils.formatUnits(receiverBalanceRaw, CONFIG.AX_DECIMALS));
-        const sold = Math.max(0, CONFIG.TOTAL_ALLOCATION_AX - receiverBalance);
+        const sold = Math.max(0, totalAllocation - receiverBalance);
         const remaining = Math.max(0, receiverBalance);
-        const raisedBnb = Number(ethers.utils.formatEther(raisedBnbRaw));
-        const progress = Math.min(100, (sold / CONFIG.TOTAL_ALLOCATION_AX) * 100);
-        els.progressFill.style.width = `${progress.toFixed(2)}%`;
-        els.allocationProgressText.textContent = `${formatNumber(sold, 2)} AX sold · ${progress.toFixed(2)}%`;
-        els.soldAmount.textContent = `${formatNumber(sold, 2)} AX`;
-        els.remainingAmount.textContent = `${formatNumber(remaining, 2)} AX`;
-        els.raisedBnb.textContent = `${formatNumber(raisedBnb, 4)} BNB`;
-        els.presaleStatus.textContent = 'OPEN';
+        const raisedBnbValue = Number(ethers.utils.formatEther(raisedBnbRaw));
+        const progress = Math.min(100, (sold / totalAllocation) * 100);
+        if (progressFill) progressFill.style.width = `${progress.toFixed(2)}%`;
+        if (allocationProgressText) allocationProgressText.textContent = `${formatNumber(sold, 2)} AX sold · ${progress.toFixed(2)}%`;
+        if (soldAmount) soldAmount.textContent = `${formatNumber(sold, 2)} AX`;
+        if (remainingAmount) remainingAmount.textContent = `${formatNumber(remaining, 2)} AX`;
+        if (raisedBnb) raisedBnb.textContent = `${formatNumber(raisedBnbValue, 4)} BNB`;
+        if (presaleStatus) presaleStatus.textContent = 'OPEN';
       } catch (err) {
-        els.allocationProgressText.textContent = 'Live sold amount unavailable';
-        els.soldAmount.textContent = 'Unavailable';
-        els.remainingAmount.textContent = 'Unavailable';
-        els.raisedBnb.textContent = 'Unavailable';
-        els.presaleStatus.textContent = 'OPEN';
+        if (allocationProgressText) allocationProgressText.textContent = 'Live sold amount unavailable';
+        if (soldAmount) soldAmount.textContent = 'Unavailable';
+        if (remainingAmount) remainingAmount.textContent = 'Unavailable';
+        if (raisedBnb) raisedBnb.textContent = 'Unavailable';
+        if (presaleStatus) presaleStatus.textContent = 'OPEN';
       }
+    }
+
+    async function fetchPresaleProgress(){
+      await Promise.all([fetchPresaleProgressRound(1), fetchPresaleProgressRound(2)]);
     }
 
     async function fetchDexData(){
@@ -1286,47 +1378,70 @@
       }
     }
 
-    function updateReceivePreview(){
-      const bnb = Number(els.bnbAmount.value || 0);
-      const ax = bnb * CONFIG.RATE_AX_PER_BNB;
-      els.axReceivePreview.textContent = `${formatNumber(ax, 2)} AX`;
+    function updateReceivePreview(round = 1){
+      const amountInput = round === 2 ? els.bnbAmountRound2 : els.bnbAmount;
+      const previewNode = round === 2 ? els.axReceivePreviewRound2 : els.axReceivePreview;
+      const rate = round === 2 ? CONFIG.RATE_AX_PER_BNB_ROUND_2 : CONFIG.RATE_AX_PER_BNB;
+      const bnb = Number(amountInput?.value || 0);
+      const ax = bnb * rate;
+      if (previewNode) previewNode.textContent = `${formatNumber(ax, 2)} AX`;
+      updatePresaleSuccessMessage(ax, round);
     }
 
+    async function sendPresaleTransaction(round = 1){
+      const amountInput = round === 2 ? els.bnbAmountRound2 : els.bnbAmount;
+      const buyButton = round === 2 ? els.buyNowBtnRound2 : els.buyNowBtn;
+      const successCard = round === 2 ? els.presaleSuccessRound2 : els.presaleSuccess;
+      const successMessage = document.getElementById(round === 2 ? 'presaleSuccessMessageRound2' : 'presaleSuccessMessage');
+      const receiver = round === 2 ? CONFIG.PRESALE_RECEIVER_ROUND_2 : CONFIG.PRESALE_RECEIVER;
+      const rate = round === 2 ? CONFIG.RATE_AX_PER_BNB_ROUND_2 : CONFIG.RATE_AX_PER_BNB;
+      const distributionDate = round === 2 ? CONFIG.ROUND_2_DISTRIBUTION : CONFIG.ROUND_1_DISTRIBUTION;
+      const bnb = Number(amountInput?.value || 0);
 
-    async function sendPresaleTransaction(){
-      const bnb = Number(els.bnbAmount.value || 0);
       if (!bnb || bnb <= 0) {
-        setBuyStatus('Enter a valid BNB amount first.', 'alert');
+        setBuyStatus('Enter a valid BNB amount first.', 'alert', round);
         return;
       }
       if (!window.ethereum || !provider || !signer || !userAddress) {
-        setBuyStatus('Connect your wallet before sending BNB.', 'alert');
+        setBuyStatus('Connect your wallet before joining the presale.', 'alert', round);
         await connectWallet();
         return;
       }
+
       try {
-        els.buyNowBtn.disabled = true;
-        els.buyNowBtn.textContent = 'Processing...';
-        setBuyStatus('Preparing transaction in your wallet...', 'neutral');
+        if (buyButton) {
+          buyButton.disabled = true;
+          buyButton.textContent = 'Processing...';
+        }
+        setBuyStatus('Preparing BNB transaction in your wallet...', 'neutral', round);
+
         const tx = await signer.sendTransaction({
-          to: CONFIG.PRESALE_RECEIVER,
+          to: receiver,
           value: ethers.utils.parseEther(String(bnb))
         });
-        setBuyStatus(`Transaction submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good');
+
+        const purchasedAx = Math.max(0, bnb * rate);
+        const purchasedAxText = formatNumber(purchasedAx, 2);
+
+        if (successCard) successCard.classList.add('show');
+        if (successMessage) {
+          successMessage.innerHTML = `You joined the presale and received ${purchasedAxText} AX. Please check the wallet you used for payment on the distribution date (${distributionDate}). Thank you. <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#dcfff0;text-decoration:underline;">View transaction</a>.`;
+        }
+        setBuyStatus(`Transaction submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good', round);
+
         await tx.wait();
-        const purchasedAx = Math.max(0, bnb * CONFIG.RATE_AX_PER_BNB);
-        const purchasedAxText = formatNumber(purchasedAx, 2).replace(/\.00$/, '');
-        els.presaleSuccess.classList.add('show');
-        els.presaleSuccess.querySelector('strong').textContent = 'Congratulations';
-        els.presaleSuccess.querySelector('p').innerHTML = `You joined the presale and received ${purchasedAxText} AX. Please check the wallet you used for payment on the distribution date. Thank you. <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#dcfff0;text-decoration:underline;">View transaction</a>.`;
-        setBuyStatus('Transaction confirmed on BNB Smart Chain.', 'good');
-        await Promise.all([refreshWalletBalances(), fetchPresaleProgress(), fetchTransferStream()]);
+        setBuyStatus('BNB transaction confirmed on BNB Smart Chain.', 'good', round);
+        if (amountInput) amountInput.value = '';
+        updateReceivePreview(round);
+        await fetchPresaleProgressRound(round);
       } catch (err) {
         console.error('Presale transaction failed', err);
-        setBuyStatus('Transaction cancelled or failed. Please try again.', 'alert');
+        setBuyStatus('Transaction cancelled or failed. Please try again.', 'alert', round);
       } finally {
-        els.buyNowBtn.disabled = false;
-        els.buyNowBtn.textContent = 'Buy AX';
+        if (buyButton) {
+          buyButton.disabled = false;
+          buyButton.textContent = 'Buy AX';
+        }
       }
     }
 
@@ -1455,8 +1570,10 @@
           const block = blockCache[log.blockNumber];
           const rawAmount = Number(ethers.utils.formatUnits(parsed.args.value, CONFIG.AX_DECIMALS));
           const direction =
-            parsed.args.to.toLowerCase() === CONFIG.PRESALE_RECEIVER.toLowerCase() ? 'Into Presale Receiver' :
-            parsed.args.from.toLowerCase() === CONFIG.PRESALE_RECEIVER.toLowerCase() ? 'From Presale Receiver' :
+            parsed.args.to.toLowerCase() === CONFIG.PRESALE_RECEIVER.toLowerCase() ? 'Into Round 1 Receiver' :
+            parsed.args.from.toLowerCase() === CONFIG.PRESALE_RECEIVER.toLowerCase() ? 'From Round 1 Receiver' :
+            parsed.args.to.toLowerCase() === CONFIG.PRESALE_RECEIVER_ROUND_2.toLowerCase() ? 'Into Round 2 Receiver' :
+            parsed.args.from.toLowerCase() === CONFIG.PRESALE_RECEIVER_ROUND_2.toLowerCase() ? 'From Round 2 Receiver' :
             'Token Transfer';
           items.push({
             from: parsed.args.from,
@@ -1524,9 +1641,12 @@
       els.walletBtn.addEventListener('click', () => userAddress ? disconnectWallet() : connectWallet());
       els.sendAxBtn?.addEventListener('click', sendAxTransaction);
       els.copyContractBtn.addEventListener('click', () => { copyText(CONFIG.AX_TOKEN); setBuyStatus('Contract address copied.', 'good'); });
-      els.copyReceiverBtn.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Presale receiver copied.', 'good'); });
-      els.buyNowBtn.addEventListener('click', sendPresaleTransaction);
-      els.bnbAmount.addEventListener('input', updateReceivePreview);
+      els.copyReceiverBtn.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Round 1 receiver copied.', 'good', 1); });
+      els.copyReceiverBtnRound2?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER_ROUND_2); setBuyStatus('Round 2 receiver copied.', 'good', 2); });
+      els.buyNowBtn.addEventListener('click', () => sendPresaleTransaction(1));
+      els.buyNowBtnRound2?.addEventListener('click', () => sendPresaleTransaction(2));
+      els.bnbAmount.addEventListener('input', () => updateReceivePreview(1));
+      els.bnbAmountRound2?.addEventListener('input', () => updateReceivePreview(2));
       els.mobileToggle.addEventListener('click', () => els.navLinks.classList.toggle('open'));
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => els.navLinks.classList.remove('open'));
@@ -1548,7 +1668,8 @@
       initReveal();
       initChart();
       initEvents();
-      updateReceivePreview();
+      updateReceivePreview(1);
+      updateReceivePreview(2);
       await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress(), fetchTransferStream()]);
       setInterval(fetchDexData, 30000);
       setInterval(fetchFeeWalletBalance, 45000);
