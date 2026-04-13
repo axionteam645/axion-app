@@ -459,7 +459,7 @@
       .ai-corner-brackets::before,.ai-corner-brackets::after{width:90px;height:90px}
     }
   
-    .status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .status-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px;max-width:100%}
 
     .ai-tokenomics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
     .ai-tokenomics-card{position:relative;padding:18px 18px 16px;border-radius:20px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.028));border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 46px rgba(0,0,0,.24), 0 0 24px rgba(78,216,255,.05)}
@@ -471,6 +471,8 @@
     .ai-tokenomics-card small{font-size:12px;line-height:1.6;color:#c7d8f8}
     @keyframes aiTokenFlow{0%{transform:translateX(-18%);opacity:.18}50%{opacity:.75}100%{transform:translateX(18%);opacity:.18}}
     .status-chip{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
+    .status-grid .status-chip{width:100%}
+    .status-grid .status-chip.status-open{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:124px;padding:24px 20px}
     .status-chip strong{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b7c7e9;margin-bottom:8px}
     .status-chip span{display:block;font-size:18px;font-weight:900;color:#fff}
     .status-chip small{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.5}
