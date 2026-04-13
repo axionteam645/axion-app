@@ -541,11 +541,11 @@
     .receiver-info-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:stretch;margin-top:12px}
     .receiver-info-box{display:flex;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(78,216,255,.08);border:1px solid rgba(78,216,255,.18);color:#dff3ff;font-size:13px;font-weight:700;line-height:1.6;min-height:54px}
     .inline-actions.inline-actions-wide{display:block;margin-top:0}
-    .buy-panel-btn{width:100%;min-height:68px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:18px;font-size:18px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff6ea;background:linear-gradient(180deg, rgba(110,60,22,.96), rgba(73,38,14,.96));border:1px solid rgba(255,201,92,.22);box-shadow:0 0 0 1px rgba(255,201,92,.06),0 0 24px rgba(255,201,92,.10),0 18px 44px rgba(0,0,0,.32);position:relative;overflow:hidden}
-    .buy-panel-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg, rgba(255,201,92,.12), transparent 30%, transparent 70%, rgba(95,140,255,.06)),radial-gradient(circle at 100% 100%, rgba(255,201,92,.08), transparent 24%);pointer-events:none}
-    .buy-panel-btn::after{content:"";position:absolute;inset:auto -16% -52% auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.20), rgba(255,140,31,.10), transparent 70%);filter:blur(10px);animation:statusOrb 4.6s ease-in-out infinite;pointer-events:none}
+    .buy-panel-btn{width:100%;min-height:68px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:18px;font-size:18px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff6ea;background:linear-gradient(90deg, rgba(255,201,92,.14), rgba(255,140,31,.10));border:1px solid rgba(255,201,92,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 0 20px rgba(255,201,92,.08),0 18px 44px rgba(0,0,0,.32);position:relative;overflow:hidden}
+    .buy-panel-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.06), transparent 30%, transparent 70%, rgba(255,201,92,.06));pointer-events:none}
+    .buy-panel-btn::after{content:"";position:absolute;top:0;left:-38%;width:36%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);transform:skewX(-24deg);animation:tagSweep 3.4s linear infinite;pointer-events:none}
     .buy-panel-btn span{position:relative;z-index:1}
-    .buy-panel-btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,201,92,.08),0 0 28px rgba(255,201,92,.14),0 22px 50px rgba(0,0,0,.36)}
+    .buy-panel-btn:hover{transform:translateY(-2px);border-color:rgba(255,201,92,.34);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 0 26px rgba(255,201,92,.12),0 22px 50px rgba(0,0,0,.36)}
     @media (max-width: 640px){.receiver-info-row{grid-template-columns:1fr}}
 
   </style>
@@ -681,7 +681,7 @@
           </div>
         </div>
         <div class="inline-actions">
-          <button class="btn btn-buy" id="sendAxBtn" type="button">Send AX</button>
+          <button class="buy-panel-btn" id="sendAxBtn" type="button"><span>Send AX</span></button>
         </div>
         <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AX transfer in your wallet.</div>
       </div>
@@ -740,7 +740,7 @@
                   </div>
                   <div class="buy-preview">You Receive: <strong id="axReceivePreview">0 AX</strong></div>
                   <div class="inline-actions inline-actions-wide">
-                    <button class="btn btn-buy buy-panel-btn" id="buyNowBtn" type="button"><span>Buy AX</span></button>
+                    <button class="buy-panel-btn" id="buyNowBtn" type="button"><span>Buy AX</span></button>
                   </div>
                   <div class="receiver-info-row">
                     <button class="btn btn-secondary" id="copyReceiverBtn" type="button">Copy Receiver</button>
@@ -799,7 +799,7 @@
                   </div>
                   <div class="buy-preview">You Receive: <strong id="axReceivePreviewRound2">0 AX</strong></div>
                   <div class="inline-actions inline-actions-wide">
-                    <button class="btn btn-buy buy-panel-btn" id="buyNowBtnRound2" type="button"><span>Buy AX</span></button>
+                    <button class="buy-panel-btn" id="buyNowBtnRound2" type="button"><span>Buy AX</span></button>
                   </div>
                   <div class="receiver-info-row">
                     <button class="btn btn-secondary" id="copyReceiverBtnRound2" type="button">Copy Receiver</button>
