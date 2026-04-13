@@ -259,7 +259,7 @@
     .inline-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
     .buy-field{display:grid;gap:8px}
     .buy-field label{font-size:13px;font-weight:700;color:#d6e4ff}
-    .buy-field input{width:100%;border:none;outline:none;border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);color:#fff;font:inherit}
+    .buy-field input{width:100%;border:none;outline:none;border-radius:14px;padding:14px 16px;background:linear-gradient(180deg, rgba(67,243,177,.18), rgba(24,128,84,.14));border:1px solid rgba(67,243,177,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 18px rgba(67,243,177,.08);color:#fff;font:inherit}
     .buy-preview{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);color:#dce7ff;font-size:14px}
 
     .presale-row{display:flex;justify-content:space-between;gap:14px;color:#dce7ff;font-size:14px}
@@ -472,15 +472,21 @@
     .ai-tokenomics-card span{font-size:22px;font-weight:900;line-height:1.15;color:#fff;margin-bottom:8px}
     .ai-tokenomics-card small{font-size:12px;line-height:1.6;color:#c7d8f8}
     @keyframes aiTokenFlow{0%{transform:translateX(-18%);opacity:.18}50%{opacity:.75}100%{transform:translateX(18%);opacity:.18}}
+    @keyframes statusScan{0%{transform:translateX(-120%) rotate(-8deg);opacity:0}18%{opacity:.85}82%{opacity:.85}100%{transform:translateX(120%) rotate(-8deg);opacity:0}}
+    @keyframes statusOrb{0%,100%{transform:scale(1);opacity:.45}50%{transform:scale(1.14);opacity:.88}}
+    @keyframes statusPulse{0%,100%{box-shadow:0 0 18px rgba(67,243,177,.10),0 0 32px rgba(78,216,255,.08)}50%{box-shadow:0 0 24px rgba(67,243,177,.18),0 0 42px rgba(78,216,255,.12)}}
     .status-chip{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
     .status-grid .status-chip{width:100%}
     .status-grid .status-chip.status-open{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:124px;padding:24px 20px}
     .status-chip strong{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b7c7e9;margin-bottom:8px}
     .status-chip span{display:block;font-size:18px;font-weight:900;color:#fff}
     .status-chip small{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.5}
-    .status-chip.status-open{background:rgba(67,243,177,.14);border:1px solid rgba(67,243,177,.34);box-shadow:0 0 18px rgba(67,243,177,.10)}
+    .status-chip.status-open{position:relative;overflow:hidden;background:linear-gradient(180deg, rgba(67,243,177,.16), rgba(24,128,84,.14));border:1px solid rgba(67,243,177,.34);box-shadow:0 0 18px rgba(67,243,177,.10),0 0 32px rgba(78,216,255,.08);animation:statusPulse 3.2s ease-in-out infinite}
+    .status-chip.status-open::before{content:"";position:absolute;inset:-30% auto auto -20%;width:140%;height:2px;background:linear-gradient(90deg, transparent, rgba(78,216,255,.0), rgba(78,216,255,.72), rgba(67,243,177,.68), transparent);opacity:.8;transform:rotate(-8deg);animation:statusScan 3.6s linear infinite;pointer-events:none}
+    .status-chip.status-open::after{content:"";position:absolute;inset:auto -18% -44% auto;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle, rgba(67,243,177,.22), rgba(78,216,255,.10), transparent 70%);filter:blur(10px);animation:statusOrb 4.6s ease-in-out infinite;pointer-events:none}
+    .status-chip.status-open strong,.status-chip.status-open span,.status-chip.status-open small{position:relative;z-index:1}
     .status-chip.status-open strong{color:#c9ffe6}
-    .status-chip.status-open span{color:#eafff3}
+    .status-chip.status-open span{color:#eafff3;text-shadow:0 0 12px rgba(67,243,177,.18)}
     .status-chip.status-open small{color:#d8fff0}
     .loading{opacity:.7}
     .signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
@@ -687,7 +693,7 @@
                   <div class="icon-badge" style="padding:0; overflow:hidden;">
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
-                  <h3>AXION Presale Round 1</h3>
+                  <h3>AXION Presale</h3>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">Early access price advantage for AXION on BNB Smart Chain. This round is designed for early participants who want a stronger entry before the next expansion stage.</p>
 
@@ -743,7 +749,7 @@
                   <div class="icon-badge" style="padding:0; overflow:hidden;">
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
-                  <h3>AXION Presale Round 2</h3>
+                  <h3>AXION Presale</h3>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">A highly advantageous price before exchange listings planned to begin about one month later. This round gives participants another strong entry window ahead of the next market phase.</p>
 
@@ -818,8 +824,7 @@
 
                 <div class="inline-actions">
                   <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">Open BscScan</a>
-                  <a class="btn btn-secondary" href="https://github.com/axionteam645/axion-dashboard/blob/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">Open Whitepaper</a>
-                </div>
+                                  </div>
               </div>
             </article>
             <article class="card reveal pancake-panel" id="pancakeSwap">
@@ -832,7 +837,7 @@
                       <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB logo" style="position:absolute;right:0;bottom:2px;width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.14);background:#0b1224;" />
                     </div>
                   </div>
-                  <h3>PancakeSwap Panel</h3>
+                  <h3>AX/BNB</h3>
                 </div>
                 <p>Trade AXION directly through PancakeSwap with the current contract preloaded for a faster swap flow on BNB Smart Chain.</p>
 
