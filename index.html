@@ -531,39 +531,6 @@
       .featured-sales-head h2{font-size:32px}
     }
 
-
-
-    .round-badge-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-    .round-best-value{
-      display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:999px;
-      background:rgba(255,201,92,.14);border:1px solid rgba(255,201,92,.30);color:#fff1b8;
-      font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
-      box-shadow:0 0 18px rgba(255,201,92,.14);
-    }
-    .round-limited{
-      display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:999px;
-      background:rgba(168,92,255,.14);border:1px solid rgba(168,92,255,.28);color:#eadbff;
-      font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
-    }
-
-    .round-marketing-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    .round-marketing-badge{
-      display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;
-      font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
-      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);color:#eaf3ff;
-    }
-    .round-marketing-badge.cex{
-      background:rgba(255,201,92,.12);border-color:rgba(255,201,92,.24);color:#fff1b8;
-      box-shadow:0 0 18px rgba(255,201,92,.10);
-    }
-    .round-marketing-badge.listings{
-      background:rgba(78,216,255,.12);border-color:rgba(78,216,255,.24);color:#dff7ff;
-      box-shadow:0 0 18px rgba(78,216,255,.08);
-    }
-    #presale.round-best-glow{
-      border-color:rgba(255,201,92,.34) !important;
-      box-shadow:0 0 0 1px rgba(255,201,92,.06),0 0 24px rgba(255,201,92,.18),0 0 44px rgba(255,140,31,.12),0 18px 60px rgba(0,0,0,.42) !important;
-    }
   </style>
 </head>
 <body>
@@ -713,12 +680,9 @@
           </div>
 
           <div class="presale-round-grid">
-            <article class="card round-best-glow" id="presale">
+            <article class="card" id="presale">
               <div class="card-inner">
-                <div class="round-badge-row">
-                  <div class="tag" style="margin-bottom:0;">Round 1</div>
-                  <span class="round-best-value">Best Value</span>
-                </div>
+                <div class="tag">Round 1</div>
                 <div class="title-row">
                   <div class="icon-badge" style="padding:0; overflow:hidden;">
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
@@ -767,29 +731,21 @@
 
                 <div class="success-card" id="presaleSuccess">
                   <strong>Congratulations</strong>
-                  <p id="presaleSuccessMessage">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</p>
+                  <p id="presaleSuccessMessage">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
                 </div>
               </div>
             </article>
 
             <article class="card" id="presaleRound2">
               <div class="card-inner">
-                <div class="round-badge-row">
-                  <div class="tag" style="margin-bottom:0;">Round 2</div>
-                  <span class="round-limited">Limited Opportunity</span>
-                </div>
+                <div class="tag">Round 2</div>
                 <div class="title-row">
                   <div class="icon-badge" style="padding:0; overflow:hidden;">
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
                   <h3>AXION Presale Round 2</h3>
                 </div>
-                <p style="margin-top:6px;max-width:760px;">A highly advantageous price ahead of upcoming exchange listings. This round presents a powerful entry opportunity before AXION moves into its next major market phase.</p>
-
-                <div class="round-marketing-badges">
-                  <span class="round-marketing-badge cex">CEX Ready</span>
-                  <span class="round-marketing-badge listings">Exchange Listings Coming Soon</span>
-                </div>
+                <p style="margin-top:6px;max-width:760px;">A highly advantageous price before exchange listings planned to begin about one month later. This round gives participants another strong entry window ahead of the next market phase.</p>
 
                 <div class="presale-box">
                   <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
@@ -831,7 +787,7 @@
 
                 <div class="success-card" id="presaleSuccessRound2">
                   <strong>Congratulations</strong>
-                  <p id="presaleSuccessMessageRound2">Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.</p>
+                  <p id="presaleSuccessMessageRound2">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
                 </div>
               </div>
             </article>
@@ -1131,6 +1087,11 @@
       target.style.color = tone === 'good' ? '#d9fff0' : tone === 'alert' ? '#ffe1e7' : '#dce7ff';
     }
 
+    function setAllBuyStatuses(message, tone = 'neutral'){
+      setBuyStatus(message, tone, 1);
+      setBuyStatus(message, tone, 2);
+    }
+
     function setSendStatus(message, tone = 'neutral'){
       if (!els.sendStatus) return;
       els.sendStatus.textContent = message;
@@ -1167,7 +1128,7 @@
         els.walletCountLive.textContent = connectedWalletCount;
         els.walletAddressShort.textContent = shortAddress(userAddress);
         els.walletBtn.textContent = 'Disconnect';
-        setBuyStatus('Wallet connected. You can now send BNB directly from the dashboard.', 'good');
+        setAllBuyStatuses('Wallet connected. You can now send BNB directly from the dashboard.', 'good');
         setSendStatus('Wallet connected. AX balances now reflect the connected wallet.', 'good');
         await refreshWalletBalances();
       } catch (err) {
@@ -1184,7 +1145,7 @@
       els.axBalance.textContent = '-';
       els.bnbBalance.textContent = '-';
       els.usdtBalance.textContent = '-';
-      setBuyStatus('Wallet disconnected. Reconnect to continue.', 'neutral');
+      setAllBuyStatuses('Enter an amount, connect your wallet, then approve the BNB transaction in your wallet.', 'neutral');
       setSendStatus('Wallet disconnected. Reconnect to send AX.', 'neutral');
     }
 
@@ -1603,7 +1564,9 @@
           else {
             userAddress = accounts[0];
             els.walletAddressShort.textContent = shortAddress(userAddress);
-                await refreshWalletBalances();
+            els.walletBtn.textContent = 'Disconnect';
+            await refreshWalletBalances();
+            setAllBuyStatuses('Wallet connected. You can now send BNB directly from the dashboard.', 'good');
             setSendStatus('Wallet changed. AX balances now reflect the newly connected wallet.', 'good');
           }
         });
