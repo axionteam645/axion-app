@@ -164,12 +164,12 @@
     .btn-secondary:hover{background:rgba(255,255,255,.08)}
     .btn-buy{color:#fff;background:linear-gradient(90deg, var(--buy1), var(--buy2), var(--buy3));box-shadow:0 14px 34px rgba(255,104,74,.35);border:1px solid rgba(255,255,255,.12)}
 
-    #presale{position:relative;overflow:hidden;border-color:rgba(255,201,92,.20);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(255,201,92,.08)}
-    #presale::after{content:"";position:absolute;inset:auto -12% -38% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.18), rgba(255,140,31,.08), transparent 68%);filter:blur(12px);pointer-events:none;animation:presaleGlow 4.8s ease-in-out infinite}
-    #presale .tag{position:relative;overflow:hidden;background:linear-gradient(90deg, rgba(255,201,92,.16), rgba(255,140,31,.12));border-color:rgba(255,201,92,.26);box-shadow:0 0 20px rgba(255,201,92,.10)}
-    #presale .tag::after{content:"";position:absolute;top:0;left:-38%;width:36%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);transform:skewX(-24deg);animation:tagSweep 3.4s linear infinite}
-    #presale:hover{transform:translateY(-6px);border-color:rgba(255,201,92,.34);box-shadow:0 26px 75px rgba(0,0,0,.50),0 0 32px rgba(255,201,92,.14),0 0 52px rgba(255,104,74,.10)}
-    #presale .presale-row:first-child{background:linear-gradient(90deg, rgba(255,201,92,.14), rgba(255,140,31,.10));border-color:rgba(255,201,92,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+    #presale,#presaleRound2{position:relative;overflow:hidden;border-color:rgba(255,201,92,.20);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(255,201,92,.08)}
+    #presale::after,#presaleRound2::after{content:"";position:absolute;inset:auto -12% -38% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.18), rgba(255,140,31,.08), transparent 68%);filter:blur(12px);pointer-events:none;animation:presaleGlow 4.8s ease-in-out infinite}
+    #presale .tag,#presaleRound2 .tag{position:relative;overflow:hidden;background:linear-gradient(90deg, rgba(255,201,92,.16), rgba(255,140,31,.12));border-color:rgba(255,201,92,.26);box-shadow:0 0 20px rgba(255,201,92,.10)}
+    #presale .tag::after,#presaleRound2 .tag::after{content:"";position:absolute;top:0;left:-38%;width:36%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);transform:skewX(-24deg);animation:tagSweep 3.4s linear infinite}
+    #presale:hover,#presaleRound2:hover{transform:translateY(-6px);border-color:rgba(255,201,92,.34);box-shadow:0 26px 75px rgba(0,0,0,.50),0 0 32px rgba(255,201,92,.14),0 0 52px rgba(255,104,74,.10)}
+    #presale .presale-row:first-child,#presaleRound2 .presale-row:first-child{background:linear-gradient(90deg, rgba(255,201,92,.14), rgba(255,140,31,.10));border-color:rgba(255,201,92,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
     .btn-buy{position:relative;overflow:hidden;background-size:200% 100%;animation:buyGradientFlow 4s linear infinite, buyPulse 2.6s ease-in-out infinite}
     .btn-buy::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.24) 48%, transparent 76%);transform:translateX(-140%);animation:buyShine 2.8s ease-in-out infinite}
     .btn-buy:hover{box-shadow:0 18px 42px rgba(255,104,74,.42),0 0 20px rgba(255,201,92,.18);filter:saturate(1.08)}
@@ -631,11 +631,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="social-links">
-                <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@axiondefi</span></a>
-                <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer"><span>X</span><span>@axiondefi</span></a>
-              </div>
             </div>
             </article>
             
@@ -675,11 +670,6 @@
         <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AX transfer in your wallet.</div>
       </div>
     </div>
-
-    <div class="social-links">
-      <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@axiondefi</span></a>
-      <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer"><span>X</span><span>@axiondefi</span></a>
-    </div>
   </div>
 </article>
 
@@ -704,7 +694,7 @@
 
                 <div class="presale-box">
                   <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
-                  <div class="presale-row"><strong>Total Allocation</strong><span>7,500,000 AX</span></div>
+                  <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
                   <div class="presale-row"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
@@ -761,8 +751,8 @@
                 <div class="presale-box">
                   <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
-                  <div class="presale-row"><strong>End Date</strong><span>OPEN</span></div>
-                  <div class="presale-row"><strong>Distribution</strong><span>22 May 2026</span></div>
+                  <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
+                  <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
                   <div class="presale-row"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
                 </div>
 
@@ -869,29 +859,6 @@
               </div>
             </article>
           </div>
-
-          <div class="ai-tokenomics-grid reveal">
-        <div class="ai-tokenomics-card">
-          <strong>Presale Allocation</strong>
-          <span>7,500,000 AX</span>
-          <small>Reserved for the official AXION presale rounds.</small>
-        </div>
-        <div class="ai-tokenomics-card">
-          <strong>Circulating Supply</strong>
-          <span>200,000,000 AX</span>
-          <small>Current AX available in active market circulation.</small>
-        </div>
-        <div class="ai-tokenomics-card">
-          <strong>Total Supply</strong>
-          <span>1,000,000,000 AX</span>
-          <small>Fixed supply structure with no inflation layer.</small>
-        </div>
-        <div class="ai-tokenomics-card">
-          <strong>Network</strong>
-          <span>BNB Smart Chain</span>
-          <small>Built for fast and scalable DeFi access.</small>
-        </div>
-      </div>
         </div>
       </div>
     </div>
@@ -953,34 +920,6 @@
               <strong id="marketBarVolume">Loading...</strong>
             </div>
           </div>
-        <div class="listing-ready-bar reveal" aria-label="Listing readiness highlights">
-            <div class="listing-pill">
-              <strong>CMC / CoinGecko</strong>
-              <span>Structured metadata and official app domain ready for listing visibility.</span>
-            </div>
-        <div class="app-side-stack">
-          <article class="card reveal ai-monitor-compact" id="aiSignals">
-              <div class="card-inner">
-                <div class="tag">AI Monitor</div>
-                <div class="title-row">
-                  <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M12 15v6"/><path d="M3 12h6"/><path d="M15 12h6"/><path d="M7.5 7.5 9.8 9.8"/><path d="m14.2 14.2 2.3 2.3"/><path d="m7.5 16.5 2.3-2.3"/><path d="m14.2 9.8 2.3-2.3"/></svg></div>
-                  <h3>AI Signal Engine</h3>
-                </div>
-                <p>A lightweight scoring layer reads liquidity, volume, and volatility to present a clean dashboard-native signal view.</p>
-                <div class="signal-grid">
-                  <div class="signal-box">
-                    <strong>Risk Score</strong>
-                    <div class="signal-pill good" id="riskPill">Healthy</div>
-                    <span id="riskScoreText">Analyzing liquidity and volume profile...</span>
-                  </div>
-                  <div class="signal-box">
-                    <strong>Momentum</strong>
-                    <span id="momentumText">Waiting for market sync...</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-        </div>
       </div>
     </div>
   </section>
@@ -1086,7 +1025,7 @@
       RATE_AX_PER_BNB: 10000,
       RATE_AX_PER_BNB_ROUND_2: 7500,
       ROUND_1_DISTRIBUTION: '09.10.2026',
-      ROUND_2_DISTRIBUTION: '22 May 2026',
+      ROUND_2_DISTRIBUTION: '22.05.2026',
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
       DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de'
