@@ -929,6 +929,58 @@
         inset 0 1px 0 rgba(255,255,255,.10) !important;
     }
 
+
+    @media (max-width: 640px){
+      :root{--shadow:0 10px 28px rgba(0,0,0,.28)}
+      html,body{overflow-x:hidden}
+      body::before,body::after{opacity:.35}
+      .ai-grid-overlay,.ai-data-stream,.ai-dashboard-hud,.ai-corner-brackets{display:none !important}
+      .card::before,
+      .listing-pill::before,
+      .buy-panel-btn::after,
+      #presale::after,
+      #presaleRound2::after,
+      .slogan-card::after,
+      .status-chip.status-open::before,
+      .status-chip.status-open::after,
+      .ai-tokenomics-card::after{display:none !important}
+      .card,.hero-feature-card,.listing-pill,.status-chip,.signal-box,.trust-badge-card,.ai-tokenomics-card{
+        box-shadow:0 10px 24px rgba(0,0,0,.22) !important;
+      }
+      .card:hover,.hero-feature-card:hover,.listing-pill:hover{transform:none !important}
+      .hero{padding:40px 0 20px}
+      .section{padding-top:56px}
+      .section:last-of-type{padding-bottom:72px}
+      .hero-copy p{font-size:14px;line-height:1.7}
+      .hero-feature-cards{gap:10px;margin-top:20px}
+      .hero-feature-card{min-height:auto;padding:14px 15px;border-radius:18px}
+      .hero-feature-card p{font-size:12px;line-height:1.55}
+      .hero-market-bar,.listing-ready-bar,.signal-grid,.trust-badges,.ai-tokenomics-grid{gap:10px;margin-top:14px}
+      .hero-market-bar{padding:12px 14px;border-radius:18px}
+      .market-item{padding:0}
+      .market-item strong{font-size:15px}
+      .card-inner{padding:16px}
+      .title-row{margin-bottom:8px}
+      .card h3{font-size:24px}
+      .card p{font-size:14px;line-height:1.65}
+      .tag,.round-tag,.round-tag-badge,.presale-note-badge,.wallet-badge,.pancake-badge,.signal-pill{animation:none !important}
+      .presale-row,.summary-item,.contract-box,.receiver-info-box,.buy-preview,.progress-note,.pancake-note{font-size:13px}
+      .presale-progress{margin-top:14px;padding:14px 15px}
+      .buy-panel-btn{min-height:60px;font-size:16px}
+      .icon-copy-btn{width:34px;height:34px}
+      .footer{margin-top:56px;padding:28px 0 40px}
+    }
+
+    @media (max-width: 640px), (prefers-reduced-motion: reduce){
+      *,*::before,*::after{
+        animation-duration:.001ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.001ms !important;
+        scroll-behavior:auto !important;
+      }
+      .reveal{opacity:1 !important;transform:none !important}
+    }
+
   </style>
 </head>
 <body>
@@ -1978,6 +2030,54 @@
       }
     }
 
+    const MOBILE_LITE_QUERY = window.matchMedia('(max-width: 640px)');
+    const REDUCED_MOTION_QUERY = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function isMobileLite(){
+      return MOBILE_LITE_QUERY.matches;
+    }
+
+    function prefersReducedMotion(){
+      return REDUCED_MOTION_QUERY.matches;
+    }
+
+    function runWhenIdle(callback, timeout = 1200){
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => callback(), { timeout });
+      } else {
+        setTimeout(callback, 180);
+      }
+    }
+
+    function initChartLazy(){
+      const canvas = document.getElementById('tokenChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+
+      if (!isMobileLite()) {
+        initChart();
+        return;
+      }
+
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        initChart();
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            observer.disconnect();
+            runWhenIdle(start, 1400);
+          }
+        }, { rootMargin: '120px 0px' });
+        observer.observe(canvas);
+      } else {
+        runWhenIdle(start, 1400);
+      }
+    }
+
     function initChart(){
       const canvas = document.getElementById('tokenChart');
       if (!canvas || typeof Chart === 'undefined') return;
@@ -2012,12 +2112,20 @@
     }
 
     function initReveal(){
+      const revealEls = document.querySelectorAll('.reveal');
+      if (!revealEls.length) return;
+
+      if (isMobileLite() || prefersReducedMotion() || !('IntersectionObserver' in window)) {
+        revealEls.forEach(el => el.classList.add('show'));
+        return;
+      }
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('show');
         });
       }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      revealEls.forEach(el => observer.observe(el));
     }
 
     function initEvents(){
@@ -2052,15 +2160,21 @@
 
     async function init(){
       initReveal();
-      initChart();
+      initChartLazy();
       initEvents();
       updateReceivePreview(1);
       updateReceivePreview(2);
-      await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress(), fetchTransferStream()]);
-      setInterval(fetchDexData, 30000);
-      setInterval(fetchFeeWalletBalance, 45000);
-      setInterval(fetchPresaleProgress, 45000);
-      setInterval(fetchTransferStream, 60000);
+
+      await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress()]);
+
+      runWhenIdle(() => {
+        fetchTransferStream();
+      }, isMobileLite() ? 2200 : 1200);
+
+      setInterval(fetchDexData, isMobileLite() ? 45000 : 30000);
+      setInterval(fetchFeeWalletBalance, isMobileLite() ? 60000 : 45000);
+      setInterval(fetchPresaleProgress, isMobileLite() ? 60000 : 45000);
+      setInterval(fetchTransferStream, isMobileLite() ? 90000 : 60000);
     }
 
     init();
