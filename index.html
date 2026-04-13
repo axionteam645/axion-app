@@ -876,50 +876,7 @@
       </div>
 
       <div class="dashboard-grid">
-        <div class="hero-feature-cards">
-            <div class="hero-feature-card">
-              <div class="hero-feature-card-head">
-                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 10l6-6 6 6"/><path d="M6 14l6 6 6-6"/></svg></div>
-                <strong>Live Presale</strong>
-              </div>
-              <p>Early allocation flow with conversion preview, receiver address, and progress tracking kept inside the AXION app style.</p>
-            </div>
-            <div class="hero-feature-card">
-              <div class="hero-feature-card-head">
-                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/></svg></div>
-                <strong>Wallet Lite</strong>
-              </div>
-              <p>Connected wallet view for AX, BNB, and USDT with quick access to your receive address and session status.</p>
-            </div>
-            <div class="hero-feature-card">
-              <div class="hero-feature-card-head">
-                <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 15l3-3 3 2 4-5"/></svg></div>
-                <strong>Live On-Chain Data</strong>
-              </div>
-              <p>Live price, 24h change, liquidity, and volume are synced from the active DexScreener pair, with quick access to BscScan and whitepaper.</p>
-            </div>
-          </div>
-        <div class="hero-market-bar reveal">
-            <div class="market-item">
-              <span class="market-label">AX Price</span>
-              <strong id="marketBarPrice">Loading...</strong>
-            </div>
-            <div class="market-divider"></div>
-            <div class="market-item">
-              <span class="market-label">24H Change</span>
-              <strong id="marketBarChange" class="price-change neutral">Syncing...</strong>
-            </div>
-            <div class="market-divider"></div>
-            <div class="market-item">
-              <span class="market-label">Liquidity</span>
-              <strong id="marketBarLiquidity">Loading...</strong>
-            </div>
-            <div class="market-divider"></div>
-            <div class="market-item">
-              <span class="market-label">Volume</span>
-              <strong id="marketBarVolume">Loading...</strong>
-            </div>
-          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1028,7 +985,8 @@
       ROUND_2_DISTRIBUTION: '22.05.2026',
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
-      DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de'
+      DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de',
+      DEXSCREENER_TOKEN_URL: 'https://api.dexscreener.com/latest/dex/tokens/0x9e266c2C148df3456e170B759d77c91AbC67eEAB'
     };
 
     const ERC20_ABI = [
@@ -1279,40 +1237,59 @@
     }
 
     async function fetchDexData(){
-      try {
-        const res = await fetch(CONFIG.DEXSCREENER_PAIR_URL);
-        const data = await res.json();
-        const pair =
-          data?.pair ||
-          (Array.isArray(data?.pairs) ? data.pairs.find(p => String(p.chainId).toLowerCase() === 'bsc') || data.pairs[0] : null);
-        if (!pair) throw new Error('No pair found');
-        const price = Number(pair.priceUsd || 0);
-        const change = Number(pair.priceChange?.h24 || 0);
-        const liquidity = Number(pair.liquidity?.usd || 0);
-        const volume = Number(pair.volume?.h24 || 0);
-        latestDexSnapshot = { price, change, liquidity, volume };
+      const urls = [CONFIG.DEXSCREENER_PAIR_URL, CONFIG.DEXSCREENER_TOKEN_URL].filter(Boolean);
+      let lastError = null;
 
-        const changeClass = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
-        const changeText = `${change > 0 ? '▲' : change < 0 ? '▼' : '•'} ${formatNumber(change, 2)}%`;
+      for (const url of urls) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          const pair =
+            data?.pair ||
+            (Array.isArray(data?.pairs)
+              ? data.pairs.find(p => String(p.pairAddress || '').toLowerCase() === '0xb7d69e285583f8b444a85a0ab68d24d63ce537de') ||
+                data.pairs.find(p => String(p.chainId).toLowerCase() === 'bsc') ||
+                data.pairs[0]
+              : null);
+          if (!pair) throw new Error('No pair found');
 
-        els.axPrice.textContent = formatCurrency(price);
-        els.marketBarPrice.textContent = formatCurrency(price);
-        els.axPriceChange.textContent = changeText;
-        els.marketBarChange.textContent = changeText;
-        els.axPriceChange.className = `price-change ${changeClass}`;
-        els.marketBarChange.className = `price-change ${changeClass}`;
-        els.marketBarLiquidity.textContent = formatCurrency(liquidity);
-        els.marketBarVolume.textContent = formatCurrency(volume);
-        updateAISignals();
-      } catch (err) {
-        els.axPrice.textContent = 'Live price unavailable';
-        els.axPriceChange.textContent = 'Data unavailable';
-        els.marketBarPrice.textContent = 'Unavailable';
-        els.marketBarChange.textContent = 'Unavailable';
-        els.marketBarLiquidity.textContent = 'Unavailable';
-        els.marketBarVolume.textContent = 'Unavailable';
-        updateAISignals();
+          const price = Number(pair.priceUsd || 0);
+          const change = Number(pair.priceChange?.h24 || 0);
+          const liquidity = Number(pair.liquidity?.usd || 0);
+          const volume = Number(pair.volume?.h24 || 0);
+          latestDexSnapshot = { price, change, liquidity, volume };
+
+          const changeClass = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
+          const changeText = `${change > 0 ? '▲' : change < 0 ? '▼' : '•'} ${formatNumber(change, 2)}%`;
+
+          if (els.axPrice) els.axPrice.textContent = formatCurrency(price);
+          if (els.marketBarPrice) els.marketBarPrice.textContent = formatCurrency(price);
+          if (els.axPriceChange) {
+            els.axPriceChange.textContent = changeText;
+            els.axPriceChange.className = `price-change ${changeClass}`;
+          }
+          if (els.marketBarChange) {
+            els.marketBarChange.textContent = changeText;
+            els.marketBarChange.className = `price-change ${changeClass}`;
+          }
+          if (els.marketBarLiquidity) els.marketBarLiquidity.textContent = formatCurrency(liquidity);
+          if (els.marketBarVolume) els.marketBarVolume.textContent = formatCurrency(volume);
+          updateAISignals();
+          return;
+        } catch (err) {
+          lastError = err;
+        }
       }
+
+      if (els.axPrice) els.axPrice.textContent = 'Live price unavailable';
+      if (els.axPriceChange) els.axPriceChange.textContent = 'Data unavailable';
+      if (els.marketBarPrice) els.marketBarPrice.textContent = 'Unavailable';
+      if (els.marketBarChange) els.marketBarChange.textContent = 'Unavailable';
+      if (els.marketBarLiquidity) els.marketBarLiquidity.textContent = 'Unavailable';
+      if (els.marketBarVolume) els.marketBarVolume.textContent = 'Unavailable';
+      console.warn('DexScreener sync failed:', lastError);
+      updateAISignals();
     }
 
     function updateReceivePreview(round = 1){
@@ -1443,7 +1420,7 @@
       if (!els.whaleList) return;
       if (!items.length) {
         els.whaleList.innerHTML = '<div class="whale-item"><div class="tx-meta"><strong>No whale alerts yet</strong><span>Large AX transfers will appear here when they are detected.</span></div><div class="whale-amount">—</div></div>';
-        els.whalePressureText.textContent = 'No whale-sized transfers detected in the latest scan.';
+        if (els.whalePressureText) els.whalePressureText.textContent = 'No whale-sized transfers detected in the latest scan.';
         return;
       }
       els.whaleList.innerHTML = items.map(item => `
@@ -1455,11 +1432,11 @@
           <div class="whale-amount">${escapeHtml(item.amount)}</div>
         </div>`).join('');
       const totalWhale = items.reduce((sum, i) => sum + i.rawAmount, 0);
-      els.whalePressureText.textContent = `${formatNumber(totalWhale, 0)} AX moved across ${items.length} whale-sized transfers in the latest scan.`;
+      if (els.whalePressureText) els.whalePressureText.textContent = `${formatNumber(totalWhale, 0)} AX moved across ${items.length} whale-sized transfers in the latest scan.`;
     }
 
     function updateAISignals(){
-      const { price, change, liquidity, volume } = latestDexSnapshot;
+      const { change, liquidity, volume } = latestDexSnapshot;
       const whaleCount = lastWhaleTransfers.length;
       let score = 72;
       if (liquidity > 10000) score += 8;
@@ -1474,14 +1451,20 @@
       if (score >= 78) { tone = 'good'; label = 'Healthy'; }
       else if (score < 55) { tone = 'alert'; label = 'High Risk'; }
 
-      els.riskPill.className = `signal-pill ${tone}`;
-      els.riskPill.textContent = label;
-      els.riskScoreText.textContent = `AI score ${score}/100 based on liquidity, volume, 24h move, and whale activity.`;
+      if (els.riskPill) {
+        els.riskPill.className = `signal-pill ${tone}`;
+        els.riskPill.textContent = label;
+      }
+      if (els.riskScoreText) {
+        els.riskScoreText.textContent = `AI score ${score}/100 based on liquidity, volume, 24h move, and whale activity.`;
+      }
 
       const momentum = change > 3 ? 'Momentum is positive with buyers in control.' :
-                       change < -3 ? 'Momentum is weak and needs caution.' :
-                       'Momentum is balanced with no strong directional edge.';
-      els.momentumText.textContent = `${momentum} 24H change: ${change > 0 ? '+' : ''}${formatNumber(change, 2)}%.`;
+        change < -3 ? 'Momentum is weak and needs caution.' :
+        'Momentum is balanced with no strong directional edge.';
+      if (els.momentumText) {
+        els.momentumText.textContent = `${momentum} 24H change: ${change > 0 ? '+' : ''}${formatNumber(change, 2)}%.`;
+      }
     }
 
     async function fetchTransferStream(){
@@ -1526,6 +1509,7 @@
         renderWhaleList(lastWhaleTransfers);
         updateAISignals();
       } catch (err) {
+        console.warn('Transfer stream sync failed:', err);
         if (els.txStream) {
           els.txStream.innerHTML = '<div class="tx-item"><div class="tx-meta"><strong>Transfer stream unavailable</strong><span>Public RPC did not return recent logs.</span></div><div class="tx-amount">—</div></div>';
         }
