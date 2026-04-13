@@ -1692,7 +1692,6 @@
       const bnb = Number(amountInput?.value || 0);
       const ax = bnb * rate;
       if (previewNode) previewNode.textContent = `${formatNumber(ax, 2)} AX`;
-      updatePresaleSuccessMessage(ax, round);
     }
 
     async function sendPresaleTransaction(round = 1){
