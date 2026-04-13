@@ -162,6 +162,39 @@
     .btn:active{transform:translateY(0) scale(0.985)}
     .btn-secondary{color:var(--text);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);box-shadow:none}
     .btn-secondary:hover{background:rgba(255,255,255,.08)}
+    #walletBtn{
+      color:#eef7ff;
+      background:
+        linear-gradient(180deg, rgba(78,216,255,.28), rgba(36,98,255,.20)),
+        linear-gradient(90deg, #183e9f 0%, #1f56d8 35%, #3178ff 68%, #4ed8ff 100%);
+      border:1px solid rgba(120,195,255,.34);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.08),
+        0 0 22px rgba(78,216,255,.14),
+        0 16px 40px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    #walletBtn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(140deg, rgba(255,255,255,.10), transparent 28%, transparent 68%, rgba(78,216,255,.14)),
+        radial-gradient(circle at 100% 100%, rgba(78,216,255,.12), transparent 26%);
+      pointer-events:none;
+    }
+    #walletBtn span{position:relative;z-index:1}
+    #walletBtn:hover{
+      background:
+        linear-gradient(180deg, rgba(90,226,255,.34), rgba(48,118,255,.24)),
+        linear-gradient(90deg, #1b46b2 0%, #2361ea 35%, #3e85ff 68%, #67e4ff 100%);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.10),
+        0 0 28px rgba(78,216,255,.20),
+        0 22px 50px rgba(0,0,0,.36);
+    }
     .btn-buy{color:#fff;background:linear-gradient(90deg, var(--buy1), var(--buy2), var(--buy3));box-shadow:0 14px 34px rgba(255,104,74,.35);border:1px solid rgba(255,255,255,.12)}
 
     #presale,#presaleRound2{position:relative;overflow:hidden;border-color:rgba(255,201,92,.20);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(255,201,92,.08)}
@@ -771,6 +804,42 @@
       animation:salesSignalPulse 2.2s ease-in-out infinite;
       flex-shrink:0;
     }
+    .sales-date-badge-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top:2px;
+      margin-bottom:2px;
+    }
+    .sales-date-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:11px 18px;
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,201,92,.16), rgba(255,140,31,.12));
+      border:1px solid rgba(255,201,92,.24);
+      box-shadow:0 0 18px rgba(255,201,92,.08), inset 0 1px 0 rgba(255,255,255,.08);
+      color:#fff3d2;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .sales-date-badge strong{
+      color:#ffffff;
+      font-size:11px;
+      letter-spacing:.14em;
+    }
+    .sales-date-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(180deg, #ffc95c, #ff8a1f);
+      box-shadow:0 0 10px rgba(255,201,92,.55), 0 0 20px rgba(255,138,31,.25);
+      animation:salesSignalPulse 2.2s ease-in-out infinite;
+      flex-shrink:0;
+    }
     .sales-subtle-note{
       display:flex;
       align-items:center;
@@ -909,7 +978,7 @@
       </div>
 
       <div class="nav-actions">
-        <button class="btn btn-secondary" id="walletBtn" type="button">Connect Wallet</button>
+        <button class="btn btn-secondary" id="walletBtn" type="button"><span>Connect Wallet</span></button>
       </div>
     </nav>
   </div>
@@ -1006,6 +1075,7 @@
           <div class="featured-sales-head reveal">
             <div class="eyebrow">Featured Sales</div>
             <h2 class="gradient-title">Round Access</h2>
+            <div class="sales-date-badge-wrap"><div class="sales-date-badge"><span class="sales-date-dot"></span><span>Sale Start Date <strong>15.04.2026</strong></span></div></div>
               <div class="sales-signal-wrap"><div class="sales-signal"><span class="sales-signal-dot"></span><span>Early access activity detected</span></div></div>
           </div>
 
