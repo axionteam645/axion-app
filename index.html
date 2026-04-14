@@ -205,11 +205,15 @@
     }
     .btn-buy{color:#fff;background:linear-gradient(90deg, var(--buy1), var(--buy2), var(--buy3));box-shadow:0 14px 34px rgba(255,104,74,.35);border:1px solid rgba(255,255,255,.12)}
 
-    #presale,#presaleRound2{position:relative;overflow:hidden;border-color:rgba(255,201,92,.20);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(255,201,92,.08)}
-    #presale::after,#presaleRound2::after{content:"";position:absolute;inset:auto -12% -38% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.18), rgba(255,140,31,.08), transparent 68%);filter:blur(12px);pointer-events:none;animation:presaleGlow 4.8s ease-in-out infinite}
+    #presale,#presaleRound2{position:relative;overflow:hidden}
+    #presale{background:linear-gradient(180deg, rgba(255,201,92,.16), rgba(255,140,31,.11)), linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));border-color:rgba(255,201,92,.24);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(255,201,92,.10)}
+    #presaleRound2{background:linear-gradient(180deg, rgba(78,216,255,.15), rgba(168,92,255,.11)), linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));border-color:rgba(95,140,255,.24);box-shadow:0 22px 65px rgba(0,0,0,.46),0 0 28px rgba(95,140,255,.10)}
+    #presale::after{content:"";position:absolute;inset:auto -12% -38% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.18), rgba(255,140,31,.08), transparent 68%);filter:blur(12px);pointer-events:none;animation:presaleGlow 4.8s ease-in-out infinite}
+    #presaleRound2::after{content:"";position:absolute;inset:auto -12% -38% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(78,216,255,.18), rgba(168,92,255,.10), transparent 68%);filter:blur(12px);pointer-events:none;animation:presaleGlow 4.8s ease-in-out infinite}
     #presale .tag,#presaleRound2 .tag{position:relative;overflow:hidden;background:linear-gradient(90deg, rgba(255,201,92,.16), rgba(255,140,31,.12));border-color:rgba(255,201,92,.26);box-shadow:0 0 20px rgba(255,201,92,.10)}
     #presale .tag::after,#presaleRound2 .tag::after{content:"";position:absolute;top:0;left:-38%;width:36%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);transform:skewX(-24deg);animation:tagSweep 3.4s linear infinite}
-    #presale:hover,#presaleRound2:hover{transform:translateY(-6px);border-color:rgba(255,201,92,.34);box-shadow:0 26px 75px rgba(0,0,0,.50),0 0 32px rgba(255,201,92,.14),0 0 52px rgba(255,104,74,.10)}
+    #presale:hover{transform:translateY(-6px);border-color:rgba(255,201,92,.36);box-shadow:0 26px 75px rgba(0,0,0,.50),0 0 32px rgba(255,201,92,.16),0 0 52px rgba(255,104,74,.10)}
+    #presaleRound2:hover{transform:translateY(-6px);border-color:rgba(95,140,255,.34);box-shadow:0 26px 75px rgba(0,0,0,.50),0 0 32px rgba(95,140,255,.16),0 0 52px rgba(168,92,255,.12)}
     #presale .presale-row:first-child,#presaleRound2 .presale-row:first-child{background:linear-gradient(90deg, rgba(255,201,92,.14), rgba(255,140,31,.10));border-color:rgba(255,201,92,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
     .btn-buy{position:relative;overflow:hidden;background-size:200% 100%;animation:buyGradientFlow 4s linear infinite, buyPulse 2.6s ease-in-out infinite}
     .btn-buy::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.24) 48%, transparent 76%);transform:translateX(-140%);animation:buyShine 2.8s ease-in-out infinite}
