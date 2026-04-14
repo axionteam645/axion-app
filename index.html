@@ -336,7 +336,7 @@
     @media (max-width: 640px){.page-card-logo img{max-width:260px}}
 
     
-    .listings-expansion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+    .listings-expansion-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
     .listing-expansion-card{height:100%}
     .listings-story{
       margin-top:18px;
@@ -351,14 +351,19 @@
     }
     .exchange-target-list{display:grid;gap:12px;margin-top:18px}
     .exchange-target-item{
+      display:grid;
+      gap:10px;
+      padding:16px 16px 15px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.028));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 12px 28px rgba(0,0,0,.16);
+    }
+    .exchange-target-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
-      padding:14px 16px;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
+      gap:12px;
     }
     .exchange-target-item strong{
       display:block;
@@ -366,7 +371,12 @@
       color:#fff;
       letter-spacing:.04em;
     }
-    .listing-status-badge,.listing-hope-badge{
+    .exchange-target-note{
+      color:#bcd0f4;
+      font-size:12px;
+      line-height:1.65;
+    }
+    .listing-status-badge,.listing-hope-badge,.listing-dex-badge{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -390,6 +400,12 @@
       background:rgba(78,216,255,.12);
       border:1px solid rgba(78,216,255,.22);
       box-shadow:0 0 18px rgba(78,216,255,.08);
+    }
+    .listing-dex-badge{
+      color:#ddfff3;
+      background:rgba(67,243,177,.12);
+      border:1px solid rgba(67,243,177,.24);
+      box-shadow:0 0 18px rgba(67,243,177,.08);
     }
     .listing-proof-box{
       display:grid;
@@ -417,9 +433,12 @@
       background:linear-gradient(135deg, #4ed8ff, #a85cff, #ff5cb8);
       box-shadow:0 0 12px rgba(78,216,255,.28);
     }
+    @media (max-width: 1180px){
+      .listings-expansion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
     @media (max-width: 940px){
       .listings-expansion-grid{grid-template-columns:1fr}
-      .exchange-target-item{align-items:flex-start;flex-direction:column}
+      .exchange-target-top{align-items:flex-start;flex-direction:column}
     }
 
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
@@ -1439,11 +1458,26 @@
             </div>
 
             <div class="exchange-target-list">
-              <div class="exchange-target-item"><strong>LBANK</strong><span class="listing-status-badge">Under Review</span></div>
-              <div class="exchange-target-item"><strong>XT.COM</strong><span class="listing-status-badge">Under Review</span></div>
-              <div class="exchange-target-item"><strong>GATE</strong><span class="listing-status-badge">Under Review</span></div>
-              <div class="exchange-target-item"><strong>MEXC</strong><span class="listing-status-badge">Under Review</span></div>
-              <div class="exchange-target-item"><strong>BYBIT</strong><span class="listing-status-badge">Under Review</span></div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>LBANK</strong><span class="listing-status-badge">Under Review</span></div>
+                <div class="exchange-target-note">Liquidity alignment ongoing for broader exchange readiness.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>XT.COM</strong><span class="listing-status-badge">Preparation Stage</span></div>
+                <div class="exchange-target-note">Regional visibility and growth potential remain in focus.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>GATE</strong><span class="listing-status-badge">Expansion Focus</span></div>
+                <div class="exchange-target-note">Market access planning continues alongside listing preparation.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>MEXC</strong><span class="listing-status-badge">Target Market</span></div>
+                <div class="exchange-target-note">Trading reach and discovery strategy stay actively mapped.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>BYBIT</strong><span class="listing-status-badge">Under Review</span></div>
+                <div class="exchange-target-note">Exchange fit and visibility planning remain under evaluation.</div>
+              </div>
             </div>
 
             <div class="listing-proof-box">
@@ -1463,17 +1497,71 @@
             </div>
 
             <div class="exchange-target-list">
-              <div class="exchange-target-item"><strong>Kraken</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
-              <div class="exchange-target-item"><strong>Coinbase</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
-              <div class="exchange-target-item"><strong>Binance</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
-              <div class="exchange-target-item"><strong>OKX</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
-              <div class="exchange-target-item"><strong>KuCoin</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>Kraken</strong><span class="listing-hope-badge">Tier-1 Reach</span></div>
+                <div class="exchange-target-note">Broader global credibility potential supports long-term reach.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>Coinbase</strong><span class="listing-hope-badge">Visibility Potential</span></div>
+                <div class="exchange-target-note">Premium discoverability value makes this a strategic growth target.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>Binance</strong><span class="listing-hope-badge">Global Positioning</span></div>
+                <div class="exchange-target-note">Top-tier liquidity ambition stays aligned with ecosystem expansion.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>OKX</strong><span class="listing-hope-badge">Market Depth</span></div>
+                <div class="exchange-target-note">Cross-market access potential strengthens long-range exchange reach.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>KuCoin</strong><span class="listing-hope-badge">Growth Channel</span></div>
+                <div class="exchange-target-note">Community-facing visibility and listing opportunity remain attractive.</div>
+              </div>
             </div>
 
             <div class="listing-proof-box">
               <div class="listing-proof-line">Broader market access planning ongoing</div>
               <div class="listing-proof-line">Visibility and discovery strategy expanding</div>
               <div class="listing-proof-line">Global exchange positioning remains active</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal listing-expansion-card">
+          <div class="card-inner">
+            <div class="tag">DEX Presence</div>
+            <div class="title-row">
+              <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M6 12h12"/><path d="M12 6v12"/><circle cx="12" cy="12" r="9"/></svg></div>
+              <h3>DEX Growth</h3>
+            </div>
+
+            <div class="exchange-target-list">
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>PancakeSwap</strong><span class="listing-dex-badge">Live Access</span></div>
+                <div class="exchange-target-note">Primary swap visibility remains central to on-chain growth.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>DexScreener</strong><span class="listing-dex-badge">Market Tracking</span></div>
+                <div class="exchange-target-note">Real-time chart exposure supports broader token discovery.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>DEXTools</strong><span class="listing-dex-badge">Analytics Reach</span></div>
+                <div class="exchange-target-note">Trading analytics visibility helps strengthen community awareness.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>On-Chain Visibility</strong><span class="listing-dex-badge">Signal Building</span></div>
+                <div class="exchange-target-note">Wallet activity and network presence remain key growth signals.</div>
+              </div>
+              <div class="exchange-target-item">
+                <div class="exchange-target-top"><strong>Liquidity Depth Growth</strong><span class="listing-dex-badge">Expansion Focus</span></div>
+                <div class="exchange-target-note">Stronger pool depth supports healthier market access over time.</div>
+              </div>
+            </div>
+
+            <div class="listing-proof-box">
+              <div class="listing-proof-line">DEX visibility strengthening phase remains active</div>
+              <div class="listing-proof-line">On-chain discovery channels continue expanding</div>
+              <div class="listing-proof-line">Liquidity growth planning stays in motion</div>
             </div>
           </div>
         </article>
