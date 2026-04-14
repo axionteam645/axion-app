@@ -248,13 +248,13 @@
       -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
     }
     .market-ticker-track{
-      display:inline-flex;
+      display:flex;
       width:max-content;
       min-width:max-content;
-      animation:tickerScroll 34s linear infinite;
+      flex-wrap:nowrap;
+      animation:tickerScrollLoop 34s linear infinite;
       will-change:transform;
       transform:translate3d(0,0,0);
-      --ticker-loop-width:50%;
     }
     .market-ticker:hover .market-ticker-track{animation-play-state:paused}
     .market-ticker-group{
@@ -719,7 +719,7 @@
     @keyframes aiScanMove{0%,100%{top:8%;opacity:.18}50%{top:78%;opacity:.55}}
     @keyframes aiNodePulse{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(1.35);opacity:1}}
 
-    @keyframes tickerScroll{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(calc(-1 * var(--ticker-loop-width, 50%)),0,0)}}
+    @keyframes tickerScrollLoop{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
     @keyframes marketTickerShine{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
     @keyframes marketTickerSweep{0%,14%{transform:translateX(-150%)}55%,100%{transform:translateX(150%)}}
     @keyframes tickerPulseDot{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
@@ -841,6 +841,9 @@
       .market-ticker-track-wrap{
         mask-image:none;
         -webkit-mask-image:none;
+      }
+      .market-ticker-track{
+        animation-duration:22s;
       }
       .market-ticker-inner{min-height:52px;padding:0 10px;gap:10px}
       .market-ticker-badge{padding:9px 11px}
@@ -2725,12 +2728,8 @@
 
     function updateTickerLoopWidth(){
       const track = document.getElementById('marketTickerTrack');
-      const groupA = document.getElementById('marketTickerGroupA');
-      if (!track || !groupA) return;
-      const loopWidth = Math.max(groupA.scrollWidth, groupA.getBoundingClientRect().width || 0);
-      if (loopWidth > 0) {
-        track.style.setProperty('--ticker-loop-width', loopWidth + 'px');
-      }
+      if (!track) return;
+      track.style.removeProperty('--ticker-loop-width');
     }
 
     let marketTickerSocket = null;
