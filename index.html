@@ -335,7 +335,68 @@
     .page-card-logo img{max-width:min(100%,360px);width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28))}
     @media (max-width: 640px){.page-card-logo img{max-width:260px}}
 
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+    
+    .listings-expansion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+    .listing-expansion-card{height:100%}
+    .listings-story{
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      color:#dce7ff;
+      line-height:1.8;
+      font-size:15px;
+      box-shadow:0 14px 34px rgba(0,0,0,.22);
+    }
+    .exchange-target-list{display:grid;gap:12px;margin-top:18px}
+    .exchange-target-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .exchange-target-item strong{
+      display:block;
+      font-size:14px;
+      color:#fff;
+      letter-spacing:.04em;
+    }
+    .listing-status-badge,.listing-hope-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      text-align:center;
+    }
+    .listing-status-badge{
+      color:#fff3d1;
+      background:rgba(255,201,92,.14);
+      border:1px solid rgba(255,201,92,.28);
+      box-shadow:0 0 18px rgba(255,201,92,.08);
+    }
+    .listing-hope-badge{
+      color:#dff3ff;
+      background:rgba(78,216,255,.12);
+      border:1px solid rgba(78,216,255,.22);
+      box-shadow:0 0 18px rgba(78,216,255,.08);
+    }
+    @media (max-width: 940px){
+      .listings-expansion-grid{grid-template-columns:1fr}
+      .exchange-target-item{align-items:flex-start;flex-direction:column}
+    }
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
 
     .footer{padding:34px 0 54px;border-top:1px solid rgba(255,255,255,.06);margin-top:90px}
@@ -1033,6 +1094,7 @@
         <a href="#walletLite">Wallet Lite</a>
         <a href="#liveData">Live Data</a>
         <a href="#pancakeSwap">PancakeSwap</a>
+        <a href="#listingsExpansion">CEX / DEX Expansion</a>
         <a href="#tokenomics">Tokenomic</a>
         
       </div>
@@ -1323,6 +1385,60 @@
             </article>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="listingsExpansion">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Listings</div>
+          <h2 class="gradient-title">CEX / DEX Expansion</h2>
+        </div>
+      </div>
+
+      <div class="listings-story reveal">
+        AXION is preparing for its next growth phase with a broader market access strategy focused on stronger visibility, deeper liquidity pathways, and a wider global user reach. The next step is simple: expand from current traction into larger exchange ecosystems and position AXION for stronger discovery across both centralized and decentralized markets.
+      </div>
+
+      <div class="listings-expansion-grid">
+        <article class="card reveal listing-expansion-card">
+          <div class="card-inner">
+            <div class="tag">Growth Route</div>
+            <div class="title-row">
+              <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M4 16l5-5 4 4 7-7"/><path d="M14 8h6v6"/></svg></div>
+              <h3>CEX Target</h3>
+            </div>
+
+            <div class="exchange-target-list">
+              <div class="exchange-target-item"><strong>LBANK</strong><span class="listing-status-badge">Loading</span></div>
+              <div class="exchange-target-item"><strong>XT.COM</strong><span class="listing-status-badge">Loading</span></div>
+              <div class="exchange-target-item"><strong>GATE</strong><span class="listing-status-badge">Loading</span></div>
+              <div class="exchange-target-item"><strong>MEXC</strong><span class="listing-status-badge">Loading</span></div>
+              <div class="exchange-target-item"><strong>BYBIT</strong><span class="listing-status-badge">Loading</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal listing-expansion-card">
+          <div class="card-inner">
+            <div class="tag">Global Reach</div>
+            <div class="title-row">
+              <div class="icon-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18"/><path d="M12 3a14.5 14.5 0 0 0 0 18"/></svg></div>
+              <h3>Global Reach</h3>
+            </div>
+
+            <div class="exchange-target-list">
+              <div class="exchange-target-item"><strong>Kraken</strong><span class="listing-hope-badge">Future Access Potential</span></div>
+              <div class="exchange-target-item"><strong>Coinbase</strong><span class="listing-hope-badge">Built for Broader Reach</span></div>
+              <div class="exchange-target-item"><strong>Binance</strong><span class="listing-hope-badge">Momentum Can Open Doors</span></div>
+              <div class="exchange-target-item"><strong>OKX</strong><span class="listing-hope-badge">Scaling Toward Global Visibility</span></div>
+              <div class="exchange-target-item"><strong>KuCoin</strong><span class="listing-hope-badge">Positioned for Wider Exposure</span></div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
