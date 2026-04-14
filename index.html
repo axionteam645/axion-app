@@ -391,6 +391,32 @@
       border:1px solid rgba(78,216,255,.22);
       box-shadow:0 0 18px rgba(78,216,255,.08);
     }
+    .listing-proof-box{
+      display:grid;
+      gap:10px;
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .listing-proof-line{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#cfe0ff;
+      font-size:13px;
+      line-height:1.65;
+    }
+    .listing-proof-line::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      flex-shrink:0;
+      background:linear-gradient(135deg, #4ed8ff, #a85cff, #ff5cb8);
+      box-shadow:0 0 12px rgba(78,216,255,.28);
+    }
     @media (max-width: 940px){
       .listings-expansion-grid{grid-template-columns:1fr}
       .exchange-target-item{align-items:flex-start;flex-direction:column}
@@ -1406,18 +1432,24 @@
       <div class="listings-expansion-grid">
         <article class="card reveal listing-expansion-card">
           <div class="card-inner">
-            <div class="tag">Growth Route</div>
+            <div class="tag">Expansion Phase</div>
             <div class="title-row">
               <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M4 16l5-5 4 4 7-7"/><path d="M14 8h6v6"/></svg></div>
               <h3>CEX Target</h3>
             </div>
 
             <div class="exchange-target-list">
-              <div class="exchange-target-item"><strong>LBANK</strong><span class="listing-status-badge">Loading</span></div>
-              <div class="exchange-target-item"><strong>XT.COM</strong><span class="listing-status-badge">Loading</span></div>
-              <div class="exchange-target-item"><strong>GATE</strong><span class="listing-status-badge">Loading</span></div>
-              <div class="exchange-target-item"><strong>MEXC</strong><span class="listing-status-badge">Loading</span></div>
-              <div class="exchange-target-item"><strong>BYBIT</strong><span class="listing-status-badge">Loading</span></div>
+              <div class="exchange-target-item"><strong>LBANK</strong><span class="listing-status-badge">Under Review</span></div>
+              <div class="exchange-target-item"><strong>XT.COM</strong><span class="listing-status-badge">Under Review</span></div>
+              <div class="exchange-target-item"><strong>GATE</strong><span class="listing-status-badge">Under Review</span></div>
+              <div class="exchange-target-item"><strong>MEXC</strong><span class="listing-status-badge">Under Review</span></div>
+              <div class="exchange-target-item"><strong>BYBIT</strong><span class="listing-status-badge">Under Review</span></div>
+            </div>
+
+            <div class="listing-proof-box">
+              <div class="listing-proof-line">Exchange listing preparations ongoing</div>
+              <div class="listing-proof-line">Liquidity and volume strategy in progress</div>
+              <div class="listing-proof-line">Partnership outreach active</div>
             </div>
           </div>
         </article>
@@ -1431,11 +1463,17 @@
             </div>
 
             <div class="exchange-target-list">
-              <div class="exchange-target-item"><strong>Kraken</strong><span class="listing-hope-badge">Future Access Potential</span></div>
-              <div class="exchange-target-item"><strong>Coinbase</strong><span class="listing-hope-badge">Built for Broader Reach</span></div>
-              <div class="exchange-target-item"><strong>Binance</strong><span class="listing-hope-badge">Momentum Can Open Doors</span></div>
-              <div class="exchange-target-item"><strong>OKX</strong><span class="listing-hope-badge">Scaling Toward Global Visibility</span></div>
-              <div class="exchange-target-item"><strong>KuCoin</strong><span class="listing-hope-badge">Positioned for Wider Exposure</span></div>
+              <div class="exchange-target-item"><strong>Kraken</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
+              <div class="exchange-target-item"><strong>Coinbase</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
+              <div class="exchange-target-item"><strong>Binance</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
+              <div class="exchange-target-item"><strong>OKX</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
+              <div class="exchange-target-item"><strong>KuCoin</strong><span class="listing-hope-badge">Targeting Tier-1 Liquidity</span></div>
+            </div>
+
+            <div class="listing-proof-box">
+              <div class="listing-proof-line">Broader market access planning ongoing</div>
+              <div class="listing-proof-line">Visibility and discovery strategy expanding</div>
+              <div class="listing-proof-line">Global exchange positioning remains active</div>
             </div>
           </div>
         </article>
