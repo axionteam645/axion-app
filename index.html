@@ -340,7 +340,15 @@
 
     .footer{padding:34px 0 54px;border-top:1px solid rgba(255,255,255,.06);margin-top:90px}
     .footer-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap;color:#c7d5f2;font-size:14px;font-weight:700}
+    .footer-links{display:flex;gap:14px;flex-wrap:wrap;color:#c7d5f2;font-size:14px;font-weight:700}
+    .footer-links.footer-badges{justify-content:center;align-items:center;width:100%}
+    .footer-links.footer-badges a{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;position:relative;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+    .footer-links.footer-badges a::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg, rgba(255,255,255,.12), transparent 30%, transparent 70%, rgba(255,255,255,.08));pointer-events:none}
+    .footer-links.footer-badges a:hover{transform:translateY(-2px)}
+    .footer-links.footer-badges .footer-badge-app{color:#06111f;background:linear-gradient(90deg, #4ed8ff, #5f8cff, #a85cff);box-shadow:0 0 14px rgba(78,216,255,.28), 0 0 26px rgba(168,92,255,.16)}
+    .footer-links.footer-badges .footer-badge-home{color:#dff3ff;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);box-shadow:0 0 12px rgba(255,255,255,.05)}
+    .footer-links.footer-badges .footer-badge-presale{color:#1b1000;background:linear-gradient(90deg, #ffc95c, #ff8a1f);box-shadow:0 0 12px rgba(255,201,92,.22), 0 0 24px rgba(255,138,31,.14)}
+
 
     .ai-grid-overlay,.ai-data-stream,.ai-dashboard-hud,.ai-corner-brackets{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
     .ai-grid-overlay{opacity:.5}
@@ -1397,11 +1405,10 @@
             
           </div>
         </div>
-        <div class="footer-links">
-          <a href="#hero">Home</a>
-                    <a href="#presale">Presale</a>
-          <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">X</a>
+        <div class="footer-links footer-badges">
+          <a href="https://app.axiondefi.com" class="footer-badge-app">AXION APP</a>
+          <a href="#hero" class="footer-badge-home">Home</a>
+          <a href="#presale" class="footer-badge-presale">Presale</a>
         </div>
       </div>
     </div>
