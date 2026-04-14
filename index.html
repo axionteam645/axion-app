@@ -135,6 +135,220 @@
     .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
     .section-head h2{margin:14px 0 0;font-size:clamp(32px,4vw,60px);line-height:1;letter-spacing:-.04em}
 
+
+    .market-ticker{
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:
+        linear-gradient(180deg, rgba(9,16,34,.98), rgba(5,10,22,.94)),
+        linear-gradient(90deg, rgba(78,216,255,.10), rgba(95,140,255,.08), rgba(168,92,255,.08), rgba(255,92,184,.06));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        inset 0 -1px 0 rgba(255,255,255,.03),
+        0 14px 34px rgba(0,0,0,.22),
+        0 0 28px rgba(78,216,255,.06);
+      isolation:isolate;
+    }
+    .market-ticker::before,
+    .market-ticker::after{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:96px;
+      z-index:3;
+      pointer-events:none;
+    }
+    .market-ticker::before{
+      left:0;
+      background:linear-gradient(90deg, rgba(5,10,22,1), rgba(5,10,22,.74), rgba(5,10,22,0));
+    }
+    .market-ticker::after{
+      right:0;
+      background:linear-gradient(270deg, rgba(5,10,22,1), rgba(5,10,22,.74), rgba(5,10,22,0));
+    }
+    .market-ticker .market-ticker-glow,
+    .market-ticker .market-ticker-shine{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .market-ticker .market-ticker-glow{
+      background:
+        radial-gradient(circle at 14% 50%, rgba(78,216,255,.14), transparent 22%),
+        radial-gradient(circle at 50% 0%, rgba(255,201,92,.10), transparent 18%),
+        radial-gradient(circle at 88% 50%, rgba(168,92,255,.14), transparent 24%);
+      filter:blur(10px);
+      opacity:.95;
+    }
+    .market-ticker .market-ticker-shine{
+      background:linear-gradient(105deg, transparent 20%, rgba(255,255,255,.10) 48%, transparent 74%);
+      transform:translateX(-120%);
+      animation:marketTickerShine 7.5s linear infinite;
+      opacity:.7;
+    }
+    .market-ticker-inner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-height:58px;
+      padding:0 14px;
+    }
+    .market-ticker-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      min-width:max-content;
+      padding:11px 14px;
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 20px rgba(78,216,255,.08);
+      backdrop-filter:blur(10px);
+    }
+    .market-ticker-badge::before{
+      content:"";
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:linear-gradient(135deg, #43f3b1, #4ed8ff);
+      box-shadow:0 0 0 4px rgba(67,243,177,.10), 0 0 18px rgba(67,243,177,.34);
+      animation:tickerPulseDot 2.2s ease-in-out infinite;
+      flex-shrink:0;
+    }
+    .market-ticker-badge strong{
+      display:block;
+      font-size:10px;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#f1f7ff;
+      margin-bottom:4px;
+    }
+    .market-ticker-badge span{
+      display:block;
+      font-size:11px;
+      line-height:1.2;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#9ed7ff;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .market-ticker-track-wrap{
+      position:relative;
+      flex:1;
+      min-width:0;
+      overflow:hidden;
+      mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .market-ticker-track{
+      display:flex;
+      width:max-content;
+      min-width:100%;
+      animation:tickerScroll 34s linear infinite;
+      will-change:transform;
+    }
+    .market-ticker:hover .market-ticker-track{animation-play-state:paused}
+    .market-ticker-group{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:11px 18px;
+      flex-shrink:0;
+    }
+    .market-ticker-item{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      min-height:38px;
+      padding:9px 14px 9px 13px;
+      border-radius:999px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)),
+        linear-gradient(90deg, rgba(78,216,255,.05), rgba(168,92,255,.04));
+      border:1px solid rgba(255,255,255,.09);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        inset 0 -1px 0 rgba(255,255,255,.02),
+        0 10px 24px rgba(0,0,0,.16),
+        0 0 18px rgba(78,216,255,.04);
+      white-space:nowrap;
+      backdrop-filter:blur(10px);
+      overflow:hidden;
+    }
+    .market-ticker-item::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(135deg, #4ed8ff, #a85cff);
+      box-shadow:0 0 14px rgba(78,216,255,.30);
+      flex-shrink:0;
+    }
+    .market-ticker-item::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 24%, rgba(255,255,255,.11) 50%, transparent 76%);
+      transform:translateX(-150%);
+      animation:marketTickerSweep 6.2s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .market-ticker-symbol{
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#e9f3ff;
+      text-shadow:0 0 10px rgba(78,216,255,.10);
+    }
+    .market-ticker-value{
+      font-size:13px;
+      font-weight:800;
+      color:#ffffff;
+      letter-spacing:.01em;
+    }
+    .market-ticker-change{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:58px;
+      min-height:24px;
+      padding:4px 9px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.06em;
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(8px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .market-ticker-change.up{
+      color:#ddfff2;
+      background:linear-gradient(180deg, rgba(67,243,177,.18), rgba(24,128,84,.14));
+      border-color:rgba(67,243,177,.26);
+      box-shadow:0 0 16px rgba(67,243,177,.10), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .market-ticker-change.down{
+      color:#ffe3ea;
+      background:linear-gradient(180deg, rgba(255,92,120,.18), rgba(154,31,54,.14));
+      border-color:rgba(255,92,120,.24);
+      box-shadow:0 0 16px rgba(255,92,120,.08), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .market-ticker-change.neutral{
+      color:#e4f6ff;
+      background:linear-gradient(180deg, rgba(78,216,255,.14), rgba(95,140,255,.10));
+      border-color:rgba(78,216,255,.20);
+      box-shadow:0 0 16px rgba(78,216,255,.08), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
     .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(4,9,20,.66);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{width:min(calc(100% - 32px), var(--max));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:82px}
     .brand{display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:0;padding:7px 14px 7px 8px;border-radius:999px;background:linear-gradient(90deg, rgba(255,201,92,.16), rgba(255,140,31,.12));border:1px solid rgba(255,201,92,.26);box-shadow:0 0 18px rgba(255,201,92,.08), inset 0 1px 0 rgba(255,255,255,.08);position:relative;overflow:hidden}
@@ -502,6 +716,10 @@
     @keyframes aiScanMove{0%,100%{top:8%;opacity:.18}50%{top:78%;opacity:.55}}
     @keyframes aiNodePulse{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(1.35);opacity:1}}
 
+    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @keyframes marketTickerShine{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+    @keyframes marketTickerSweep{0%,14%{transform:translateX(-150%)}55%,100%{transform:translateX(150%)}}
+    @keyframes tickerPulseDot{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
     @keyframes buyGradientFlow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
     @keyframes buyShine{0%,18%{transform:translateX(-140%)}55%,100%{transform:translateX(160%)}}
     @keyframes buyPulse{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1px) scale(1.018)}}
@@ -589,6 +807,11 @@
       .hero-feature-cards,.hero-actions-equal{grid-template-columns:1fr}
       .hero-copy h1{font-size:48px}
       .hero-market-bar{grid-template-columns:1fr 1fr}
+      .market-ticker::before,.market-ticker::after{width:34px}
+      .market-ticker-group{padding:9px 12px}
+      .market-ticker-item{padding:7px 10px;gap:8px}
+      .market-ticker-value{font-size:12px}
+      .market-ticker-track{animation-duration:28s}
     }
     @media (max-width: 640px){
       .container{width:min(calc(100% - 20px), var(--max))}
@@ -612,6 +835,15 @@
       .footer-row{align-items:flex-start}
       .footer-links{gap:10px 14px;font-size:12px;line-height:1.6;width:100%;flex-wrap:wrap}
       .hero-market-bar{grid-template-columns:1fr}
+      .market-ticker-inner{min-height:52px;padding:0 10px;gap:10px}
+      .market-ticker-badge{padding:9px 11px}
+      .market-ticker-badge strong{font-size:9px}
+      .market-ticker-badge span{font-size:10px}
+      .market-ticker-group{gap:10px;padding:9px 14px}
+      .market-ticker-item{min-height:34px;padding:8px 12px 8px 11px}
+      .market-ticker-symbol{font-size:10px}
+      .market-ticker-value{font-size:12px}
+      .market-ticker-change{min-width:52px;font-size:10px}
       .wallet-identity-bar{flex-direction:column;align-items:flex-start}
       .card-stack-top-logo > div[style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr !important;}
       .wallet-badge{width:100%}
@@ -1163,6 +1395,33 @@
   <div class="ai-corner-brackets"></div>
 
   <div class="nav-wrap">
+  <div class="market-ticker" aria-label="Crypto market ticker">
+      <div class="market-ticker-glow"></div>
+      <div class="market-ticker-shine"></div>
+      <div class="market-ticker-inner">
+        <div class="market-ticker-badge" aria-hidden="true">
+          <div>
+            <strong>Live Market</strong>
+            <span>Premium Feed</span>
+          </div>
+        </div>
+        <div class="market-ticker-track-wrap">
+          <div class="market-ticker-track" id="marketTickerTrack">
+            <div class="market-ticker-group" id="marketTickerGroupA">
+              <div class="market-ticker-item"><span class="market-ticker-symbol">BTC</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">ETH</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">BNB</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">SOL</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">AVAX</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">TOTAL MCAP</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">LIVE</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">BTC DOM</span><span class="market-ticker-value">--</span><span class="market-ticker-change neutral">LIVE</span></div>
+              <div class="market-ticker-item"><span class="market-ticker-symbol">24H VOL</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">LIVE</span></div>
+            </div>
+            <div class="market-ticker-group" id="marketTickerGroupB" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <nav class="nav">
       <a class="brand open-swap-btn" href="https://www.axiondefi.com/" aria-label="Go to AXION website">
         <div class="brand-mark">
@@ -2407,6 +2666,167 @@
       revealEls.forEach(el => observer.observe(el));
     }
 
+
+    function formatTickerMoney(value){
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return '$--';
+      const amount = Number(value);
+      if (amount >= 1e12) return '$' + (amount / 1e12).toFixed(2) + 'T';
+      if (amount >= 1e9) return '$' + (amount / 1e9).toFixed(2) + 'B';
+      if (amount >= 1e6) return '$' + (amount / 1e6).toFixed(2) + 'M';
+      if (amount >= 1000) return '$' + amount.toLocaleString(undefined, { maximumFractionDigits: 0 });
+      if (amount >= 1) return '$' + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return '$' + amount.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 6 });
+    }
+
+    function formatTickerPercent(value){
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return '--';
+      const amount = Number(value);
+      const sign = amount > 0 ? '+' : '';
+      return sign + amount.toFixed(2) + '%';
+    }
+
+    function tickerChangeClass(value){
+      const amount = Number(value);
+      if (Number.isNaN(amount)) return 'neutral';
+      if (amount > 0) return 'up';
+      if (amount < 0) return 'down';
+      return 'neutral';
+    }
+
+    function setTickerItem(symbol, value, change, fallbackLabel){
+      const groups = [document.getElementById('marketTickerGroupA'), document.getElementById('marketTickerGroupB')];
+      groups.forEach(group => {
+        if (!group) return;
+        const item = [...group.querySelectorAll('.market-ticker-item')].find(el => el.querySelector('.market-ticker-symbol')?.textContent.trim() === symbol);
+        if (!item) return;
+        const valueEl = item.querySelector('.market-ticker-value');
+        const changeEl = item.querySelector('.market-ticker-change');
+        if (valueEl) valueEl.textContent = value;
+        if (changeEl) {
+          changeEl.className = 'market-ticker-change ' + tickerChangeClass(change);
+          changeEl.textContent = fallbackLabel || formatTickerPercent(change);
+        }
+      });
+    }
+
+    function initTickerDuplicate(){
+      const groupA = document.getElementById('marketTickerGroupA');
+      const groupB = document.getElementById('marketTickerGroupB');
+      if (groupA && groupB && !groupB.innerHTML.trim()) groupB.innerHTML = groupA.innerHTML;
+    }
+
+    let marketTickerSocket = null;
+    let marketTickerReconnectTimer = null;
+
+    function setTickerBadge(mode, detail){
+      const badge = document.querySelector('.market-ticker-badge');
+      if (!badge) return;
+      const strong = badge.querySelector('strong');
+      const span = badge.querySelector('span');
+      if (strong) strong.textContent = mode || 'Live Market';
+      if (span) span.textContent = detail || 'Streaming Data';
+    }
+
+    async function fetchTickerPricesRest(){
+      try {
+        const symbols = ['BTCUSDT','ETHUSDT','BNBUSDT','SOLUSDT','AVAXUSDT'];
+        const url = 'https://data-api.binance.vision/api/v3/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(symbols));
+        const response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Binance REST ticker failed');
+        const rows = await response.json();
+        const symbolMap = {
+          BTCUSDT: 'BTC',
+          ETHUSDT: 'ETH',
+          BNBUSDT: 'BNB',
+          SOLUSDT: 'SOL',
+          AVAXUSDT: 'AVAX'
+        };
+        rows.forEach(row => {
+          const label = symbolMap[row?.symbol];
+          if (!label) return;
+          setTickerItem(label, formatTickerMoney(row?.lastPrice), row?.priceChangePercent);
+        });
+        setTickerBadge('Live Market', 'Price Feed Active');
+      } catch (error) {
+        console.warn('Binance REST ticker unavailable', error);
+        setTickerBadge('Live Market', 'Reconnecting Feed');
+      }
+    }
+
+    async function fetchGlobalMarketStats(){
+      try {
+        const globalRes = await fetch('https://api.coingecko.com/api/v3/global', { cache: 'no-store' });
+        if (!globalRes.ok) throw new Error('Global market fetch failed');
+        const globalData = await globalRes.json();
+        const totalCap = globalData?.data?.total_market_cap?.usd;
+        const totalVolume = globalData?.data?.total_volume?.usd;
+        const btcDom = globalData?.data?.market_cap_percentage?.btc;
+
+        setTickerItem('TOTAL MCAP', formatTickerMoney(totalCap), 0, 'LIVE');
+        setTickerItem('BTC DOM', (btcDom || btcDom === 0) ? btcDom.toFixed(2) + '%' : '--', 0, 'LIVE');
+        setTickerItem('24H VOL', formatTickerMoney(totalVolume), 0, 'LIVE');
+      } catch (error) {
+        console.warn('Global market stats unavailable', error);
+      }
+    }
+
+    function connectMarketTickerStream(){
+      if (marketTickerSocket && (marketTickerSocket.readyState === WebSocket.OPEN || marketTickerSocket.readyState === WebSocket.CONNECTING)) return;
+
+      clearTimeout(marketTickerReconnectTimer);
+      const streamUrl = 'wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/ethusdt@ticker/bnbusdt@ticker/solusdt@ticker/avaxusdt@ticker';
+      const symbolMap = {
+        btcusdt: 'BTC',
+        ethusdt: 'ETH',
+        bnbusdt: 'BNB',
+        solusdt: 'SOL',
+        avaxusdt: 'AVAX'
+      };
+
+      try {
+        marketTickerSocket = new WebSocket(streamUrl);
+      } catch (error) {
+        console.warn('Ticker websocket init failed', error);
+        marketTickerReconnectTimer = setTimeout(connectMarketTickerStream, 5000);
+        return;
+      }
+
+      marketTickerSocket.addEventListener('open', () => {
+        setTickerBadge('Live Market', 'Streaming Data');
+      });
+
+      marketTickerSocket.addEventListener('message', event => {
+        try {
+          const payload = JSON.parse(event.data || '{}');
+          const data = payload?.data || {};
+          const stream = (payload?.stream || '').split('@')[0];
+          const symbol = symbolMap[stream];
+          if (!symbol) return;
+          setTickerItem(symbol, formatTickerMoney(data?.c), data?.P);
+        } catch (error) {
+          console.warn('Ticker websocket payload error', error);
+        }
+      });
+
+      marketTickerSocket.addEventListener('error', () => {
+        setTickerBadge('Live Market', 'Reconnecting Feed');
+        try { marketTickerSocket?.close(); } catch (_) {}
+      });
+
+      marketTickerSocket.addEventListener('close', () => {
+        setTickerBadge('Live Market', 'Reconnecting Feed');
+        marketTickerSocket = null;
+        clearTimeout(marketTickerReconnectTimer);
+        marketTickerReconnectTimer = setTimeout(connectMarketTickerStream, 5000);
+      });
+    }
+
+    async function fetchMarketTicker(){
+      await Promise.all([fetchTickerPricesRest(), fetchGlobalMarketStats()]);
+      connectMarketTickerStream();
+    }
+
+
     function initEvents(){
       els.walletBtn.addEventListener('click', () => userAddress ? disconnectWallet() : connectWallet());
       els.sendAxBtn?.addEventListener('click', sendAxTransaction);
@@ -2440,11 +2860,12 @@
     async function init(){
       initReveal();
       initChartLazy();
+      initTickerDuplicate();
       initEvents();
       updateReceivePreview(1);
       updateReceivePreview(2);
 
-      await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress()]);
+      await Promise.all([fetchDexData(), fetchFeeWalletBalance(), fetchPresaleProgress(), fetchMarketTicker()]);
 
       runWhenIdle(() => {
         fetchTransferStream();
@@ -2454,6 +2875,8 @@
       setInterval(fetchFeeWalletBalance, isMobileLite() ? 60000 : 45000);
       setInterval(fetchPresaleProgress, isMobileLite() ? 60000 : 45000);
       setInterval(fetchTransferStream, isMobileLite() ? 90000 : 60000);
+      setInterval(fetchGlobalMarketStats, isMobileLite() ? 90000 : 60000);
+      setInterval(fetchTickerPricesRest, isMobileLite() ? 45000 : 30000);
     }
 
     init();
