@@ -139,12 +139,49 @@
     .nav{width:min(calc(100% - 32px), var(--max));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:82px}
     .brand{display:flex;align-items:center;gap:14px;min-width:0;flex-shrink:0}
     .brand-mark{
-      width:46px;height:46px;border-radius:50%;overflow:hidden;display:grid;place-items:center;
-      background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.03)),
-      linear-gradient(135deg, var(--cyan), var(--blue), var(--purple), var(--pink), var(--gold));
-      box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 30px rgba(112,118,255,.18);
+      width:56px;height:56px;border-radius:18px;overflow:hidden;display:grid;place-items:center;position:relative;
+      background:
+        linear-gradient(180deg, rgba(78,216,255,.30), rgba(36,98,255,.22)),
+        linear-gradient(135deg, #0f2f74 0%, #174fb3 34%, #2d72ff 68%, #5be4ff 100%);
+      border:1px solid rgba(120,195,255,.34);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.08),
+        0 0 26px rgba(78,216,255,.16),
+        0 16px 40px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.12);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      isolation:isolate;
     }
-    .brand-mark img{width:100%;height:100%;object-fit:cover}
+    .brand-mark::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.18), transparent 34%, transparent 70%, rgba(78,216,255,.18)),
+        radial-gradient(circle at 100% 100%, rgba(78,216,255,.14), transparent 28%);
+      pointer-events:none;
+      z-index:0;
+    }
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:inset 0 0 18px rgba(255,255,255,.03);
+      pointer-events:none;
+      z-index:0;
+    }
+    .brand:hover .brand-mark{
+      transform:translateY(-2px) scale(1.03);
+      border-color:rgba(120,195,255,.42);
+      box-shadow:
+        0 0 0 1px rgba(120,195,255,.10),
+        0 0 30px rgba(78,216,255,.22),
+        0 22px 50px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.14);
+    }
+    .brand-mark img{width:74%;height:74%;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 0 10px rgba(255,255,255,.14))}
     .brand-text strong{display:block;font-size:18px;letter-spacing:.08em}
     .brand-text small{display:block;color:#d3def8;opacity:.9;letter-spacing:.12em;font-size:10px;font-weight:700;text-transform:uppercase;white-space:nowrap}
     .nav-links{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:nowrap;min-width:0;overflow:hidden;flex:1}
@@ -590,7 +627,8 @@
       .hero-actions{flex-direction:column}
       .hero-actions .btn,.hero-actions .btn-secondary,.inline-actions .btn,.inline-actions .btn-secondary{width:100%}
       .brand{gap:8px;min-width:0;flex:1}
-      .brand-mark{width:36px;height:36px}
+      .brand-mark{width:44px;height:44px;border-radius:14px}
+      .brand-mark::after{inset:6px;border-radius:10px}
       .brand-text strong{font-size:14px}
       .brand-text small{white-space:normal;font-size:8px;letter-spacing:.08em}
       .nav-actions{gap:6px}
@@ -744,6 +782,36 @@
     }
 
     @media (max-width: 640px){.receiver-info-row{grid-template-columns:1fr}}
+
+    .axion-footer{width:100%;background:linear-gradient(180deg, #060b14 0%, #04070f 56%, #02040a 100%);padding:46px 20px 34px;text-align:center;border-top:1px solid rgba(78,216,255,.14);font-family:'Inter',sans-serif;position:relative;overflow:hidden}
+    .axion-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 0%, rgba(78,216,255,.08), transparent 26%),radial-gradient(circle at 85% 0%, rgba(168,92,255,.08), transparent 24%),linear-gradient(140deg, rgba(78,216,255,.04), transparent 32%, transparent 70%, rgba(255,92,184,.04));pointer-events:none}
+    .axion-footer-inner{position:relative;z-index:1;width:min(100%, 940px);margin:0 auto;display:grid;gap:18px}
+    .axion-footer-topmark{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 20px;border-radius:999px;margin:0 auto;background:linear-gradient(90deg, rgba(78,216,255,.16), rgba(95,140,255,.10), rgba(168,92,255,.12));border:1px solid rgba(120,195,255,.22);box-shadow:0 0 24px rgba(78,216,255,.08), inset 0 1px 0 rgba(255,255,255,.08)}
+    .axion-footer-topmark strong{font-size:18px;font-weight:900;letter-spacing:.14em;color:#f4fbff;text-shadow:0 0 12px rgba(78,216,255,.18)}
+    .axion-footer-sub{margin:0;font-size:14px;color:#b9c9e6;line-height:1.7}
+    .axion-footer-trust{margin:0;font-size:13px;color:#dff7ff;line-height:1.8;text-shadow:0 0 8px rgba(78,216,255,.10)}
+    .axion-footer-proof{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 12px}
+    .axion-proof-pill{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#dceaff;font-size:12px;font-weight:800;letter-spacing:.03em;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .axion-proof-pill span{color:#7dffcb;margin-right:8px;font-weight:900}
+    .axion-footer-social{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+    .axion-social-pill{display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:13px 18px;border-radius:16px;color:#eef8ff;text-decoration:none;font-size:13px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;position:relative;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);box-shadow:0 16px 34px rgba(0,0,0,.22),0 0 16px rgba(78,216,255,.06);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+    .axion-social-pill::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg, rgba(255,255,255,.12), transparent 30%, transparent 68%, rgba(78,216,255,.10));pointer-events:none}
+    .axion-social-pill:hover{transform:translateY(-2px);border-color:rgba(120,195,255,.20);box-shadow:0 20px 42px rgba(0,0,0,.28),0 0 22px rgba(78,216,255,.10)}
+    .axion-social-pill.telegram{background:linear-gradient(180deg, rgba(78,216,255,.20), rgba(27,112,228,.12)), linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border-color:rgba(78,216,255,.22)}
+    .axion-social-pill.twitter{background:linear-gradient(180deg, rgba(168,92,255,.18), rgba(95,140,255,.12)), linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border-color:rgba(168,92,255,.20)}
+    .axion-footer-divider{margin:2px auto 0;width:min(100%, 560px);height:1px;background:linear-gradient(90deg, transparent, rgba(78,216,255,.65), rgba(168,92,255,.48), transparent);opacity:.5}
+    .axion-footer-copy{margin:0;font-size:11px;color:#7d8da9;letter-spacing:.04em}
+    @media (max-width: 640px){
+      .axion-footer{padding:38px 16px 28px}
+      .axion-footer-inner{gap:16px}
+      .axion-footer-topmark{padding:11px 16px}
+      .axion-footer-topmark strong{font-size:16px;letter-spacing:.12em}
+      .axion-footer-sub,.axion-footer-trust{font-size:13px}
+      .axion-footer-proof{gap:10px}
+      .axion-proof-pill{width:100%;padding:11px 14px;font-size:12px}
+      .axion-footer-social{display:grid;grid-template-columns:1fr;gap:10px}
+      .axion-social-pill{width:100%;min-width:0;padding:14px 16px;border-radius:14px}
+    }
 
   
     .round-tag{
@@ -2431,83 +2499,31 @@
 
 
   <!-- AXION PREMIUM FOOTER START -->
-  <footer style="
-    width:100%;
-    background: linear-gradient(180deg, #0a0a0a, #050505);
-    padding:40px 20px;
-    text-align:center;
-    border-top:1px solid rgba(0,255,255,0.15);
-    font-family: 'Inter', sans-serif;
-  ">
+  <footer class="axion-footer">
+    <div class="axion-footer-inner">
+      <div class="axion-footer-topmark">
+        <strong>AXION</strong>
+      </div>
 
-    <div style="margin-bottom:15px;">
-      <span style="
-        font-size:20px;
-        font-weight:600;
-        color:#00f0ff;
-        text-shadow:0 0 10px rgba(0,255,255,0.6);
-        letter-spacing:1px;
-      ">
-        AXION
-      </span>
+      <p class="axion-footer-sub">Intelligent Layer for DeFi</p>
+
+      <p class="axion-footer-trust">Fully Secure. Fully Transparent. Built for Trust.</p>
+
+      <div class="axion-footer-proof">
+        <div class="axion-proof-pill"><span>✔</span>Smart Contract Verified</div>
+        <div class="axion-proof-pill"><span>✔</span>BNB Smart Chain</div>
+        <div class="axion-proof-pill"><span>✔</span>Secure HTTPS Connection</div>
+      </div>
+
+      <div class="axion-footer-social">
+        <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer" class="axion-social-pill telegram">Telegram</a>
+        <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer" class="axion-social-pill twitter">X (Twitter)</a>
+      </div>
+
+      <div class="axion-footer-divider"></div>
+
+      <p class="axion-footer-copy">© 2026 AXION. All rights reserved.</p>
     </div>
-
-    <p style="
-      margin:5px 0;
-      font-size:14px;
-      color:#aaa;
-    ">
-      Intelligent Layer for DeFi
-    </p>
-
-    <p style="
-      margin:10px 0;
-      font-size:13px;
-      color:#00f0ff;
-      text-shadow:0 0 6px rgba(0,255,255,0.5);
-    ">
-      Fully Secure. Fully Transparent. Built for Trust.
-    </p>
-
-    <p style="
-      margin:10px 0;
-      font-size:12px;
-      color:#ccc;
-    ">
-      ✔ Smart Contract Verified &nbsp;|&nbsp; ✔ BNB Smart Chain &nbsp;|&nbsp; ✔ Secure HTTPS Connection
-    </p>
-
-    <div style="margin-top:15px;">
-      <a href="https://t.me/axiondefi" target="_blank" style="
-        margin:0 10px;
-        color:#00f0ff;
-        text-decoration:none;
-        font-size:13px;
-      ">Telegram</a>
-
-      <a href="https://x.com/axiondefix" target="_blank" style="
-        margin:0 10px;
-        color:#00f0ff;
-        text-decoration:none;
-        font-size:13px;
-      ">X (Twitter)</a>
-    </div>
-
-    <div style="
-      margin:20px auto;
-      width:60%;
-      height:1px;
-      background: linear-gradient(90deg, transparent, #00f0ff, transparent);
-      opacity:0.3;
-    "></div>
-
-    <p style="
-      font-size:11px;
-      color:#666;
-    ">
-      © 2026 AXION. All rights reserved.
-    </p>
-
   </footer>
   <!-- AXION PREMIUM FOOTER END -->
 
