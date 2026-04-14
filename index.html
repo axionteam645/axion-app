@@ -248,19 +248,22 @@
       -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
     }
     .market-ticker-track{
-      display:flex;
+      display:inline-flex;
       width:max-content;
-      min-width:100%;
+      min-width:max-content;
       animation:tickerScroll 34s linear infinite;
       will-change:transform;
+      transform:translate3d(0,0,0);
+      --ticker-loop-width:50%;
     }
     .market-ticker:hover .market-ticker-track{animation-play-state:paused}
     .market-ticker-group{
-      display:flex;
+      display:inline-flex;
       align-items:center;
       gap:14px;
       padding:11px 18px;
       flex-shrink:0;
+      width:max-content;
     }
     .market-ticker-item{
       position:relative;
@@ -716,7 +719,7 @@
     @keyframes aiScanMove{0%,100%{top:8%;opacity:.18}50%{top:78%;opacity:.55}}
     @keyframes aiNodePulse{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(1.35);opacity:1}}
 
-    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @keyframes tickerScroll{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(calc(-1 * var(--ticker-loop-width, 50%)),0,0)}}
     @keyframes marketTickerShine{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
     @keyframes marketTickerSweep{0%,14%{transform:translateX(-150%)}55%,100%{transform:translateX(150%)}}
     @keyframes tickerPulseDot{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
@@ -835,6 +838,10 @@
       .footer-row{align-items:flex-start}
       .footer-links{gap:10px 14px;font-size:12px;line-height:1.6;width:100%;flex-wrap:wrap}
       .hero-market-bar{grid-template-columns:1fr}
+      .market-ticker-track-wrap{
+        mask-image:none;
+        -webkit-mask-image:none;
+      }
       .market-ticker-inner{min-height:52px;padding:0 10px;gap:10px}
       .market-ticker-badge{padding:9px 11px}
       .market-ticker-badge strong{font-size:9px}
@@ -2713,6 +2720,17 @@
       const groupA = document.getElementById('marketTickerGroupA');
       const groupB = document.getElementById('marketTickerGroupB');
       if (groupA && groupB && !groupB.innerHTML.trim()) groupB.innerHTML = groupA.innerHTML;
+      updateTickerLoopWidth();
+    }
+
+    function updateTickerLoopWidth(){
+      const track = document.getElementById('marketTickerTrack');
+      const groupA = document.getElementById('marketTickerGroupA');
+      if (!track || !groupA) return;
+      const loopWidth = Math.max(groupA.scrollWidth, groupA.getBoundingClientRect().width || 0);
+      if (loopWidth > 0) {
+        track.style.setProperty('--ticker-loop-width', loopWidth + 'px');
+      }
     }
 
     let marketTickerSocket = null;
@@ -2823,6 +2841,7 @@
 
     async function fetchMarketTicker(){
       await Promise.all([fetchTickerPricesRest(), fetchGlobalMarketStats()]);
+      updateTickerLoopWidth();
       connectMarketTickerStream();
     }
 
@@ -2879,6 +2898,8 @@
       setInterval(fetchTickerPricesRest, isMobileLite() ? 45000 : 30000);
     }
 
+    window.addEventListener('resize', updateTickerLoopWidth, { passive: true });
+    window.addEventListener('orientationchange', updateTickerLoopWidth, { passive: true });
     init();
   </script>
 
