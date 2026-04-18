@@ -57,7 +57,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="js/ethers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script type="module">
+    import EthereumProvider from 'https://esm.sh/@walletconnect/ethereum-provider@2.21.4';
+    window.WalletConnectEthereumProvider = EthereumProvider;
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root{
@@ -1983,6 +1987,9 @@
     let signer;
     let userAddress = null;
     let connectedWalletCount = 0;
+    let walletConnectProvider = null;
+    let activeWalletMode = null;
+    const WALLETCONNECT_PROJECT_ID = '44e7b575eead4c444613bf481554ba7d';
     let latestDexSnapshot = { price: 0, change: 0, liquidity: 0, volume: 0 };
     let lastWhaleTransfers = [];
 
@@ -2158,41 +2165,104 @@
     }
 
 
+    function walletConnectConfigured(){
+      return !!(window.WalletConnectEthereumProvider && WALLETCONNECT_PROJECT_ID && WALLETCONNECT_PROJECT_ID !== '44e7b575eead4c444613bf481554ba7d');
+    }
+
+    async function getWalletConnectProvider(){
+      if (!walletConnectConfigured()) return null;
+      if (!walletConnectProvider) {
+        walletConnectProvider = await window.WalletConnectEthereumProvider.init({
+          projectId: WALLETCONNECT_PROJECT_ID,
+          chains: [56],
+          optionalChains: [56],
+          showQrModal: true,
+          methods: ['eth_sendTransaction', 'personal_sign', 'eth_sign', 'eth_signTypedData', 'eth_signTypedData_v4'],
+          optionalMethods: ['wallet_switchEthereumChain', 'wallet_addEthereumChain'],
+          events: ['chainChanged', 'accountsChanged', 'disconnect'],
+          rpcMap: { 56: 'https://bsc-dataseed.binance.org/' },
+          metadata: {
+            name: 'AXION App',
+            description: 'AXION App presale access on BNB Smart Chain',
+            url: window.location.origin,
+            icons: ['https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png']
+          }
+        });
+
+        walletConnectProvider.on?.('accountsChanged', async (accounts) => {
+          if (!accounts || !accounts.length) {
+            disconnectWallet();
+            return;
+          }
+          if (activeWalletMode === 'walletconnect') {
+            userAddress = accounts[0] || null;
+            if (els.walletAddressShort) els.walletAddressShort.textContent = shortAddress(userAddress);
+            try { await refreshWalletBalances(); } catch (_) {}
+          }
+        });
+
+        walletConnectProvider.on?.('disconnect', () => {
+          if (activeWalletMode === 'walletconnect') disconnectWallet();
+        });
+
+        walletConnectProvider.on?.('chainChanged', () => {
+          if (activeWalletMode === 'walletconnect') window.location.reload();
+        });
+      }
+      return walletConnectProvider;
+    }
+
+    async function resolveWalletProvider(){
+      const injected = getInjectedProvider();
+      if (injected) return { source: injected, mode: 'injected' };
+      const wc = await getWalletConnectProvider();
+      if (wc) return { source: wc, mode: 'walletconnect' };
+      return null;
+    }
+
+
 
     async function connectWallet(){
-      const injected = getInjectedProvider();
-      if (!injected) {
+      const resolved = await resolveWalletProvider();
+      if (!resolved) {
         return handleMissingProvider();
       }
+      const injected = resolved.source;
+      const mode = resolved.mode;
       try {
         provider = new ethers.providers.Web3Provider(injected, 'any');
-        try {
-          await injected.request({ method:'wallet_switchEthereumChain', params:[{ chainId: CONFIG.BSC_CHAIN_ID }] });
-        } catch (switchErr) {
-          if (switchErr?.code === 4902) {
-            try {
-              await injected.request({
-                method:'wallet_addEthereumChain',
-                params:[{
-                  chainId: CONFIG.BSC_CHAIN_ID,
-                  chainName: 'BNB Smart Chain',
-                  nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-                  rpcUrls: ['https://bsc-dataseed.binance.org/'],
-                  blockExplorerUrls: ['https://bscscan.com']
-                }]
-              });
-            } catch (addErr) {
-              console.warn('Chain add failed', addErr);
-              alert('Please switch your wallet to BNB Smart Chain.');
-              return false;
+        if (mode === 'injected') {
+          try {
+            await injected.request({ method:'wallet_switchEthereumChain', params:[{ chainId: CONFIG.BSC_CHAIN_ID }] });
+          } catch (switchErr) {
+            if (switchErr?.code === 4902) {
+              try {
+                await injected.request({
+                  method:'wallet_addEthereumChain',
+                  params:[{
+                    chainId: CONFIG.BSC_CHAIN_ID,
+                    chainName: 'BNB Smart Chain',
+                    nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+                    rpcUrls: ['https://bsc-dataseed.binance.org/'],
+                    blockExplorerUrls: ['https://bscscan.com']
+                  }]
+                });
+              } catch (addErr) {
+                console.warn('Chain add failed', addErr);
+                alert('Please switch your wallet to BNB Smart Chain.');
+                return false;
+              }
+            } else {
+              console.warn('Chain switch failed', switchErr);
             }
-          } else {
-            console.warn('Chain switch failed', switchErr);
           }
+          await provider.send('eth_requestAccounts', []);
+        } else {
+          await injected.enable();
         }
-        await provider.send('eth_requestAccounts', []);
         signer = provider.getSigner();
         userAddress = await signer.getAddress();
+        activeWalletMode = mode;
         connectedWalletCount += 1;
         els.walletCountLive.textContent = connectedWalletCount;
         els.walletAddressShort.textContent = shortAddress(userAddress);
@@ -2211,10 +2281,16 @@
     }
 
 
-    function disconnectWallet(){
+    async function disconnectWallet(){
+      try {
+        if (activeWalletMode === 'walletconnect' && walletConnectProvider?.disconnect) {
+          await walletConnectProvider.disconnect();
+        }
+      } catch (_) {}
       provider = null;
       signer = null;
       userAddress = null;
+      activeWalletMode = null;
       els.walletAddressShort.textContent = 'Not connected';
       els.walletBtn.textContent = 'Connect Wallet';
       els.axBalance.textContent = '-';
@@ -2969,35 +3045,42 @@
     output.textContent = formatNumber(ax, 2) + ' AX';
   }
   async function ensureWallet(){
-    const injected = window.ethereum && Array.isArray(window.ethereum.providers) && window.ethereum.providers.length
+    const resolved = typeof resolveWalletProvider === 'function' ? await resolveWalletProvider() : null;
+    const injected = resolved ? resolved.source : (window.ethereum && Array.isArray(window.ethereum.providers) && window.ethereum.providers.length
       ? (window.ethereum.providers.find(p => p.isMetaMask) || window.ethereum.providers[0])
-      : window.ethereum;
+      : window.ethereum);
+    const mode = resolved ? resolved.mode : 'injected';
     if (!injected || typeof ethers === 'undefined') {
-      alert('No wallet provider detected. Please open this page in MetaMask or another Web3 wallet.');
+      alert('No wallet provider detected. Please open this page in MetaMask, WalletConnect, or another Web3 wallet.');
       return null;
     }
     const provider = new ethers.providers.Web3Provider(injected, 'any');
-    try {
-      await injected.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x38' }] });
-    } catch (err) {
-      if (err && err.code === 4902) {
-        await injected.request({
-          method: 'wallet_addEthereumChain',
-          params: [{
-            chainId: '0x38',
-            chainName: 'BNB Smart Chain',
-            nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-            rpcUrls: ['https://bsc-dataseed.binance.org/'],
-            blockExplorerUrls: ['https://bscscan.com']
-          }]
-        });
+    if (mode === 'injected') {
+      try {
+        await injected.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x38' }] });
+      } catch (err) {
+        if (err && err.code === 4902) {
+          await injected.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0x38',
+              chainName: 'BNB Smart Chain',
+              nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+              rpcUrls: ['https://bsc-dataseed.binance.org/'],
+              blockExplorerUrls: ['https://bscscan.com']
+            }]
+          });
+        }
       }
+      await provider.send('eth_requestAccounts', []);
+    } else {
+      await injected.enable();
     }
-    await provider.send('eth_requestAccounts', []);
     const signer = provider.getSigner();
     const address = await signer.getAddress();
     if (safeGet('walletAddressShort')) safeGet('walletAddressShort').textContent = address.slice(0,6) + '...' + address.slice(-4);
     if (safeGet('walletBtn')) safeGet('walletBtn').textContent = 'Disconnect';
+    if (typeof activeWalletMode !== 'undefined') activeWalletMode = mode;
     return { provider, signer, address };
   }
   async function handleBuy(round){
