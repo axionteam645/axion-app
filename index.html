@@ -1598,7 +1598,7 @@
                   <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
-                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ECCA843baa357502C1e24C508576cFF49f47C</span></div>
                 </div>
 
                 <div class="presale-progress">
@@ -1659,7 +1659,7 @@
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
-                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
+                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4C2aC3Eb05585b1B22C7227728d454F0193c8c11</span></div>
                 </div>
 
                 <div class="presale-progress">
@@ -1956,8 +1956,8 @@
     const CONFIG = {
       AX_TOKEN: '0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D',
       FEE_WALLET: '0xd543A36c00C478D211f9eB99b45B839474cea384',
-      PRESALE_RECEIVER: '0x570ecca843baa357502c1e24c508576cff49f47c',
-      PRESALE_RECEIVER_ROUND_2: '0x4c2ac3eb05585b1b22c7227728d454f0193c8c11',
+      PRESALE_RECEIVER: '0x570ECCA843baa357502C1e24C508576cFF49f47C',
+      PRESALE_RECEIVER_ROUND_2: '0x4C2aC3Eb05585b1B22C7227728d454F0193c8c11',
       BSC_CHAIN_ID: '0x38',
       TOTAL_ALLOCATION_AX: 5000000,
       TOTAL_ALLOCATION_AX_ROUND_2: 2500000,
@@ -2396,14 +2396,14 @@
         const purchasedAx = Math.max(0, bnb * rate);
         const purchasedAxText = formatNumber(purchasedAx, 2);
 
-        if (successCard) successCard.classList.add('show');
-        if (successMessage) {
-          successMessage.innerHTML = `You joined the presale and received ${purchasedAxText} AX. Please check the wallet you used for payment on the distribution date (${distributionDate}). Thank you. <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#dcfff0;text-decoration:underline;">View transaction</a>.`;
-        }
         setBuyStatus(`Transaction submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good', round);
 
         await tx.wait();
         setBuyStatus('BNB transaction confirmed on BNB Smart Chain.', 'good', round);
+        if (successCard) successCard.classList.add('show');
+        if (successMessage) {
+          successMessage.innerHTML = `Congratulations. Your payment was successful and your purchase amount is ${purchasedAxText} AX. Please check the same wallet again on the distribution date (${distributionDate}). <a href="https://bscscan.com/tx/${tx.hash}" target="_blank" rel="noopener noreferrer" style="color:#dcfff0;text-decoration:underline;">View transaction</a>.`;
+        }
         if (amountInput) amountInput.value = '';
         updateReceivePreview(round);
         await fetchPresaleProgressRound(round);
