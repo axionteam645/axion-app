@@ -1244,6 +1244,24 @@
       animation:salesSignalPulse 2.2s ease-in-out infinite;
       flex-shrink:0;
     }
+    .round-sold-badge{
+      margin-left:auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 12px;
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(67,243,177,.18), rgba(24,128,84,.14));
+      border:1px solid rgba(67,243,177,.28);
+      box-shadow:0 0 16px rgba(67,243,177,.08), inset 0 1px 0 rgba(255,255,255,.06);
+      color:#ddfff3;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      flex-shrink:0;
+    }
     .sales-subtle-note{
       display:flex;
       align-items:center;
@@ -1559,8 +1577,7 @@
           <div class="featured-sales-head reveal">
             <div class="eyebrow">Featured Sales</div>
             <h2 class="gradient-title">Round Access</h2>
-            <div class="sales-date-badge-wrap"><div class="sales-date-badge"><span class="sales-date-dot"></span><span>Sale Start Date <strong>15.04.2026</strong></span></div></div>
-              <div class="sales-signal-wrap"><div class="sales-signal"><span class="sales-signal-dot"></span><span>Early access activity detected</span></div></div>
+                          <div class="sales-signal-wrap"><div class="sales-signal"><span class="sales-signal-dot"></span><span>Early access activity detected</span></div></div>
           </div>
 
           <div class="presale-round-grid">
@@ -1572,6 +1589,7 @@
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
                   <h3>AXION Presale</h3>
+                  <div class="round-sold-badge">18% Sold</div>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">Early access price advantage for AXION on BNB Smart Chain. This round is designed for early participants who want a stronger entry before the next expansion stage.</p>
 
@@ -1580,7 +1598,7 @@
                   <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
-                  <div class="presale-row"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
                 </div>
 
                 <div class="presale-progress">
@@ -1631,6 +1649,7 @@
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
                   <h3>AXION Presale</h3>
+                  <div class="round-sold-badge">23% Sold</div>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">A highly advantageous price before upcoming exchange listings. This round gives participants another strong entry window ahead of the next market phase.</p>
                 <div class="presale-note-badges"><div class="presale-note-badge">CEX Ready</div><div class="presale-note-badge">Smart Entry</div></div>
@@ -1640,7 +1659,7 @@
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
-                  <div class="presale-row"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
+                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x4c2ac3eb05585b1b22c7227728d454f0193c8c11</span></div>
                 </div>
 
                 <div class="presale-progress">
