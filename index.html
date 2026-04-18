@@ -2929,5 +2929,141 @@
   </footer>
   <!-- AXION PREMIUM FOOTER END -->
 
+
+<script>
+(function(){
+  const ROUND1_RECEIVER = '0x570ECCA843baa357502C1e24C508576cFF49f47C';
+  const ROUND2_RECEIVER = '0x4C2aC3Eb05585b1B22C7227728d454F0193c8c11';
+
+  function safeGet(id){ return document.getElementById(id); }
+  function formatNumber(value, digits){
+    const n = Number(value || 0);
+    if (!isFinite(n)) return '0';
+    return new Intl.NumberFormat('en-US', { maximumFractionDigits: digits ?? 2 }).format(n);
+  }
+  function setStatus(round, message, tone){
+    const el = safeGet(round === 2 ? 'buyStatusRound2' : 'buyStatus');
+    if (!el) return;
+    el.textContent = message;
+    el.className = 'buy-status ' + (tone || 'neutral');
+  }
+  function setSuccess(round, purchasedAxText, distributionDate, txHash){
+    const card = safeGet(round === 2 ? 'presaleSuccessRound2' : 'presaleSuccess');
+    const msg = safeGet(round === 2 ? 'presaleSuccessMessageRound2' : 'presaleSuccessMessage');
+    if (!card || !msg) return;
+    const href = txHash ? 'https://bscscan.com/tx/' + txHash : '#';
+    msg.innerHTML = 'Congratulations. Your payment was successful and your purchase amount is <strong>' + purchasedAxText + ' AX</strong>. Please check the same wallet again on the distribution date (' + distributionDate + '). ' + (txHash ? '<a href="' + href + '" target="_blank" rel="noopener noreferrer" style="color:#dcfff0;text-decoration:underline;">View transaction</a>.' : '');
+    card.classList.add('show');
+  }
+  function updatePreview(round){
+    const input = safeGet(round === 2 ? 'bnbAmountRound2' : 'bnbAmount');
+    const output = safeGet(round === 2 ? 'axReceivePreviewRound2' : 'axReceivePreview');
+    if (!input || !output) return;
+    let rate = 0;
+    if (window.CONFIG) {
+      rate = Number(round === 2 ? window.CONFIG.RATE_AX_PER_BNB_ROUND_2 : window.CONFIG.RATE_AX_PER_BNB) || 0;
+    }
+    const bnb = Number(input.value || 0);
+    const ax = bnb > 0 ? bnb * rate : 0;
+    output.textContent = formatNumber(ax, 2) + ' AX';
+  }
+  async function ensureWallet(){
+    const injected = window.ethereum && Array.isArray(window.ethereum.providers) && window.ethereum.providers.length
+      ? (window.ethereum.providers.find(p => p.isMetaMask) || window.ethereum.providers[0])
+      : window.ethereum;
+    if (!injected || typeof ethers === 'undefined') {
+      alert('No wallet provider detected. Please open this page in MetaMask or another Web3 wallet.');
+      return null;
+    }
+    const provider = new ethers.providers.Web3Provider(injected, 'any');
+    try {
+      await injected.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x38' }] });
+    } catch (err) {
+      if (err && err.code === 4902) {
+        await injected.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: '0x38',
+            chainName: 'BNB Smart Chain',
+            nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+            rpcUrls: ['https://bsc-dataseed.binance.org/'],
+            blockExplorerUrls: ['https://bscscan.com']
+          }]
+        });
+      }
+    }
+    await provider.send('eth_requestAccounts', []);
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
+    if (safeGet('walletAddressShort')) safeGet('walletAddressShort').textContent = address.slice(0,6) + '...' + address.slice(-4);
+    if (safeGet('walletBtn')) safeGet('walletBtn').textContent = 'Disconnect';
+    return { provider, signer, address };
+  }
+  async function handleBuy(round){
+    const input = safeGet(round === 2 ? 'bnbAmountRound2' : 'bnbAmount');
+    const button = safeGet(round === 2 ? 'buyNowBtnRound2' : 'buyNowBtn');
+    const successCard = safeGet(round === 2 ? 'presaleSuccessRound2' : 'presaleSuccess');
+    if (!input || !button) return;
+    if (successCard) successCard.classList.remove('show');
+    const bnb = Number(input.value || 0);
+    if (!bnb || bnb <= 0) {
+      setStatus(round, 'Enter a valid BNB amount first.', 'alert');
+      return;
+    }
+    try {
+      button.disabled = true;
+      const originalHtml = button.innerHTML;
+      button.innerHTML = '<span>Processing...</span>';
+      setStatus(round, 'Preparing BNB transaction in your wallet...', 'neutral');
+      const wallet = await ensureWallet();
+      if (!wallet) {
+        button.disabled = false;
+        button.innerHTML = originalHtml;
+        return;
+      }
+      const receiver = round === 2 ? ROUND2_RECEIVER : ROUND1_RECEIVER;
+      const rate = Number(window.CONFIG ? (round === 2 ? window.CONFIG.RATE_AX_PER_BNB_ROUND_2 : window.CONFIG.RATE_AX_PER_BNB) : 0) || 0;
+      const distributionDate = window.CONFIG ? (round === 2 ? window.CONFIG.ROUND_2_DISTRIBUTION : window.CONFIG.ROUND_1_DISTRIBUTION) : '-';
+      const tx = await wallet.signer.sendTransaction({
+        to: receiver,
+        value: ethers.utils.parseEther(String(bnb))
+      });
+      setStatus(round, 'Transaction submitted. Waiting for blockchain confirmation...', 'good');
+      await tx.wait();
+      const purchasedAx = formatNumber(bnb * rate, 2);
+      setStatus(round, 'BNB transaction confirmed on BNB Smart Chain.', 'good');
+      setSuccess(round, purchasedAx, distributionDate, tx.hash);
+      input.value = '';
+      updatePreview(round);
+      button.disabled = false;
+      button.innerHTML = originalHtml;
+    } catch (err) {
+      console.error('Presale transaction error:', err);
+      const msg = err && err.code === 4001
+        ? 'Transaction request was cancelled in the wallet.'
+        : (err && err.message ? err.message : 'Transaction could not be completed.');
+      setStatus(round, msg, 'alert');
+      button.disabled = false;
+      button.innerHTML = '<span>Buy AX</span>';
+    }
+  }
+  function bindRound(round){
+    const input = safeGet(round === 2 ? 'bnbAmountRound2' : 'bnbAmount');
+    const btn = safeGet(round === 2 ? 'buyNowBtnRound2' : 'buyNowBtn');
+    if (input) {
+      ['input','change','keyup'].forEach(evt => input.addEventListener(evt, () => updatePreview(round)));
+      updatePreview(round);
+    }
+    if (btn) {
+      btn.onclick = function(e){ e.preventDefault(); handleBuy(round); };
+    }
+  }
+  if (safeGet('copyReceiverBtn')) safeGet('copyReceiverBtn').onclick = function(){ navigator.clipboard.writeText(ROUND1_RECEIVER); setStatus(1, 'Round 1 receiver copied.', 'good'); };
+  if (safeGet('copyReceiverBtnRound2')) safeGet('copyReceiverBtnRound2').onclick = function(){ navigator.clipboard.writeText(ROUND2_RECEIVER); setStatus(2, 'Round 2 receiver copied.', 'good'); };
+  bindRound(1);
+  bindRound(2);
+})();
+</script>
+
 </body>
 </html>
