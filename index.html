@@ -1571,7 +1571,7 @@
                 <p style="margin-top:6px;max-width:760px;">Early access price advantage for AXION on BNB Smart Chain. This round is designed for early participants who want a stronger entry before the next expansion stage.</p>
 
                 <div class="presale-box">
-                  <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.002 USD</span></div>
+                  <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.02 USDT</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>01.07.2026</span></div>
@@ -1632,7 +1632,7 @@
                 <div class="presale-note-badges"><div class="presale-note-badge">CEX Ready</div><div class="presale-note-badge">Smart Entry</div></div>
 
                 <div class="presale-box">
-                  <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.004 USD</span></div>
+                  <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.03 USDT</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
@@ -1767,8 +1767,8 @@
       BSC_CHAIN_ID: '0x38',
       TOTAL_ALLOCATION_AX: 5000000,
       TOTAL_ALLOCATION_AX_ROUND_2: 2500000,
-      RATE_AX_PER_BNB: 500,
-      RATE_AX_PER_BNB_ROUND_2: 250,
+      RATE_AX_PER_BNB: 50,
+      RATE_AX_PER_BNB_ROUND_2: 33.3333333333,
       ROUND_1_DISTRIBUTION: '01.07.2026',
       ROUND_2_DISTRIBUTION: '22.05.2026',
       AX_DECIMALS: 18,
@@ -1798,14 +1798,14 @@
     function formatAxAmount(value){
       const numeric = Number(value || 0);
       if (!Number.isFinite(numeric)) return '0';
-      return new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 }).format(numeric);
+      return new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 4 }).format(numeric);
     }
 
     function updatePresaleSuccessMessage(axAmount, round = 1){
       const node = document.getElementById(round === 2 ? 'presaleSuccessMessageRound2' : 'presaleSuccessMessage');
       const distributionDate = round === 2 ? CONFIG.ROUND_2_DISTRIBUTION : CONFIG.ROUND_1_DISTRIBUTION;
       if (!node) return;
-      node.textContent = `You joined the presale and received ${formatAxAmount(axAmount)} AX. Please check the wallet you used for payment on the distribution date (${distributionDate}). Thank you.`;
+      node.textContent = `You joined the presale and your allocation is ${formatAxAmount(axAmount)} AX. Please check the same wallet you used for payment again on the distribution date (${distributionDate}). Thank you.`;
     }
 
     const els = {
@@ -2068,7 +2068,7 @@
         connectedWalletCount += 1;
         els.walletCountLive.textContent = connectedWalletCount;
         els.walletAddressShort.textContent = shortAddress(userAddress);
-        els.walletBtn.textContent = 'Disconnect';
+        els.walletBtn.innerHTML = '<span>Disconnect</span>';
         setAllBuyStatuses('Wallet connected. You can now send USDT directly from the dashboard.', 'good');
         setSendStatus('Wallet connected. AX balances now reflect the connected wallet.', 'good');
         await refreshWalletBalances();
@@ -2094,7 +2094,7 @@
       userAddress = null;
       activeWalletMode = null;
       els.walletAddressShort.textContent = 'Not connected';
-      els.walletBtn.textContent = 'Connect Wallet';
+      els.walletBtn.innerHTML = '<span>Connect Wallet</span>';
       els.axBalance.textContent = '-';
       els.bnbBalance.textContent = '-';
       els.usdtBalance.textContent = '-';
@@ -2275,7 +2275,7 @@
         );
 
         const purchasedAx = Math.max(0, usdtAmount * rate);
-        const purchasedAxText = formatNumber(purchasedAx, 2);
+        const purchasedAxText = formatNumber(purchasedAx, 4);
 
         setBuyStatus(`Transaction submitted: ${shortenMiddle(tx.hash, 10, 8)}`, 'good', round);
 
@@ -2744,7 +2744,7 @@
           else {
             userAddress = accounts[0];
             els.walletAddressShort.textContent = shortAddress(userAddress);
-            els.walletBtn.textContent = 'Disconnect';
+            els.walletBtn.innerHTML = '<span>Disconnect</span>';
             await refreshWalletBalances();
             setAllBuyStatuses('Wallet connected. You can now send USDT directly from the dashboard.', 'good');
             setSendStatus('Wallet changed. AX balances now reflect the newly connected wallet.', 'good');
@@ -2820,7 +2820,7 @@
   function formatNumber(value, digits){
     const n = Number(value || 0);
     if (!isFinite(n)) return '0';
-    return new Intl.NumberFormat('en-US', { maximumFractionDigits: digits ?? 2 }).format(n);
+    return new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: digits ?? 4 }).format(n);
   }
   function setStatus(round, message, tone){
     const el = safeGet(round === 2 ? 'buyStatusRound2' : 'buyStatus');
@@ -2846,7 +2846,7 @@
     }
     const usdt = Number(input.value || 0);
     const ax = usdt > 0 ? usdt * rate : 0;
-    output.textContent = formatNumber(ax, 2) + ' AX';
+    output.textContent = formatNumber(ax, 4) + ' AX';
   }
   async function ensureWallet(){
     const resolved = typeof resolveWalletProvider === 'function' ? await resolveWalletProvider() : null;
@@ -2883,7 +2883,7 @@
     const signer = provider.getSigner();
     const address = await signer.getAddress();
     if (safeGet('walletAddressShort')) safeGet('walletAddressShort').textContent = address.slice(0,6) + '...' + address.slice(-4);
-    if (safeGet('walletBtn')) safeGet('walletBtn').textContent = 'Disconnect';
+    if (safeGet('walletBtn')) safeGet('walletBtn').innerHTML = '<span>Disconnect</span>';
     if (typeof activeWalletMode !== 'undefined') activeWalletMode = mode;
     return { provider, signer, address };
   }
@@ -2919,7 +2919,7 @@
       );
       setStatus(round, 'Transaction submitted. Waiting for blockchain confirmation...', 'good');
       await tx.wait();
-      const purchasedAx = formatNumber(usdtAmount * rate, 2);
+      const purchasedAx = formatNumber(usdtAmount * rate, 4);
       setStatus(round, 'USDT transfer confirmed on BNB Smart Chain.', 'good');
       setSuccess(round, purchasedAx, distributionDate, tx.hash);
       input.value = '';
