@@ -969,7 +969,41 @@
     .lbank-proof-item{display:flex;align-items:center;gap:10px;padding:13px 14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#d8e6ff;font-size:13px;line-height:1.65;}
     .lbank-proof-item::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg, #5f8cff, #a85cff, #ff5cb8);box-shadow:0 0 14px rgba(95,140,255,.26);flex-shrink:0;}
     @media (max-width: 1180px){.audit-strip{grid-template-columns:1fr;}}
-    @media (max-width: 640px){.audit-link-btn{padding:16px 16px;align-items:flex-start;}.audit-link-left{align-items:flex-start;}.passed-badge{width:100%;}}
+    @media (max-width: 768px){
+      .audit-strip{gap:14px;}
+      .audit-link-btn{
+        flex-direction:column;
+        align-items:stretch;
+        justify-content:flex-start;
+        padding:16px;
+      }
+      .audit-link-left{
+        width:100%;
+        align-items:flex-start;
+      }
+      .audit-copy strong{font-size:16px;}
+      .audit-copy span{font-size:12px;line-height:1.6;}
+      .passed-badge{
+        width:100%;
+        min-height:46px;
+        padding:12px 14px;
+        text-align:center;
+      }
+      .lbank-head{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      .lbank-title{width:100%;}
+      .coming-soon-badge{width:100%;min-height:42px;}
+      .lbank-proof-item{align-items:flex-start;}
+    }
+    @media (max-width: 480px){
+      .audit-logo-wrap{width:48px;height:48px;border-radius:14px;}
+      .audit-logo-wrap img{width:28px;height:28px;}
+      .lbank-logo{width:44px;height:44px;border-radius:14px;font-size:16px;}
+      .lbank-title h3{font-size:21px;}
+      .audit-link-btn,.lbank-proof-item{padding-left:14px;padding-right:14px;}
+    }
 
 
     .receiver-info-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:stretch;margin-top:12px}
