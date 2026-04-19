@@ -1432,34 +1432,7 @@
   <div class="ai-corner-brackets"></div>
 
   <div class="nav-wrap">
-  <div class="market-ticker" aria-label="Crypto market ticker">
-      <div class="market-ticker-glow"></div>
-      <div class="market-ticker-shine"></div>
-      <div class="market-ticker-inner">
-        <div class="market-ticker-badge" aria-hidden="true">
-          <div>
-            <strong>Live Market</strong>
-            <span>Premium Feed</span>
-          </div>
-        </div>
-        <div class="market-ticker-track-wrap">
-          <div class="market-ticker-track" id="marketTickerTrack">
-            <div class="market-ticker-group" id="marketTickerGroupA">
-              <div class="market-ticker-item"><span class="market-ticker-symbol">BTC</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">ETH</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">BNB</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">SOL</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">AVAX</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">--</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">TOTAL MCAP</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">LIVE</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">BTC DOM</span><span class="market-ticker-value">--</span><span class="market-ticker-change neutral">LIVE</span></div>
-              <div class="market-ticker-item"><span class="market-ticker-symbol">24H VOL</span><span class="market-ticker-value">$--</span><span class="market-ticker-change neutral">LIVE</span></div>
-            </div>
-            <div class="market-ticker-group" id="marketTickerGroupB" aria-hidden="true"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <nav class="nav">
+  <nav class="nav">
       <a class="brand open-swap-btn" href="https://www.axiondefi.com/" aria-label="Go to AXION website">
         <div class="brand-mark">
           <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
@@ -1800,8 +1773,8 @@
       ROUND_2_DISTRIBUTION: '22.05.2026',
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
-      DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de',
-      DEXSCREENER_TOKEN_URL: 'https://api.dexscreener.com/latest/dex/tokens/0x9e266c2C148df3456e170B759d77c91AbC67eEAB'
+      DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xff74866a47b3c27dc5c0195b64b5b60113715821',
+      DEXSCREENER_TOKEN_URL: 'https://api.dexscreener.com/latest/dex/tokens/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D'
     };
     window.CONFIG = CONFIG;
 
@@ -2215,7 +2188,7 @@
           const pair =
             data?.pair ||
             (Array.isArray(data?.pairs)
-              ? data.pairs.find(p => String(p.pairAddress || '').toLowerCase() === '0xb7d69e285583f8b444a85a0ab68d24d63ce537de') ||
+              ? data.pairs.find(p => String(p.pairAddress || '').toLowerCase() === '0xff74866a47b3c27dc5c0195b64b5b60113715821') ||
                 data.pairs.find(p => String(p.chainId).toLowerCase() === 'bsc') ||
                 data.pairs[0]
               : null);
