@@ -1598,7 +1598,7 @@
                 <p style="margin-top:6px;max-width:760px;">Early access price advantage for AXION on BNB Smart Chain. This round is designed for early participants who want a stronger entry before the next expansion stage.</p>
 
                 <div class="presale-box">
-                  <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
+                  <div class="presale-row"><strong>Rate</strong><span>500 AX = 1 USDT</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
@@ -1612,7 +1612,7 @@
                       <span id="allocationProgressText">0 AX sold · 0%</span>
                     </div>
                     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
+                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and USDT payment flow are tracked through the official presale receiver.</div>
                   </div>
                   <div class="status-grid">
                     <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
@@ -1659,7 +1659,7 @@
                 <div class="presale-note-badges"><div class="presale-note-badge">CEX Ready</div><div class="presale-note-badge">Smart Entry</div></div>
 
                 <div class="presale-box">
-                  <div class="presale-row"><strong>Rate</strong><span>7,500 AX = 1 BNB</span></div>
+                  <div class="presale-row"><strong>Rate</strong><span>250 AX = 1 USDT</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
@@ -1673,7 +1673,7 @@
                       <span id="allocationProgressTextRound2">0 AX sold · 0%</span>
                     </div>
                     <div class="progress-bar"><div class="progress-fill" id="progressFillRound2"></div></div>
-                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and BNB raised are tracked live from the official presale receiver.</div>
+                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and USDT payment flow are tracked through the official presale receiver.</div>
                   </div>
                   <div class="status-grid">
                     <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmountRound2">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
@@ -3091,8 +3091,8 @@
     const successCard = safeGet(round === 2 ? 'presaleSuccessRound2' : 'presaleSuccess');
     if (!input || !button) return;
     if (successCard) successCard.classList.remove('show');
-    const bnb = Number(input.value || 0);
-    if (!bnb || bnb <= 0) {
+    const usdtAmount = Number(input.value || 0);
+    if (!usdtAmount || usdtAmount <= 0) {
       setStatus(round, 'Enter a valid USDT amount first.', 'alert');
       return;
     }
