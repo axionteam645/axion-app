@@ -1531,6 +1531,72 @@
       .reveal{opacity:1 !important;transform:none !important}
     }
 
+
+    /* V4 Premium Presale Trust Layer */
+    .v4-trust-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+      margin:22px 0 20px;
+    }
+    .v4-trust-card,.v4-feed-card,.v4-ai-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.028));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .v4-trust-card::before,.v4-feed-card::before,.v4-ai-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 0% 0%, rgba(67,243,177,.14), transparent 28%),radial-gradient(circle at 100% 0%, rgba(78,216,255,.14), transparent 26%),linear-gradient(135deg, rgba(255,201,92,.08), transparent 48%, rgba(168,92,255,.08));
+      pointer-events:none;
+    }
+    .v4-trust-inner,.v4-feed-inner,.v4-ai-inner{position:relative;z-index:1;padding:20px;}
+    .v4-trust-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+    .v4-shield{
+      width:44px;height:44px;border-radius:16px;display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(67,243,177,.24), rgba(78,216,255,.16));
+      border:1px solid rgba(67,243,177,.32);
+      box-shadow:0 0 22px rgba(67,243,177,.12), inset 0 1px 0 rgba(255,255,255,.10);
+      color:#ddfff3;
+    }
+    .v4-shield svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.9;}
+    .v4-trust-title h3{margin:0;font-size:22px;letter-spacing:-.03em;}
+    .v4-trust-title span{display:inline-flex;align-items:center;padding:8px 11px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#ddfff3;background:rgba(67,243,177,.12);border:1px solid rgba(67,243,177,.25);}
+    .v4-trust-copy{font-size:14px;line-height:1.75;color:#cfe0ff;margin:0 0 14px;}
+    .v4-trust-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+    .v4-trust-point{padding:12px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+    .v4-trust-point strong{display:block;font-size:12px;color:#fff;margin-bottom:5px;letter-spacing:.04em;}
+    .v4-trust-point span{display:block;font-size:11px;line-height:1.55;color:#aebfe2;}
+    .v4-feed-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
+    .v4-feed-title strong,.v4-ai-title strong{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#eaf5ff;}
+    .v4-live-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(67,243,177,.10);border:1px solid rgba(67,243,177,.22);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#dffff2;}
+    .v4-live-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#43f3b1;box-shadow:0 0 12px rgba(67,243,177,.55);animation:salesSignalPulse 2.2s ease-in-out infinite;}
+    .v4-feed-list{display:grid;gap:9px;}
+    .v4-feed-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:11px 12px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+    .v4-feed-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#4ed8ff,#a85cff);box-shadow:0 0 12px rgba(78,216,255,.30);}
+    .v4-feed-row span{font-size:12px;color:#cfe0ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .v4-feed-row b{font-size:12px;color:#ffffff;white-space:nowrap;}
+    .v4-card-upgrade{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0 0;}
+    .v4-ai-card{border-color:rgba(78,216,255,.18);box-shadow:0 16px 38px rgba(0,0,0,.22),0 0 22px rgba(78,216,255,.07);}
+    .v4-ai-inner{padding:16px 17px;}
+    .v4-ai-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+    .v4-ai-pill{padding:7px 10px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#e9f8ff;background:rgba(78,216,255,.11);border:1px solid rgba(78,216,255,.23);}
+    .v4-ai-card p{font-size:13px;line-height:1.7;color:#cfe0ff;margin:0;}
+    .v4-mini-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px;}
+    .v4-mini-metric{padding:10px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+    .v4-mini-metric span{display:block;font-size:10px;color:#9eb2d8;letter-spacing:.10em;text-transform:uppercase;margin-bottom:5px;}
+    .v4-mini-metric strong{display:block;font-size:13px;color:#fff;}
+    .quick-amount-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:0;}
+    .quick-amount-btn{border:1px solid rgba(78,216,255,.20);border-radius:14px;padding:11px 10px;cursor:pointer;background:linear-gradient(180deg, rgba(78,216,255,.12), rgba(95,140,255,.08));color:#eaf8ff;font-family:inherit;font-size:12px;font-weight:900;letter-spacing:.04em;transition:transform .18s ease, border-color .18s ease, background .18s ease;}
+    .quick-amount-btn:hover{transform:translateY(-2px);border-color:rgba(78,216,255,.34);background:linear-gradient(180deg, rgba(78,216,255,.18), rgba(168,92,255,.10));}
+    .v4-warning-strip{margin-top:12px;padding:13px 15px;border-radius:17px;background:linear-gradient(90deg, rgba(255,201,92,.13), rgba(255,138,31,.08));border:1px solid rgba(255,201,92,.22);color:#fff2ce;font-size:12px;line-height:1.65;font-weight:700;}
+    @media (max-width: 980px){.v4-trust-grid{grid-template-columns:1fr}.v4-trust-points{grid-template-columns:1fr}.v4-mini-metrics{grid-template-columns:1fr 1fr 1fr}}
+    @media (max-width: 640px){.v4-trust-inner,.v4-feed-inner{padding:16px}.v4-trust-title h3{font-size:19px}.v4-feed-row{grid-template-columns:auto 1fr}.v4-feed-row b{grid-column:2}.quick-amount-grid,.v4-mini-metrics{grid-template-columns:1fr}.v4-trust-grid{gap:12px;margin:16px 0}.v4-card-upgrade{margin-top:12px}}
+
   </style>
 </head>
 <body>
@@ -1720,6 +1786,37 @@
                           <div class="sales-signal-wrap"><div class="sales-signal"><span class="sales-signal-dot"></span><span>Early access activity detected</span></div></div>
           </div>
 
+
+
+          <div class="v4-trust-grid reveal">
+            <div class="v4-trust-card">
+              <div class="v4-trust-inner">
+                <div class="v4-trust-title">
+                  <div class="v4-shield"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.1 8.5-7 10-3.9-1.5-7-5-7-10V6l7-3z"></path><path d="M9 12l2 2 4-5"></path></svg></div>
+                  <h3>Verified Presale Payment Layer</h3>
+                  <span>Official Wallets Only</span>
+                </div>
+                <p class="v4-trust-copy">AXION presale payments are processed through the official USDT payment wallets shown inside each round card. Always verify the wallet address before confirming a transaction.</p>
+                <div class="v4-trust-points">
+                  <div class="v4-trust-point"><strong>USDT Payment</strong><span>Round-based payment wallet visibility.</span></div>
+                  <div class="v4-trust-point"><strong>Wallet Delivery</strong><span>AX allocation follows the wallet used for payment.</span></div>
+                  <div class="v4-trust-point"><strong>Anti-Scam Notice</strong><span>AXION never requests payments by private DM.</span></div>
+                </div>
+                <div class="v4-warning-strip">Security notice: only use the payment wallets displayed on this official page. Do not send funds to addresses shared by unofficial accounts.</div>
+              </div>
+            </div>
+            <div class="v4-feed-card">
+              <div class="v4-feed-inner">
+                <div class="v4-feed-title"><strong>Presale Activity</strong><span class="v4-live-pill">Live UI</span></div>
+                <div class="v4-feed-list">
+                  <div class="v4-feed-row"><i class="v4-feed-dot"></i><span>Round 1 payment wallet verified</span><b>USDT</b></div>
+                  <div class="v4-feed-row"><i class="v4-feed-dot"></i><span>Round 2 payment wallet verified</span><b>USDT</b></div>
+                  <div class="v4-feed-row"><i class="v4-feed-dot"></i><span>Countdown synchronized to UTC</span><b>ACTIVE</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="presale-round-grid">
             <article class="card" id="presale">
               <div class="card-inner">
@@ -1750,6 +1847,21 @@
                   <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9</span></div>
                 </div>
 
+                <div class="v4-card-upgrade">
+                  <div class="v4-ai-card">
+                    <div class="v4-ai-inner">
+                      <div class="v4-ai-title"><strong>AI Presale Insight</strong><span class="v4-ai-pill">Round 1</span></div>
+                      <p>Best-value access remains active until the UTC deadline. Use the official Round 1 USDT payment wallet shown above before confirming your transaction.</p>
+                      <div class="v4-mini-metrics">
+                        <div class="v4-mini-metric"><span>Entry</span><strong>Best Value</strong></div>
+                        <div class="v4-mini-metric"><span>Payment</span><strong>USDT</strong></div>
+                        <div class="v4-mini-metric"><span>Status</span><strong>Open</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
                 <div class="presale-progress">
                   <div style="display:none;">
                     <div class="progress-top">
@@ -1771,6 +1883,11 @@
                   <div class="buy-field">
                     <label for="bnbAmount">Enter USDT Amount</label>
                     <input id="bnbAmount" type="number" min="0" step="0.01" placeholder="Example: 1" />
+                  </div>
+                  <div class="quick-amount-grid" aria-label="Quick USDT amounts for Round 1">
+                    <button class="quick-amount-btn" type="button" data-round="1" data-amount="50">50 USDT</button>
+                    <button class="quick-amount-btn" type="button" data-round="1" data-amount="100">100 USDT</button>
+                    <button class="quick-amount-btn" type="button" data-round="1" data-amount="250">250 USDT</button>
                   </div>
                   <div class="buy-preview">You Receive: <strong id="axReceivePreview">0 AX</strong></div>
                   <div class="inline-actions inline-actions-wide">
@@ -1820,6 +1937,21 @@
                   <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x252B6C9cB380216EC8725249047030715ceaAB04</span></div>
                 </div>
 
+                <div class="v4-card-upgrade">
+                  <div class="v4-ai-card">
+                    <div class="v4-ai-inner">
+                      <div class="v4-ai-title"><strong>AI Presale Insight</strong><span class="v4-ai-pill">Round 2</span></div>
+                      <p>Limited opportunity window is active with a separate official Round 2 USDT payment wallet. Verify the displayed wallet before approving your payment.</p>
+                      <div class="v4-mini-metrics">
+                        <div class="v4-mini-metric"><span>Entry</span><strong>Limited</strong></div>
+                        <div class="v4-mini-metric"><span>Payment</span><strong>USDT</strong></div>
+                        <div class="v4-mini-metric"><span>Status</span><strong>Open</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
                 <div class="presale-progress">
                   <div style="display:none;">
                     <div class="progress-top">
@@ -1841,6 +1973,11 @@
                   <div class="buy-field">
                     <label for="bnbAmountRound2">Enter USDT Amount</label>
                     <input id="bnbAmountRound2" type="number" min="0" step="0.01" placeholder="Example: 1" />
+                  </div>
+                  <div class="quick-amount-grid" aria-label="Quick USDT amounts for Round 2">
+                    <button class="quick-amount-btn" type="button" data-round="2" data-amount="50">50 USDT</button>
+                    <button class="quick-amount-btn" type="button" data-round="2" data-amount="100">100 USDT</button>
+                    <button class="quick-amount-btn" type="button" data-round="2" data-amount="250">250 USDT</button>
                   </div>
                   <div class="buy-preview">You Receive: <strong id="axReceivePreviewRound2">0 AX</strong></div>
                   <div class="inline-actions inline-actions-wide">
@@ -3162,6 +3299,19 @@
   if (safeGet('copyReceiverBtnRound2')) safeGet('copyReceiverBtnRound2').onclick = function(){ navigator.clipboard.writeText(ROUND2_RECEIVER); setStatus(2, 'Round 2 receiver copied.', 'good'); };
   if (safeGet('copyReserveWalletRound1')) safeGet('copyReserveWalletRound1').onclick = function(){ navigator.clipboard.writeText(ROUND1_RECEIVER); setStatus(1, 'Round 1 USDT payment wallet copied.', 'good'); };
   if (safeGet('copyReserveWalletRound2')) safeGet('copyReserveWalletRound2').onclick = function(){ navigator.clipboard.writeText(ROUND2_RECEIVER); setStatus(2, 'Round 2 USDT payment wallet copied.', 'good'); };
+
+  document.querySelectorAll('.quick-amount-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var round = Number(btn.getAttribute('data-round')) === 2 ? 2 : 1;
+      var amount = btn.getAttribute('data-amount') || '';
+      var input = safeGet(round === 2 ? 'bnbAmountRound2' : 'bnbAmount');
+      if (!input) return;
+      input.value = amount;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
+    });
+  });
   startRoundCountdowns();
   bindRound(1);
   bindRound(2);
