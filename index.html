@@ -1327,6 +1327,69 @@
     .round-countdown-badge .countdown-value{display:block;font-size:13px;line-height:1.2;font-weight:900;letter-spacing:.04em;color:#ffffff;}
     .round-countdown-badge .countdown-zone{display:block;font-size:9px;line-height:1;font-weight:800;letter-spacing:.12em;color:#bdd0f7;text-transform:uppercase;}
     @media (max-width: 640px){.title-row{align-items:flex-start;flex-wrap:wrap}.round-countdown-badge{width:100%;min-width:0;margin-left:0;margin-top:6px;border-radius:16px;}}
+
+    .reserve-wallet-card{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:12px;
+      align-items:center;
+      padding:16px 16px;
+      border-radius:18px;
+      background:
+        linear-gradient(135deg, rgba(255,201,92,.20), rgba(255,138,31,.12) 42%, rgba(78,216,255,.10)),
+        linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.028));
+      border:1px solid rgba(255,201,92,.30);
+      box-shadow:0 0 0 1px rgba(255,201,92,.06),0 16px 34px rgba(0,0,0,.24),0 0 24px rgba(255,201,92,.12);
+      overflow:hidden;
+    }
+    .reserve-wallet-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 100% 0%, rgba(78,216,255,.16), transparent 28%),linear-gradient(120deg, transparent 18%, rgba(255,255,255,.10) 48%, transparent 78%);
+      pointer-events:none;
+    }
+    .reserve-wallet-card > *{position:relative;z-index:1}
+    .reserve-wallet-label{
+      display:block;
+      margin-bottom:8px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:#fff2c7;
+    }
+    .reserve-wallet-address{
+      display:block;
+      color:#ffffff;
+      font-size:13px;
+      font-weight:800;
+      line-height:1.55;
+      word-break:break-all;
+    }
+    .reserve-copy-btn{
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      color:#06111f;
+      background:linear-gradient(135deg, #ffc95c, #ff8a1f, #4ed8ff);
+      box-shadow:0 10px 24px rgba(255,138,31,.22),0 0 18px rgba(78,216,255,.10);
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      flex-shrink:0;
+    }
+    .reserve-copy-btn:hover{transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 14px 28px rgba(255,138,31,.28),0 0 22px rgba(78,216,255,.16)}
+    .reserve-copy-btn svg{width:19px;height:19px;stroke:currentColor;stroke-width:2;fill:none}
+    @media (max-width: 640px){
+      .reserve-wallet-card{grid-template-columns:1fr;gap:12px;padding:15px 14px}
+      .reserve-copy-btn{width:100%;height:44px;border-radius:14px}
+      .reserve-wallet-address{font-size:12px}
+    }
+
     .sales-subtle-note{
       display:flex;
       align-items:center;
@@ -1675,6 +1738,15 @@
                   <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>07.06.2026 00:00 UTC</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>01.07.2026</span></div>
+                  <div class="reserve-wallet-card">
+                    <div>
+                      <span class="reserve-wallet-label">Round 1 USDT Payment Wallet</span>
+                      <span class="reserve-wallet-address">0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9</span>
+                    </div>
+                    <button class="reserve-copy-btn" id="copyReserveWalletRound1" type="button" aria-label="Copy Round 1 USDT payment wallet" title="Copy address">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                  </div>
                   <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9</span></div>
                 </div>
 
@@ -1736,6 +1808,15 @@
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
                   <div class="presale-row"><strong>End Date</strong><span>22.05.2026 00:00 UTC</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
+                  <div class="reserve-wallet-card">
+                    <div>
+                      <span class="reserve-wallet-label">Round 2 USDT Payment Wallet</span>
+                      <span class="reserve-wallet-address">0x252B6C9cB380216EC8725249047030715ceaAB04</span>
+                    </div>
+                    <button class="reserve-copy-btn" id="copyReserveWalletRound2" type="button" aria-label="Copy Round 2 USDT payment wallet" title="Copy address">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                  </div>
                   <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x252B6C9cB380216EC8725249047030715ceaAB04</span></div>
                 </div>
 
@@ -2831,6 +2912,8 @@
       els.copyContractBtn.addEventListener('click', () => { copyText(CONFIG.AX_TOKEN); setBuyStatus('Contract address copied.', 'good'); });
       els.copyReceiverBtn.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Round 1 receiver copied.', 'good', 1); });
       els.copyReceiverBtnRound2?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER_ROUND_2); setBuyStatus('Round 2 receiver copied.', 'good', 2); });
+      document.getElementById('copyReserveWalletRound1')?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Round 1 USDT payment wallet copied.', 'good', 1); });
+      document.getElementById('copyReserveWalletRound2')?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER_ROUND_2); setBuyStatus('Round 2 USDT payment wallet copied.', 'good', 2); });
       els.buyNowBtn.addEventListener('click', () => sendPresaleTransaction(1));
       els.buyNowBtnRound2?.addEventListener('click', () => sendPresaleTransaction(2));
       els.bnbAmount.addEventListener('input', () => updateReceivePreview(1));
@@ -3077,6 +3160,8 @@
   }
   if (safeGet('copyReceiverBtn')) safeGet('copyReceiverBtn').onclick = function(){ navigator.clipboard.writeText(ROUND1_RECEIVER); setStatus(1, 'Round 1 receiver copied.', 'good'); };
   if (safeGet('copyReceiverBtnRound2')) safeGet('copyReceiverBtnRound2').onclick = function(){ navigator.clipboard.writeText(ROUND2_RECEIVER); setStatus(2, 'Round 2 receiver copied.', 'good'); };
+  if (safeGet('copyReserveWalletRound1')) safeGet('copyReserveWalletRound1').onclick = function(){ navigator.clipboard.writeText(ROUND1_RECEIVER); setStatus(1, 'Round 1 USDT payment wallet copied.', 'good'); };
+  if (safeGet('copyReserveWalletRound2')) safeGet('copyReserveWalletRound2').onclick = function(){ navigator.clipboard.writeText(ROUND2_RECEIVER); setStatus(2, 'Round 2 USDT payment wallet copied.', 'good'); };
   startRoundCountdowns();
   bindRound(1);
   bindRound(2);
