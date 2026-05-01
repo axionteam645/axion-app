@@ -1305,24 +1305,28 @@
       animation:salesSignalPulse 2.2s ease-in-out infinite;
       flex-shrink:0;
     }
-    .round-sold-badge{
+    .round-countdown-badge{
       margin-left:auto;
-      display:inline-flex;
+      display:inline-grid;
+      grid-template-columns:1fr;
+      gap:3px;
       align-items:center;
       justify-content:center;
-      padding:9px 12px;
-      border-radius:999px;
-      background:linear-gradient(180deg, rgba(67,243,177,.18), rgba(24,128,84,.14));
-      border:1px solid rgba(67,243,177,.28);
-      box-shadow:0 0 16px rgba(67,243,177,.08), inset 0 1px 0 rgba(255,255,255,.06);
-      color:#ddfff3;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+      min-width:162px;
+      padding:9px 13px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(78,216,255,.15), rgba(95,140,255,.10)),linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      border:1px solid rgba(78,216,255,.24);
+      box-shadow:0 0 18px rgba(78,216,255,.08), inset 0 1px 0 rgba(255,255,255,.07);
+      color:#e9f8ff;
+      text-align:center;
       white-space:nowrap;
       flex-shrink:0;
     }
+    .round-countdown-badge .countdown-label{display:block;font-size:9px;line-height:1;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#9ed7ff;}
+    .round-countdown-badge .countdown-value{display:block;font-size:13px;line-height:1.2;font-weight:900;letter-spacing:.04em;color:#ffffff;}
+    .round-countdown-badge .countdown-zone{display:block;font-size:9px;line-height:1;font-weight:800;letter-spacing:.12em;color:#bdd0f7;text-transform:uppercase;}
+    @media (max-width: 640px){.title-row{align-items:flex-start;flex-wrap:wrap}.round-countdown-badge{width:100%;min-width:0;margin-left:0;margin-top:6px;border-radius:16px;}}
     .sales-subtle-note{
       display:flex;
       align-items:center;
@@ -1662,14 +1666,14 @@
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
                   <h3>AXION Presale</h3>
-                  <div class="round-sold-badge">18% Sold</div>
+                  <div class="round-countdown-badge" data-countdown-target="2026-06-07T00:00:00Z"><span class="countdown-label">Round 1 Ends In</span><span class="countdown-value" id="round1Countdown">Loading...</span><span class="countdown-zone">UTC</span></div>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">Early access price advantage for AXION on BNB Smart Chain. This round is designed for early participants who want a stronger entry before the next expansion stage.</p>
 
                 <div class="presale-box">
                   <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.02 USDT</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
-                  <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
+                  <div class="presale-row"><strong>End Date</strong><span>07.06.2026 00:00 UTC</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>01.07.2026</span></div>
                   <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9</span></div>
                 </div>
@@ -1722,7 +1726,7 @@
                     <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                   </div>
                   <h3>AXION Presale</h3>
-                  <div class="round-sold-badge">23% Sold</div>
+                  <div class="round-countdown-badge" data-countdown-target="2026-05-22T00:00:00Z"><span class="countdown-label">Round 2 Ends In</span><span class="countdown-value" id="round2Countdown">Loading...</span><span class="countdown-zone">UTC</span></div>
                 </div>
                 <p style="margin-top:6px;max-width:760px;">A highly advantageous price before upcoming exchange listings. This round gives participants another strong entry window ahead of the next market phase.</p>
                 <div class="presale-note-badges"><div class="presale-note-badge">CEX Ready</div><div class="presale-note-badge">Smart Entry</div></div>
@@ -1730,7 +1734,7 @@
                 <div class="presale-box">
                   <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.03 USDT</span></div>
                   <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
-                  <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
+                  <div class="presale-row"><strong>End Date</strong><span>22.05.2026 00:00 UTC</span></div>
                   <div class="presale-row"><strong>Distribution</strong><span>22.05.2026</span></div>
                   <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x252B6C9cB380216EC8725249047030715ceaAB04</span></div>
                 </div>
@@ -1867,6 +1871,8 @@
       RATE_AX_PER_BNB_ROUND_2: 33.3333333333,
       ROUND_1_DISTRIBUTION: '01.07.2026',
       ROUND_2_DISTRIBUTION: '22.05.2026',
+      ROUND_1_END_UTC: '2026-06-07T00:00:00Z',
+      ROUND_2_END_UTC: '2026-05-22T00:00:00Z',
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
       DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xff74866a47b3c27dc5c0195b64b5b60113715821',
@@ -3043,8 +3049,35 @@
       btn.onclick = function(e){ e.preventDefault(); handleBuy(round); };
     }
   }
+  function startRoundCountdowns(){
+    const timers = [
+      { id: 'round1Countdown', target: '2026-06-07T00:00:00Z' },
+      { id: 'round2Countdown', target: '2026-05-22T00:00:00Z' }
+    ];
+    function render(){
+      const now = Date.now();
+      timers.forEach(timer => {
+        const el = safeGet(timer.id);
+        if (!el) return;
+        const diff = new Date(timer.target).getTime() - now;
+        if (diff <= 0) {
+          el.textContent = 'ENDED';
+          return;
+        }
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        el.textContent = days + 'D ' + String(hours).padStart(2,'0') + 'H ' + String(minutes).padStart(2,'0') + 'M ' + String(seconds).padStart(2,'0') + 'S';
+      });
+    }
+    render();
+    setInterval(render, 1000);
+  }
   if (safeGet('copyReceiverBtn')) safeGet('copyReceiverBtn').onclick = function(){ navigator.clipboard.writeText(ROUND1_RECEIVER); setStatus(1, 'Round 1 receiver copied.', 'good'); };
   if (safeGet('copyReceiverBtnRound2')) safeGet('copyReceiverBtnRound2').onclick = function(){ navigator.clipboard.writeText(ROUND2_RECEIVER); setStatus(2, 'Round 2 receiver copied.', 'good'); };
+  startRoundCountdowns();
   bindRound(1);
   bindRound(2);
 })();
