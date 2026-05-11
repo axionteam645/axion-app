@@ -1667,7 +1667,7 @@
                 </div>
                 <h3>Connected asset view</h3>
               </div>
-              <p>The connected wallet displays live AX, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.</p>
+              <p>The connected wallet displays live AXION, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.</p>
 
               <div class="wallet-identity-bar">
                 <div class="wallet-badge">Session Wallet: <span id="walletAddressShort">Not connected</span></div>
@@ -1677,8 +1677,8 @@
               <div class="wallet-tiles">
                 <div class="token-tile">
                   <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AX logo">
-                    <div class="meta"><strong>AX</strong><span>Live connected wallet balance</span></div>
+                    <img class="token-icon" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION logo">
+                    <div class="meta"><strong>AXION</strong><span>Live connected wallet balance</span></div>
                     <div class="balance-value" id="axBalance">-</div>
                   </div>
                 </div>
@@ -1707,33 +1707,33 @@
       <div class="icon-badge">
         <svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 10l6-6 6 6"/><path d="M6 14l6 6 6-6"/></svg>
       </div>
-      <h3>AX Send & Connect</h3>
+      <h3>AXION Send & Connect</h3>
     </div>
-    <p>Keep wallet actions in one place. Connect your wallet, send AX, and approve transactions directly in your wallet.</p>
+    <p>Keep wallet actions in one place. Connect your wallet, send AXION, and approve transactions directly in your wallet.</p>
 
     <div class="quick-action-buttons">
-      <button class="btn btn-secondary" type="button" onclick="document.getElementById('axSendTo').focus()">AX Send</button>
+      <button class="btn btn-secondary" type="button" onclick="document.getElementById('axSendTo').focus()">AXION Send</button>
       <button class="btn" type="button" onclick="document.getElementById('walletBtn').click()">Connect</button>
     </div>
 
     <div class="feature-list">
       <div class="feature">
-        <strong>AX Send</strong>
-        <p>Send AX directly from the connected wallet. The transaction opens in your wallet for approval before broadcasting.</p>
+        <strong>AXION Send</strong>
+        <p>Send AXION directly from the connected wallet. The transaction opens in your wallet for approval before broadcasting.</p>
         <div class="buy-inputs" style="margin-top:14px;">
           <div class="buy-field">
             <label for="axSendTo">Recipient Wallet</label>
             <input id="axSendTo" type="text" placeholder="0x..." />
           </div>
           <div class="buy-field">
-            <label for="axSendAmount">AX Amount</label>
-            <input id="axSendAmount" type="number" min="0" step="any" placeholder="Enter AX amount" />
+            <label for="axSendAmount">AXION Amount</label>
+            <input id="axSendAmount" type="number" min="0" step="any" placeholder="Enter AXION amount" />
           </div>
         </div>
         <div class="inline-actions">
-          <button class="btn" id="sendAxBtn" type="button">Send AX</button>
+          <button class="btn" id="sendAxBtn" type="button">Send AXION</button>
         </div>
-        <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AX transfer in your wallet.</div>
+        <div class="buy-status" id="sendStatus">Connect your wallet, enter a recipient and amount, then approve the AXION transfer in your wallet.</div>
       </div>
     </div>
   </div>
@@ -1743,20 +1743,25 @@
 
 
           <div class="audit-strip">
-            <article class="card reveal lbank-panel" id="lbankComingSoonCard">
+            <article class="card reveal lbank-panel" id="hotcoinLaunchpadCard">
               <div class="card-inner">
-                <div class="tag">Exchange Watch</div>
+                <div class="tag">Hotcoin Launchpad</div>
                 <div class="lbank-head">
                   <div class="lbank-title">
-                    <div class="lbank-logo">LB</div>
-                    <h3>LBANK</h3>
+                    <div class="lbank-logo" style="background:#ffffff;padding:6px;overflow:hidden;">
+                      <img src="https://www.hotcoin.com/favicon.ico" alt="Hotcoin Logo" style="width:100%;height:100%;object-fit:contain;border-radius:10px;" />
+                    </div>
+                    <h3>Hotcoin Launchpad</h3>
                   </div>
-                  <span class="coming-soon-badge">Coming Soon</span>
+                  <span class="coming-soon-badge">Live</span>
                 </div>
-                <p style="margin-top:12px;">AXION continues preparing for broader exchange visibility. LBANK is displayed here as a monitored next-step target within the current expansion roadmap.</p>
+                <p style="margin-top:12px;">AXION Launchpad is live on Hotcoin. Join the official launchpad page and follow the next listing phase directly from the official Hotcoin access point.</p>
                 <div class="lbank-proof-list">
-                  <div class="lbank-proof-item">Exchange visibility remains part of the current growth and listing strategy.</div>
-                  <div class="lbank-proof-item">This card is informational and presented as a tracked coming-soon item.</div>
+                  <div class="lbank-proof-item">Official AXION launchpad access is available through Hotcoin.</div>
+                  <div class="lbank-proof-item">Launchpad participation helps strengthen the next market expansion stage.</div>
+                </div>
+                <div class="inline-actions" style="margin-top:16px;">
+                  <a class="btn btn-buy" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener noreferrer">Open Hotcoin Launchpad</a>
                 </div>
               </div>
             </article>
@@ -2035,8 +2040,8 @@
         </div>
         <div class="ai-tokenomics-card">
           <strong>Circulating Supply</strong>
-          <span>200,000,000 AX</span>
-          <small>Current AX available in active market circulation.</small>
+          <span>250,000,000 AXION</span>
+          <small>Current AXION available in active market circulation.</small>
         </div>
         <div class="ai-tokenomics-card">
           <strong>Total Supply</strong>
@@ -2060,7 +2065,7 @@
 
   <script>
     const CONFIG = {
-      AX_TOKEN: '0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D',
+      AX_TOKEN: '0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd',
       FEE_WALLET: '0xd543A36c00C478D211f9eB99b45B839474cea384',
       PRESALE_RECEIVER: '0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9',
       PRESALE_RECEIVER_ROUND_2: '0x252B6C9cB380216EC8725249047030715ceaAB04',
@@ -2076,7 +2081,7 @@
       AX_DECIMALS: 18,
       USDT: '0x55d398326f99059fF775485246999027B3197955',
       DEXSCREENER_PAIR_URL: 'https://api.dexscreener.com/latest/dex/pairs/bsc/0xff74866a47b3c27dc5c0195b64b5b60113715821',
-      DEXSCREENER_TOKEN_URL: 'https://api.dexscreener.com/latest/dex/tokens/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D'
+      DEXSCREENER_TOKEN_URL: 'https://api.dexscreener.com/latest/dex/tokens/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd'
     };
     window.CONFIG = CONFIG;
 
