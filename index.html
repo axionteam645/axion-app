@@ -31,7 +31,7 @@
           "logo": "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png",
           "sameAs": [
             "https://t.me/axiondefi",
-            "https://x.com/axiondefix"
+            "https://x.com/axiondefixx"
           ]
         },
         {
@@ -678,6 +678,11 @@
       .listings-expansion-grid{grid-template-columns:1fr}
       .exchange-target-top{align-items:flex-start;flex-direction:column}
     }
+
+    .ai-title-icon{width:38px;height:38px;display:inline-grid;place-items:center;flex-shrink:0;border-radius:14px;background:linear-gradient(135deg, rgba(78,216,255,.18), rgba(168,92,255,.14), rgba(255,92,184,.10));border:1px solid rgba(78,216,255,.24);box-shadow:0 0 20px rgba(78,216,255,.12), inset 0 1px 0 rgba(255,255,255,.08);vertical-align:middle}
+    .ai-title-icon svg{width:22px;height:22px;stroke:url(#axGradient);stroke-width:1.9;fill:none;filter:drop-shadow(0 0 5px rgba(78,216,255,.65)) drop-shadow(0 0 9px rgba(168,92,255,.38))}
+    .gradient-title.ai-title-with-icon,.axion-launch-title.ai-title-with-icon{display:flex;align-items:center;gap:12px}
+    @media (max-width:640px){.ai-title-icon{width:34px;height:34px;border-radius:12px}.ai-title-icon svg{width:20px;height:20px}}
 
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
     .reveal.show{opacity:1;transform:translateY(0)}
@@ -1597,6 +1602,41 @@
     @media (max-width: 980px){.v4-trust-grid{grid-template-columns:1fr}.v4-trust-points{grid-template-columns:1fr}.v4-mini-metrics{grid-template-columns:1fr 1fr 1fr}}
     @media (max-width: 640px){.v4-trust-inner,.v4-feed-inner{padding:16px}.v4-trust-title h3{font-size:19px}.v4-feed-row{grid-template-columns:auto 1fr}.v4-feed-row b{grid-column:2}.quick-amount-grid,.v4-mini-metrics{grid-template-columns:1fr}.v4-trust-grid{gap:12px;margin:16px 0}.v4-card-upgrade{margin-top:12px}}
 
+  
+
+    /* AXION Hotcoin Launchpad + Listing Countdown module */
+    .axion-launchpad-module{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;margin-top:26px;align-items:stretch}
+    .axion-launch-card,.axion-countdown-card{position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.026));border:1px solid rgba(255,255,255,.09);box-shadow:0 20px 60px rgba(0,0,0,.42)}
+    .axion-launch-card::before,.axion-countdown-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,201,92,.14), rgba(78,216,255,.08) 34%, rgba(168,92,255,.10) 68%, rgba(255,92,184,.08));pointer-events:none}
+    .axion-launch-card::after,.axion-countdown-card::after{content:"";position:absolute;right:-90px;bottom:-110px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(255,201,92,.22), rgba(255,140,31,.10), transparent 70%);filter:blur(12px);pointer-events:none}
+    .axion-launch-inner{position:relative;z-index:1;padding:26px}
+    .axion-launch-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .axion-launch-label{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;background:rgba(255,201,92,.12);border:1px solid rgba(255,201,92,.28);color:#fff0c2;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+    .axion-launch-status{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border-radius:999px;background:linear-gradient(90deg, rgba(67,243,177,.18), rgba(78,216,255,.14));border:1px solid rgba(67,243,177,.26);color:#dffff3;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+    .axion-launch-title{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+    .axion-launch-logo{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 24px rgba(255,201,92,.14)}
+    .axion-launch-logo img{width:100%;height:100%;object-fit:contain;padding:8px}
+    .axion-launch-title h3{font-size:clamp(28px,3vw,42px);line-height:1;letter-spacing:-.04em;margin:0;color:#fff}
+    .axion-launch-copy{font-size:15px;line-height:1.75;color:#c9d8f7;margin:0 0 18px;max-width:780px}
+    .axion-launch-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+    .axion-launch-detail{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.045)}
+    .axion-launch-detail span{display:block;font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#9fdfff;margin-bottom:8px}
+    .axion-launch-detail strong{display:block;font-size:15px;line-height:1.45;color:#fff}
+    .axion-launch-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+    .axion-launch-benefit{padding:12px 13px;border-radius:16px;background:rgba(255,201,92,.08);border:1px solid rgba(255,201,92,.16);color:#fff3ce;font-size:12px;font-weight:800;line-height:1.45;text-align:center}
+    .axion-countdown-card{background:linear-gradient(180deg, rgba(78,216,255,.08), rgba(168,92,255,.055)),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.026))}
+    .axion-countdown-card::after{background:radial-gradient(circle, rgba(78,216,255,.20), rgba(168,92,255,.12), transparent 70%)}
+    .axion-countdown-title{margin-bottom:18px}
+    .axion-countdown-title h3{font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-.04em;margin:10px 0 8px;color:#fff}
+    .axion-countdown-title p{margin:0;color:#b9c9ee;line-height:1.65;font-size:14px}
+    .axion-countdown-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+    .axion-countdown-box{min-height:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.045)}
+    .axion-countdown-box strong{font-size:25px;line-height:1;color:#fff;letter-spacing:-.03em}
+    .axion-countdown-box span{margin-top:7px;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#9ed7ff}
+    .axion-countdown-note{margin-top:16px;padding:15px 16px;border-radius:18px;background:rgba(67,243,177,.08);border:1px solid rgba(67,243,177,.18);color:#ddfff2;font-size:13px;line-height:1.65}
+    .axion-launch-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width: 940px){.axion-launchpad-module{grid-template-columns:1fr}.axion-launch-details{grid-template-columns:1fr}.axion-launch-benefits{grid-template-columns:1fr}.axion-countdown-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.axion-launch-inner{padding:22px}.axion-launch-top{flex-direction:column;align-items:flex-start}.axion-launch-title{align-items:flex-start}.axion-launch-logo{width:48px;height:48px;border-radius:16px}.axion-launch-title h3{font-size:30px}}
+
   </style>
 </head>
 <body>
@@ -1742,247 +1782,76 @@
           </div>
 
 
-          <div class="audit-strip">
-            <article class="card reveal lbank-panel" id="hotcoinLaunchpadCard">
-              <div class="card-inner">
-                <div class="tag">Hotcoin Launchpad</div>
-                <div class="lbank-head">
-                  <div class="lbank-title">
-                    <div class="lbank-logo" style="background:#ffffff;padding:6px;overflow:hidden;">
-                      <img src="https://www.hotcoin.com/favicon.ico" alt="Hotcoin Logo" style="width:100%;height:100%;object-fit:contain;border-radius:10px;" />
-                    </div>
-                    <h3>Hotcoin Launchpad</h3>
+          <div class="featured-sales-head reveal">
+            <div class="eyebrow">Hotcoin Launchpad</div>
+            <h2 class="gradient-title ai-title-with-icon"><span class="ai-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.35 4.15L17.5 8.5l-4.15 1.35L12 14l-1.35-4.15L6.5 8.5l4.15-1.35L12 3Z"/><path d="M18.5 13l.85 2.65L22 16.5l-2.65.85L18.5 20l-.85-2.65L15 16.5l2.65-.85L18.5 13Z"/><path d="M5.5 14l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z"/></svg></span><span>AXION Initial Listing Phase</span></h2>
+            <div class="sales-signal-wrap"><div class="sales-signal"><span class="sales-signal-dot"></span><span>Launchpad access active</span></div></div>
+          </div>
+
+          <div class="axion-launchpad-module reveal" id="hotcoinLaunchpad">
+            <article class="axion-launch-card">
+              <div class="axion-launch-inner">
+                <div class="axion-launch-top">
+                  <div class="axion-launch-label">Official Launchpad</div>
+                  <div class="axion-launch-status">Hotcoin Phase</div>
+                </div>
+                <div class="axion-launch-title ai-title-with-icon">
+                  <span class="ai-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.35 4.15L17.5 8.5l-4.15 1.35L12 14l-1.35-4.15L6.5 8.5l4.15-1.35L12 3Z"/><path d="M18.5 13l.85 2.65L22 16.5l-2.65.85L18.5 20l-.85-2.65L15 16.5l2.65-.85L18.5 13Z"/><path d="M5.5 14l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z"/></svg></span>
+                  <div class="axion-launch-logo">
+                    <img src="https://www.hotcoin.com/favicon.ico" alt="Hotcoin Logo">
                   </div>
-                  <span class="coming-soon-badge">Live</span>
+                  <h3>AXION Initial Listing Phase</h3>
                 </div>
-                <p style="margin-top:12px;">AXION Launchpad is live on Hotcoin. Join the official launchpad page and follow the next listing phase directly from the official Hotcoin access point.</p>
-                <div class="lbank-proof-list">
-                  <div class="lbank-proof-item">Official AXION launchpad access is available through Hotcoin.</div>
-                  <div class="lbank-proof-item">Launchpad participation helps strengthen the next market expansion stage.</div>
+                <p class="axion-launch-copy">AXION is entering its first official exchange expansion phase through Hotcoin Launchpad. The current subscription window gives early users access before public trading begins.</p>
+
+                <div class="axion-launch-details">
+                  <div class="axion-launch-detail">
+                    <span>Subscription Period</span>
+                    <strong>May 7, 2026 18:00 — May 31, 2026 18:00 (UTC+8)</strong>
+                  </div>
+                  <div class="axion-launch-detail">
+                    <span>Official Trading Launch</span>
+                    <strong>June 3, 2026 — 18:00 (UTC+8)</strong>
+                  </div>
+                  <div class="axion-launch-detail">
+                    <span>Network Phase</span>
+                    <strong>BNB Smart Chain ecosystem access before future mainnet expansion.</strong>
+                  </div>
+                  <div class="axion-launch-detail">
+                    <span>Early Reward</span>
+                    <strong>20% airdrop reward planned for launchpad participants one month later.</strong>
+                  </div>
                 </div>
-                <div class="inline-actions" style="margin-top:16px;">
+
+                <div class="axion-launch-benefits">
+                  <div class="axion-launch-benefit">Early ecosystem access</div>
+                  <div class="axion-launch-benefit">Exchange expansion phase</div>
+                  <div class="axion-launch-benefit">Future mainnet direction</div>
+                </div>
+
+                <div class="axion-launch-actions">
                   <a class="btn btn-buy" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener noreferrer">Open Hotcoin Launchpad</a>
                 </div>
               </div>
             </article>
-          </div>
 
-          <div class="featured-sales-head reveal">
-            <div class="eyebrow">Featured Sales</div>
-            <h2 class="gradient-title">Round Access</h2>
-                          <div class="sales-signal-wrap"><div class="sales-signal"><span class="sales-signal-dot"></span><span>Early access activity detected</span></div></div>
-          </div>
-
-
-
-          <div class="v4-trust-grid reveal">
-            <div class="v4-trust-card">
-              <div class="v4-trust-inner">
-                <div class="v4-trust-title">
-                  <div class="v4-shield"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.1 8.5-7 10-3.9-1.5-7-5-7-10V6l7-3z"></path><path d="M9 12l2 2 4-5"></path></svg></div>
-                  <h3>Verified Presale Payment Layer</h3>
-                  <span>Official Wallets Only</span>
+            <article class="axion-countdown-card">
+              <div class="axion-launch-inner">
+                <div class="axion-launch-label">Listing Countdown</div>
+                <div class="axion-countdown-title">
+                  <h3>Trading Starts June 3</h3>
+                  <p>Official AXION trading launch is scheduled for June 3, 2026 at 18:00 (UTC+8).</p>
                 </div>
-                <p class="v4-trust-copy">AXION presale payments are processed through the official USDT payment wallets shown inside each round card. Always verify the wallet address before confirming a transaction.</p>
-                <div class="v4-trust-points">
-                  <div class="v4-trust-point"><strong>USDT Payment</strong><span>Round-based payment wallet visibility.</span></div>
-                  <div class="v4-trust-point"><strong>Wallet Delivery</strong><span>AX allocation follows the wallet used for payment.</span></div>
-                  <div class="v4-trust-point"><strong>Anti-Scam Notice</strong><span>AXION never requests payments by private DM.</span></div>
+                <div class="axion-countdown-grid" data-listing-countdown="2026-06-03T10:00:00Z">
+                  <div class="axion-countdown-box"><strong id="listingDays">--</strong><span>Days</span></div>
+                  <div class="axion-countdown-box"><strong id="listingHours">--</strong><span>Hours</span></div>
+                  <div class="axion-countdown-box"><strong id="listingMinutes">--</strong><span>Minutes</span></div>
+                  <div class="axion-countdown-box"><strong id="listingSeconds">--</strong><span>Seconds</span></div>
                 </div>
-                <div class="v4-warning-strip">Security notice: only use the payment wallets displayed on this official page. Do not send funds to addresses shared by unofficial accounts.</div>
-              </div>
-            </div>
-            <div class="v4-feed-card">
-              <div class="v4-feed-inner">
-                <div class="v4-feed-title"><strong>Presale Activity</strong><span class="v4-live-pill">Live UI</span></div>
-                <div class="v4-feed-list">
-                  <div class="v4-feed-row"><i class="v4-feed-dot"></i><span>Round 1 payment wallet verified</span><b>USDT</b></div>
-                  <div class="v4-feed-row"><i class="v4-feed-dot"></i><span>Round 2 payment wallet verified</span><b>USDT</b></div>
-                  <div class="v4-feed-row"><i class="v4-feed-dot"></i><span>Countdown synchronized to UTC</span><b>ACTIVE</b></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="presale-round-grid">
-            <article class="card" id="presale">
-              <div class="card-inner">
-                <div class="round-tag"><span>Round 1</span><span class="round-tag-badge">Best Value</span></div>
-                <div class="title-row">
-                  <div class="icon-badge" style="padding:0; overflow:hidden;">
-                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
-                  </div>
-                  <h3>AXION Presale</h3>
-                  <div class="round-countdown-badge" data-countdown-target="2026-06-07T00:00:00Z"><span class="countdown-label">Round 1 Ends In</span><span class="countdown-value" id="round1Countdown">Loading...</span><span class="countdown-zone">UTC</span></div>
-                </div>
-                <p style="margin-top:6px;max-width:760px;">Early access price advantage for AXION on BNB Smart Chain. This round is designed for early participants who want a stronger entry before the next expansion stage.</p>
-
-                <div class="presale-box">
-                  <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.02 USDT</span></div>
-                  <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
-                  <div class="presale-row"><strong>End Date</strong><span>07.06.2026 00:00 UTC</span></div>
-                  <div class="presale-row"><strong>Distribution</strong><span>01.07.2026</span></div>
-                  <div class="reserve-wallet-card">
-                    <div>
-                      <span class="reserve-wallet-label">Round 1 USDT Payment Wallet</span>
-                      <span class="reserve-wallet-address">0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9</span>
-                    </div>
-                    <button class="reserve-copy-btn" id="copyReserveWalletRound1" type="button" aria-label="Copy Round 1 USDT payment wallet" title="Copy address">
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                    </button>
-                  </div>
-                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddress" style="word-break:break-all;text-align:right;">0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9</span></div>
-                </div>
-
-                <div class="v4-card-upgrade">
-                  <div class="v4-ai-card">
-                    <div class="v4-ai-inner">
-                      <div class="v4-ai-title"><strong>AI Presale Insight</strong><span class="v4-ai-pill">Round 1</span></div>
-                      <p>Best-value access remains active until the UTC deadline. Use the official Round 1 USDT payment wallet shown above before confirming your transaction.</p>
-                      <div class="v4-mini-metrics">
-                        <div class="v4-mini-metric"><span>Entry</span><strong>Best Value</strong></div>
-                        <div class="v4-mini-metric"><span>Payment</span><strong>USDT</strong></div>
-                        <div class="v4-mini-metric"><span>Status</span><strong>Open</strong></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="presale-progress">
-                  <div style="display:none;">
-                    <div class="progress-top">
-                      <strong>Allocation Progress</strong>
-                      <span id="allocationProgressText">0 AX sold · 0%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and USDT payment flow are tracked through the official presale receiver.</div>
-                  </div>
-                  <div class="status-grid">
-                    <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmount">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
-                    <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmount">Loading...</span><small>Current allocation still available</small></div>
-                    <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnb">Loading...</span><small>USDT currently held by official receiver</small></div>
-                    <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatus">OPEN</span><small>Presale dashboard state for current session</small></div>
-                  </div>
-                </div>
-
-                <div class="buy-inputs">
-                  <div class="buy-field">
-                    <label for="bnbAmount">Enter USDT Amount</label>
-                    <input id="bnbAmount" type="number" min="0" step="0.01" placeholder="Example: 1" />
-                  </div>
-                  <div class="quick-amount-grid" aria-label="Quick USDT amounts for Round 1">
-                    <button class="quick-amount-btn" type="button" data-round="1" data-amount="50">50 USDT</button>
-                    <button class="quick-amount-btn" type="button" data-round="1" data-amount="100">100 USDT</button>
-                    <button class="quick-amount-btn" type="button" data-round="1" data-amount="250">250 USDT</button>
-                  </div>
-                  <div class="buy-preview">You Receive: <strong id="axReceivePreview">0 AX</strong></div>
-                  <div class="inline-actions inline-actions-wide">
-                    <button class="btn btn-buy buy-panel-btn" id="buyNowBtn" type="button"><span>Buy AX</span></button>
-                  </div>
-                  <div class="receiver-info-row">
-                    <button class="btn btn-secondary" id="copyReceiverBtn" type="button">Copy Receiver</button>
-                    <div class="receiver-info-box">AX delivery will be sent to the wallet address you used for payment.</div>
-                  </div>
-                  <div class="buy-status" id="buyStatus">Enter a USDT amount, connect your wallet, then approve the USDT transfer in your wallet.</div>
-                </div>
-
-                <div class="success-card" id="presaleSuccess">
-                  <strong>Congratulations</strong>
-                  <p id="presaleSuccessMessage">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
-                </div>
+                <div class="axion-countdown-note">Launchpad subscription ends on May 31, 2026 at 18:00 (UTC+8). Interest is expected to increase as the official Hotcoin trading launch approaches.</div>
               </div>
             </article>
-
-            <article class="card" id="presaleRound2">
-              <div class="card-inner">
-                <div class="round-tag"><span>Round 2</span><span class="round-tag-badge">Limited Opportunity</span></div>
-                <div class="title-row">
-                  <div class="icon-badge" style="padding:0; overflow:hidden;">
-                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
-                  </div>
-                  <h3>AXION Presale</h3>
-                  <div class="round-countdown-badge" data-countdown-target="2026-05-22T00:00:00Z"><span class="countdown-label">Round 2 Ends In</span><span class="countdown-value" id="round2Countdown">Loading...</span><span class="countdown-zone">UTC</span></div>
-                </div>
-                <p style="margin-top:6px;max-width:760px;">A highly advantageous price before upcoming exchange listings. This round gives participants another strong entry window ahead of the next market phase.</p>
-                <div class="presale-note-badges"><div class="presale-note-badge">CEX Ready</div><div class="presale-note-badge">Smart Entry</div></div>
-
-                <div class="presale-box">
-                  <div class="presale-row"><strong>Rate</strong><span>1 AX = 0.03 USDT</span></div>
-                  <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AX</span></div>
-                  <div class="presale-row"><strong>End Date</strong><span>22.05.2026 00:00 UTC</span></div>
-                  <div class="presale-row"><strong>Distribution</strong><span>15.06.2026</span></div>
-                  <div class="reserve-wallet-card">
-                    <div>
-                      <span class="reserve-wallet-label">Round 2 USDT Payment Wallet</span>
-                      <span class="reserve-wallet-address">0x252B6C9cB380216EC8725249047030715ceaAB04</span>
-                    </div>
-                    <button class="reserve-copy-btn" id="copyReserveWalletRound2" type="button" aria-label="Copy Round 2 USDT payment wallet" title="Copy address">
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                    </button>
-                  </div>
-                  <div class="presale-row" style="display:none;"><strong>Receiver</strong><span id="receiverAddressRound2" style="word-break:break-all;text-align:right;">0x252B6C9cB380216EC8725249047030715ceaAB04</span></div>
-                </div>
-
-                <div class="v4-card-upgrade">
-                  <div class="v4-ai-card">
-                    <div class="v4-ai-inner">
-                      <div class="v4-ai-title"><strong>AI Presale Insight</strong><span class="v4-ai-pill">Round 2</span></div>
-                      <p>Limited opportunity window is active with a separate official Round 2 USDT payment wallet. Verify the displayed wallet before approving your payment.</p>
-                      <div class="v4-mini-metrics">
-                        <div class="v4-mini-metric"><span>Entry</span><strong>Limited</strong></div>
-                        <div class="v4-mini-metric"><span>Payment</span><strong>USDT</strong></div>
-                        <div class="v4-mini-metric"><span>Status</span><strong>Open</strong></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="presale-progress">
-                  <div style="display:none;">
-                    <div class="progress-top">
-                      <strong>Allocation Progress</strong>
-                      <span id="allocationProgressTextRound2">0 AX sold · 0%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress-fill" id="progressFillRound2"></div></div>
-                    <div class="progress-note">Sold AX updates from the receiver wallet balance. Remaining allocation and USDT payment flow are tracked through the official presale receiver.</div>
-                  </div>
-                  <div class="status-grid">
-                    <div class="status-chip" style="display:none;"><strong>Sold</strong><span id="soldAmountRound2">Loading...</span><small>Estimated from allocation minus receiver AX balance</small></div>
-                    <div class="status-chip" style="display:none;"><strong>Remaining</strong><span id="remainingAmountRound2">Loading...</span><small>Current allocation still available</small></div>
-                    <div class="status-chip" style="display:none;"><strong>Raised</strong><span id="raisedBnbRound2">Loading...</span><small>USDT currently held by official receiver</small></div>
-                    <div class="status-chip status-open"><strong>Status</strong><span id="presaleStatusRound2">OPEN</span><small>Presale dashboard state for current session</small></div>
-                  </div>
-                </div>
-
-                <div class="buy-inputs">
-                  <div class="buy-field">
-                    <label for="bnbAmountRound2">Enter USDT Amount</label>
-                    <input id="bnbAmountRound2" type="number" min="0" step="0.01" placeholder="Example: 1" />
-                  </div>
-                  <div class="quick-amount-grid" aria-label="Quick USDT amounts for Round 2">
-                    <button class="quick-amount-btn" type="button" data-round="2" data-amount="50">50 USDT</button>
-                    <button class="quick-amount-btn" type="button" data-round="2" data-amount="100">100 USDT</button>
-                    <button class="quick-amount-btn" type="button" data-round="2" data-amount="250">250 USDT</button>
-                  </div>
-                  <div class="buy-preview">You Receive: <strong id="axReceivePreviewRound2">0 AX</strong></div>
-                  <div class="inline-actions inline-actions-wide">
-                    <button class="btn btn-buy buy-panel-btn" id="buyNowBtnRound2" type="button"><span>Buy AX</span></button>
-                  </div>
-                  <div class="receiver-info-row">
-                    <button class="btn btn-secondary" id="copyReceiverBtnRound2" type="button">Copy Receiver</button>
-                    <div class="receiver-info-box">AX delivery will be sent to the wallet address you used for payment.</div>
-                  </div>
-                  <div class="buy-status" id="buyStatusRound2">Enter a USDT amount, connect your wallet, then approve the USDT transfer in your wallet.</div>
-                </div>
-
-                <div class="success-card" id="presaleSuccessRound2">
-                  <strong>Congratulations</strong>
-                  <p id="presaleSuccessMessageRound2">You joined the presale. Please check the wallet you used for payment on the distribution date. Thank you.</p>
-                </div>
-              </div>
-            </article>
+          </div>
           </div>
         </div>
       </div>
@@ -2035,7 +1904,7 @@
       <div class="ai-tokenomics-grid reveal">
         <div class="ai-tokenomics-card">
           <strong>Presale Allocation</strong>
-          <span>7,500,000 AX</span>
+          <span>10,000,000 AXION</span>
           <small>Reserved for the official AXION presale rounds.</small>
         </div>
         <div class="ai-tokenomics-card">
@@ -3033,16 +2902,16 @@
     function initEvents(){
       els.walletBtn.addEventListener('click', () => userAddress ? disconnectWallet() : connectWallet());
       els.sendAxBtn?.addEventListener('click', sendAxTransaction);
-      els.copyContractBtn.addEventListener('click', () => { copyText(CONFIG.AX_TOKEN); setBuyStatus('Contract address copied.', 'good'); });
-      els.copyReceiverBtn.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Round 1 receiver copied.', 'good', 1); });
+      els.copyContractBtn?.addEventListener('click', () => { copyText(CONFIG.AX_TOKEN); setBuyStatus('Contract address copied.', 'good'); });
+      els.copyReceiverBtn?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Round 1 receiver copied.', 'good', 1); });
       els.copyReceiverBtnRound2?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER_ROUND_2); setBuyStatus('Round 2 receiver copied.', 'good', 2); });
       document.getElementById('copyReserveWalletRound1')?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER); setBuyStatus('Round 1 USDT payment wallet copied.', 'good', 1); });
       document.getElementById('copyReserveWalletRound2')?.addEventListener('click', () => { copyText(CONFIG.PRESALE_RECEIVER_ROUND_2); setBuyStatus('Round 2 USDT payment wallet copied.', 'good', 2); });
-      els.buyNowBtn.addEventListener('click', () => sendPresaleTransaction(1));
+      els.buyNowBtn?.addEventListener('click', () => sendPresaleTransaction(1));
       els.buyNowBtnRound2?.addEventListener('click', () => sendPresaleTransaction(2));
-      els.bnbAmount.addEventListener('input', () => updateReceivePreview(1));
+      els.bnbAmount?.addEventListener('input', () => updateReceivePreview(1));
       els.bnbAmountRound2?.addEventListener('input', () => updateReceivePreview(2));
-      els.mobileToggle.addEventListener('click', () => els.navLinks.classList.toggle('open'));
+      els.mobileToggle?.addEventListener('click', () => els.navLinks.classList.toggle('open'));
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => els.navLinks.classList.remove('open'));
       });
@@ -3109,7 +2978,7 @@
 
       <div class="axion-footer-social">
         <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer" class="axion-social-pill telegram">Telegram</a>
-        <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer" class="axion-social-pill twitter">X (Twitter)</a>
+        <a href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer" class="axion-social-pill twitter">X (Twitter)</a>
       </div>
 
       <div class="axion-footer-divider"></div>
@@ -3302,6 +3171,31 @@
   startRoundCountdowns();
   bindRound(1);
   bindRound(2);
+})();
+</script>
+
+
+<script>
+(function(){
+  const target = new Date('2026-06-03T10:00:00Z').getTime();
+  function pad(n){ return String(Math.max(0, n)).padStart(2,'0'); }
+  function tick(){
+    const diff = Math.max(0, target - Date.now());
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    const d = document.getElementById('listingDays');
+    const h = document.getElementById('listingHours');
+    const m = document.getElementById('listingMinutes');
+    const sec = document.getElementById('listingSeconds');
+    if(d) d.textContent = String(days);
+    if(h) h.textContent = pad(hours);
+    if(m) m.textContent = pad(minutes);
+    if(sec) sec.textContent = pad(seconds);
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 
