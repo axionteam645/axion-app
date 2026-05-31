@@ -92,7 +92,7 @@
           <h1 class="gradient">Lock AXION. Earn Ecosystem Rewards.</h1>
           <p>Stake AXION into locked reward pools designed for long-term ecosystem growth. The NFT module stays ready as the next premium layer of the AXION App.</p>
           <div class="hero-actions"><button class="btn" onclick="scrollToSection('stake')">Start Staking</button><button class="btn btn-dark" onclick="scrollToSection('pools')">View Pools</button><button class="btn btn-dark" onclick="scrollToSection('nft')">NFT Coming Soon</button></div>
-          <div class="hero-note">Rewards are designed for a prefunded staking pool model. No mint function is required for staking rewards.</div>
+          <div class="hero-note">Live staking contract is connected. Approve AXION, stake into a locked pool, and withdraw principal + reward after maturity.</div>
         </div>
         <div class="hero-orbit">
           <div class="orbit-ring"></div><div class="orbit-ring two"></div>
@@ -102,7 +102,7 @@
       </div>
     </section>
 
-    <section class="stats"><div class="container stats-grid"><div class="stat"><span>Total Locked</span><strong id="totalLocked">0 AXION</strong><small>AXION locked across pools.</small></div><div class="stat"><span>Active Stakers</span><strong id="activeStakers">0</strong><small>Unique staking positions.</small></div><div class="stat"><span>Reward Pool</span><strong id="rewardPool">50M AXION</strong><small>Allocated reward supply.</small></div><div class="stat"><span>Average APY</span><strong>45%</strong><small>Based on active pools.</small></div></div></section>
+    <section class="stats"><div class="container stats-grid"><div class="stat"><span>Total Locked</span><strong id="totalLocked">0 AXION</strong><small>AXION locked across pools.</small></div><div class="stat"><span>Active Positions</span><strong id="activeStakers">0</strong><small>Total staking positions.</small></div><div class="stat"><span>Reward Pool</span><strong id="rewardPool">Loading...</strong><small>Available AXION reward balance.</small></div><div class="stat"><span>Average APY</span><strong>45%</strong><small>Based on active pools.</small></div></div></section>
 
     <section class="section" id="pools"><div class="container"><div class="section-head"><div><div class="eyebrow">LOCKED STAKING POOLS</div><h2 class="gradient">Choose Your Pool</h2></div><p>No flexible pool. AXION staking is built around locked pools to support supply reduction and stronger holder commitment.</p></div><div class="pool-grid">
       <article class="pool selected" data-pool="genesis"><div class="inner"><div class="pool-top"><div><h3>Genesis Pool</h3><p>Balanced entry pool for early ecosystem participants.</p></div><div class="apy"><strong>20%</strong><span>APY</span></div></div><div class="lines"><div class="line"><span>Lock Period</span><strong>90 Days</strong></div><div class="line"><span>Early Unstake</span><strong>No</strong></div><div class="line"><span>Reward</span><strong>AXION</strong></div></div><button class="btn" onclick="selectPool('genesis')">Select Genesis</button></div></article>
@@ -117,7 +117,7 @@
 
     <section class="section" id="positions"><div class="container"><div class="section-head"><div><div class="eyebrow">MY STAKING POSITIONS</div><h2 class="gradient">Your Stakes</h2></div><p>After contract integration, this section will read active staking positions directly from chain.</p></div><div class="positions-grid" id="positionsGrid"><div class="empty">No active staking position found. Connect wallet and stake AXION to create your first position.</div></div></div></section>
 
-    <section class="section" id="security"><div class="container"><div class="section-head"><div><div class="eyebrow">SECURITY MODEL</div><h2 class="gradient">Clean Reward Logic</h2></div><p>The recommended staking model uses a prefunded reward pool instead of minting new tokens.</p></div><div class="info-grid"><div class="info"><div class="inner"><strong>Fixed Supply</strong><p>Rewards are paid from a funded pool.</p></div></div><div class="info"><div class="inner"><strong>Locked Pools</strong><p>All pools use fixed unlock dates.</p></div></div><div class="info"><div class="inner"><strong>No Hidden Fees</strong><p>Amount, APY and lock period are shown clearly.</p></div></div><div class="info"><div class="inner"><strong>On-Chain Claims</strong><p>Claims and unstake actions should be contract verified.</p></div></div><div class="info"><div class="inner"><strong>Reward Pool</strong><p>The contract should hold enough AXION rewards.</p></div></div></div></div></section>
+    <section class="section" id="security"><div class="container"><div class="section-head"><div><div class="eyebrow">SECURITY MODEL</div><h2 class="gradient">Clean Reward Logic</h2></div><p>The staking contract is live on BNB Smart Chain. Rewards are held inside the staking contract and paid together with principal after lock maturity.</p></div><div class="info-grid"><div class="info"><div class="inner"><strong>Fixed Supply</strong><p>Rewards are paid from a funded pool.</p></div></div><div class="info"><div class="inner"><strong>Locked Pools</strong><p>All pools use fixed unlock dates.</p></div></div><div class="info"><div class="inner"><strong>No Hidden Fees</strong><p>Amount, APY and lock period are shown clearly.</p></div></div><div class="info"><div class="inner"><strong>On-Chain Claims</strong><p>Claims and unstake actions should be contract verified.</p></div></div><div class="info"><div class="inner"><strong>Reward Pool</strong><p>The contract should hold enough AXION rewards.</p></div></div></div></div></section>
 
     <section class="section" id="nft"><div class="container"><div class="section-head"><div><div class="eyebrow">NFT MARKETPLACE</div><h2 class="gradient">AXION Genesis NFTs</h2></div><p>NFT sales will become the next premium module of the AXION App.</p></div><div class="nft-box"><div class="inner nft-art"><div class="nft-orb"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" alt="AXION NFT"></div></div><div class="inner"><div class="eyebrow">COMING SOON</div><h2 class="gradient" style="font-size:clamp(34px,4vw,58px);line-height:1;margin:18px 0 14px;letter-spacing:-.055em">Genesis NFT Sale</h2><p style="color:var(--muted);line-height:1.8;font-size:16px">AXION Genesis NFTs will be designed for ecosystem utility, future access, game integration, and possible staking boost mechanics.</p><div class="utility-grid"><div class="utility"><strong>Staking Boost</strong><p>Potential reward multiplier for NFT holders.</p></div><div class="utility"><strong>Premium Access</strong><p>Access to special ecosystem features.</p></div><div class="utility"><strong>Game Utility</strong><p>Future AXION Game integration.</p></div><div class="utility"><strong>Airdrop Eligibility</strong><p>Possible future ecosystem rewards.</p></div></div><div class="hero-actions"><button class="btn btn-dark" disabled>Mint Coming Soon</button><button class="btn" onclick="scrollToSection('stake')">Stake AXION First</button></div></div></div></div></section>
   </main>
@@ -125,22 +125,388 @@
   <footer class="footer"><div class="container"><strong>AXION App</strong><p style="margin-top:8px">Official staking and NFT hub for the AXION ecosystem.</p><div class="footer-links"><a href="https://www.axiondefi.com/" target="_blank" rel="noopener">Website</a><a href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a><a href="https://x.com/axiondefixx" target="_blank" rel="noopener">X / Twitter</a><a href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener">BscScan</a></div></div></footer>
 
   <script>
-    const AXION_TOKEN_ADDRESS="0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd",BSC_CHAIN_ID="0x38",BSC_PARAMS={chainId:BSC_CHAIN_ID,chainName:"BNB Smart Chain",nativeCurrency:{name:"BNB",symbol:"BNB",decimals:18},rpcUrls:["https://bsc-dataseed.binance.org/"],blockExplorerUrls:["https://bscscan.com/"]};
-    const AXION_ABI=["function balanceOf(address account) view returns (uint256)","function decimals() view returns (uint8)","function approve(address spender,uint256 amount) returns (bool)","function allowance(address owner,address spender) view returns (uint256)"];
-    const STAKING_CONTRACT_ADDRESS="0x0000000000000000000000000000000000000000";
-    const pools={genesis:{name:"Genesis Pool",apy:20,days:90},validator:{name:"Validator Pool",apy:40,days:180},ecosystem:{name:"Ecosystem Pool",apy:75,days:365}};
-    let provider,signer,userAddress="",axionBalance=0,selectedPool="genesis";const $=id=>document.getElementById(id);function formatNumber(v,m=4){return new Intl.NumberFormat("en-US",{maximumFractionDigits:m}).format(Number(v||0))}function shortAddress(a){return a?a.slice(0,6)+"..."+a.slice(-4):"Not Connected"}function scrollToSection(id){const e=$(id);if(e)e.scrollIntoView({behavior:"smooth",block:"start"})}
-    async function ensureBsc(){if(!window.ethereum)return false;const c=await window.ethereum.request({method:"eth_chainId"});if(c===BSC_CHAIN_ID)return true;try{await window.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:BSC_CHAIN_ID}]});return true}catch(e){if(e.code===4902){await window.ethereum.request({method:"wallet_addEthereumChain",params:[BSC_PARAMS]});return true}throw e}}
-    async function connectWallet(){if(!window.ethereum){showStatus("MetaMask or a compatible Web3 wallet is required.");return}try{await ensureBsc();provider=new ethers.providers.Web3Provider(window.ethereum);await provider.send("eth_requestAccounts",[]);signer=provider.getSigner();userAddress=await signer.getAddress();$("connectBtn").textContent=shortAddress(userAddress);$("walletShort").textContent=shortAddress(userAddress);await loadAxionBalance();calculateRewards()}catch(e){console.error(e);showStatus("Wallet connection failed. Please try again.")}}
-    async function loadAxionBalance(){try{if(!provider||!userAddress)return;const t=new ethers.Contract(AXION_TOKEN_ADDRESS,AXION_ABI,provider),raw=await t.balanceOf(userAddress),dec=await t.decimals();axionBalance=Number(ethers.utils.formatUnits(raw,dec));$("walletBalance").textContent=formatNumber(axionBalance,4)+" AXION";$("calcBalance").textContent=formatNumber(axionBalance,4)+" AXION"}catch(e){console.error(e);axionBalance=0}}
-    function selectPool(k){selectedPool=k;$("poolSelect").value=k;document.querySelectorAll(".pool").forEach(c=>c.classList.remove("selected"));const s=document.querySelector(`.pool[data-pool="${k}"]`);if(s)s.classList.add("selected");calculateRewards();scrollToSection("stake")}
-    function setQuickAmount(p){$("stakeAmount").value=axionBalance?(axionBalance*p/100).toFixed(4):"0";calculateRewards()}
-    function calculateRewards(){const a=Number($("stakeAmount").value||0),p=pools[selectedPool],r=a*(p.apy/100)*(p.days/365),tr=a+r,u=new Date(Date.now()+p.days*864e5);$("calcApy").textContent=p.apy+"%";$("calcLock").textContent=p.days+" Days";$("calcReward").textContent=formatNumber(r,4)+" AXION";$("calcReturn").textContent=formatNumber(tr,4)+" AXION";$("calcUnlock").textContent=a>0?u.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"}):"-";$("heroSelectedPool").textContent=p.name;$("heroReward").textContent=formatNumber(r,4)+" AXION"}
-    function showStatus(m){const e=$("stakeStatus");e.textContent=m;e.classList.add("show")}
-    async function approveAxion(){const a=Number($("stakeAmount").value||0);if(!userAddress){await connectWallet();return}if(!a||a<=0){showStatus("Enter a valid AXION amount first.");return}if(STAKING_CONTRACT_ADDRESS==="0x0000000000000000000000000000000000000000"){showStatus("Staking contract address is not added yet. Add the deployed staking contract address before live approve.");return}try{const t=new ethers.Contract(AXION_TOKEN_ADDRESS,AXION_ABI,signer),d=await t.decimals(),parsed=ethers.utils.parseUnits(String(a),d),tx=await t.approve(STAKING_CONTRACT_ADDRESS,parsed);showStatus("Approve transaction sent. Waiting for confirmation...");await tx.wait();showStatus("AXION approved successfully. You can now stake.")}catch(e){console.error(e);showStatus("Approve transaction failed or was rejected.")}}
-    async function stakeAxion(){const a=Number($("stakeAmount").value||0);if(!userAddress){await connectWallet();return}if(!a||a<=0){showStatus("Enter a valid AXION amount first.");return}if(STAKING_CONTRACT_ADDRESS==="0x0000000000000000000000000000000000000000"){createDemoPosition();showStatus("Demo position created. Live staking will work after staking contract address and ABI are added.");return}showStatus("Live stake function will be connected after staking contract ABI is added.")}
-    function createDemoPosition(){const a=Number($("stakeAmount").value||0),p=pools[selectedPool],r=a*(p.apy/100)*(p.days/365),s=new Date(),u=new Date(Date.now()+p.days*864e5),g=$("positionsGrid");g.innerHTML=`<div class="position"><div class="inner"><h3>Position #1</h3><div class="lines"><div class="line"><span>Pool</span><strong>${p.name}</strong></div><div class="line"><span>Amount</span><strong>${formatNumber(a,4)} AXION</strong></div><div class="line"><span>APY</span><strong>${p.apy}%</strong></div><div class="line"><span>Start Date</span><strong>${s.toLocaleDateString("en-US")}</strong></div><div class="line"><span>Unlock Date</span><strong>${u.toLocaleDateString("en-US")}</strong></div><div class="line"><span>Reward</span><strong>${formatNumber(r,4)} AXION</strong></div><div class="line"><span>Status</span><strong>Active</strong></div></div><div class="position-actions"><button class="btn btn-dark" disabled>Claim</button><button class="btn btn-dark" disabled>Unstake</button></div></div></div>`;$("totalLocked").textContent=formatNumber(a,4)+" AXION";$("activeStakers").textContent="1"}
-    $("connectBtn").addEventListener("click",connectWallet);$("approveBtn").addEventListener("click",approveAxion);$("stakeBtn").addEventListener("click",stakeAxion);$("stakeAmount").addEventListener("input",calculateRewards);$("poolSelect").addEventListener("change",e=>selectPool(e.target.value));$("mobileToggle").addEventListener("click",()=>$("navLinks").classList.toggle("open"));document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>$("navLinks").classList.remove("open")));if(window.ethereum){window.ethereum.on("accountsChanged",()=>location.reload());window.ethereum.on("chainChanged",()=>location.reload())}calculateRewards();
+    const AXION_TOKEN_ADDRESS = "0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd";
+    const STAKING_CONTRACT_ADDRESS = "0x00eDCe183278E5A8818C38a75d5177f47d554F49";
+    const BSC_CHAIN_ID = "0x38";
+    const BSC_PARAMS = {
+      chainId: BSC_CHAIN_ID,
+      chainName: "BNB Smart Chain",
+      nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
+      rpcUrls: ["https://bsc-dataseed.binance.org/"],
+      blockExplorerUrls: ["https://bscscan.com/"]
+    };
+
+    const AXION_ABI = [
+      "function balanceOf(address account) view returns (uint256)",
+      "function decimals() view returns (uint8)",
+      "function approve(address spender,uint256 amount) returns (bool)",
+      "function allowance(address owner,address spender) view returns (uint256)"
+    ];
+
+    const STAKING_ABI = [
+      "function stake(uint8 poolId,uint256 amount) external",
+      "function withdraw(uint256 positionId) external",
+      "function pendingReward(uint256 positionId) view returns (uint256 visibleReward,uint256 finalReward,bool matured)",
+      "function getUserPositions(address user) view returns (tuple(uint256 id,address user,uint8 poolId,uint256 amount,uint256 reward,uint256 startTime,uint256 unlockTime,bool withdrawn)[])",
+      "function totalStaked() view returns (uint256)",
+      "function totalPositions() view returns (uint256)",
+      "function contractAxionBalance() view returns (uint256)",
+      "function availableRewardBalance() view returns (uint256)",
+      "function paused() view returns (bool)"
+    ];
+
+    const pools = {
+      genesis: { id: 0, name: "Genesis Pool", apy: 20, days: 90 },
+      validator: { id: 1, name: "Validator Pool", apy: 40, days: 180 },
+      ecosystem: { id: 2, name: "Ecosystem Pool", apy: 75, days: 365 }
+    };
+
+    const poolById = {
+      0: pools.genesis,
+      1: pools.validator,
+      2: pools.ecosystem
+    };
+
+    let provider;
+    let signer;
+    let userAddress = "";
+    let axionBalance = 0;
+    let selectedPool = "genesis";
+
+    const $ = id => document.getElementById(id);
+
+    function formatNumber(value, max = 4) {
+      return new Intl.NumberFormat("en-US", { maximumFractionDigits: max }).format(Number(value || 0));
+    }
+
+    function shortAddress(address) {
+      return address ? address.slice(0, 6) + "..." + address.slice(-4) : "Not Connected";
+    }
+
+    function scrollToSection(id) {
+      const el = $(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    async function ensureBsc() {
+      if (!window.ethereum) return false;
+      const chainId = await window.ethereum.request({ method: "eth_chainId" });
+      if (chainId === BSC_CHAIN_ID) return true;
+
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: BSC_CHAIN_ID }]
+        });
+        return true;
+      } catch (error) {
+        if (error.code === 4902) {
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [BSC_PARAMS]
+          });
+          return true;
+        }
+        throw error;
+      }
+    }
+
+    function getTokenContract(withSigner = false) {
+      return new ethers.Contract(AXION_TOKEN_ADDRESS, AXION_ABI, withSigner ? signer : provider);
+    }
+
+    function getStakingContract(withSigner = false) {
+      return new ethers.Contract(STAKING_CONTRACT_ADDRESS, STAKING_ABI, withSigner ? signer : provider);
+    }
+
+    async function connectWallet() {
+      if (!window.ethereum) {
+        showStatus("MetaMask or a compatible Web3 wallet is required.");
+        return;
+      }
+
+      try {
+        await ensureBsc();
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        signer = provider.getSigner();
+        userAddress = await signer.getAddress();
+
+        $("connectBtn").textContent = shortAddress(userAddress);
+        $("walletShort").textContent = shortAddress(userAddress);
+
+        await loadAxionBalance();
+        await loadStakingStats();
+        await loadUserPositions();
+        calculateRewards();
+
+        showStatus("Wallet connected. You can approve and stake AXION.");
+      } catch (error) {
+        console.error(error);
+        showStatus("Wallet connection failed. Please try again.");
+      }
+    }
+
+    async function loadAxionBalance() {
+      try {
+        if (!provider || !userAddress) return;
+        const token = getTokenContract(false);
+        const raw = await token.balanceOf(userAddress);
+        const decimals = await token.decimals();
+        axionBalance = Number(ethers.utils.formatUnits(raw, decimals));
+
+        $("walletBalance").textContent = formatNumber(axionBalance, 4) + " AXION";
+        $("calcBalance").textContent = formatNumber(axionBalance, 4) + " AXION";
+      } catch (error) {
+        console.error(error);
+        axionBalance = 0;
+      }
+    }
+
+    async function loadStakingStats() {
+      try {
+        if (!provider) {
+          provider = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org/");
+        }
+
+        const staking = getStakingContract(false);
+        const token = getTokenContract(false);
+        const decimals = await token.decimals();
+
+        const [totalStakedRaw, totalPositionsRaw, rewardRaw] = await Promise.all([
+          staking.totalStaked(),
+          staking.totalPositions(),
+          staking.availableRewardBalance()
+        ]);
+
+        const totalStaked = Number(ethers.utils.formatUnits(totalStakedRaw, decimals));
+        const rewardBalance = Number(ethers.utils.formatUnits(rewardRaw, decimals));
+
+        $("totalLocked").textContent = formatNumber(totalStaked, 4) + " AXION";
+        $("activeStakers").textContent = formatNumber(totalPositionsRaw.toString(), 0);
+        $("rewardPool").textContent = formatNumber(rewardBalance, 4) + " AXION";
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    function selectPool(poolKey) {
+      selectedPool = poolKey;
+      $("poolSelect").value = poolKey;
+
+      document.querySelectorAll(".pool").forEach(card => card.classList.remove("selected"));
+      const selected = document.querySelector(`.pool[data-pool="${poolKey}"]`);
+      if (selected) selected.classList.add("selected");
+
+      calculateRewards();
+      scrollToSection("stake");
+    }
+
+    function setQuickAmount(percent) {
+      $("stakeAmount").value = axionBalance ? (axionBalance * percent / 100).toFixed(4) : "0";
+      calculateRewards();
+    }
+
+    function calculateRewards() {
+      const amount = Number($("stakeAmount").value || 0);
+      const pool = pools[selectedPool];
+
+      const reward = amount * (pool.apy / 100);
+      const totalReturn = amount + reward;
+      const unlock = new Date(Date.now() + pool.days * 24 * 60 * 60 * 1000);
+
+      $("calcApy").textContent = pool.apy + "%";
+      $("calcLock").textContent = pool.days + " Days";
+      $("calcReward").textContent = formatNumber(reward, 4) + " AXION";
+      $("calcReturn").textContent = formatNumber(totalReturn, 4) + " AXION";
+      $("calcUnlock").textContent = amount > 0 ? unlock.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "-";
+      $("heroSelectedPool").textContent = pool.name;
+      $("heroReward").textContent = formatNumber(reward, 4) + " AXION";
+    }
+
+    function showStatus(message) {
+      const el = $("stakeStatus");
+      el.textContent = message;
+      el.classList.add("show");
+    }
+
+    async function approveAxion() {
+      const amount = Number($("stakeAmount").value || 0);
+
+      if (!userAddress) {
+        await connectWallet();
+        return;
+      }
+
+      if (!amount || amount <= 0) {
+        showStatus("Enter a valid AXION amount first.");
+        return;
+      }
+
+      if (amount < 10000) {
+        showStatus("Minimum stake amount is 10,000 AXION.");
+        return;
+      }
+
+      try {
+        const token = getTokenContract(true);
+        const decimals = await token.decimals();
+        const parsed = ethers.utils.parseUnits(String(amount), decimals);
+
+        const tx = await token.approve(STAKING_CONTRACT_ADDRESS, parsed);
+        showStatus("Approve transaction sent. Waiting for confirmation...");
+        await tx.wait();
+
+        showStatus("AXION approved successfully. You can now stake.");
+      } catch (error) {
+        console.error(error);
+        showStatus("Approve transaction failed or was rejected.");
+      }
+    }
+
+    async function stakeAxion() {
+      const amount = Number($("stakeAmount").value || 0);
+
+      if (!userAddress) {
+        await connectWallet();
+        return;
+      }
+
+      if (!amount || amount <= 0) {
+        showStatus("Enter a valid AXION amount first.");
+        return;
+      }
+
+      if (amount < 10000) {
+        showStatus("Minimum stake amount is 10,000 AXION.");
+        return;
+      }
+
+      try {
+        const token = getTokenContract(false);
+        const decimals = await token.decimals();
+        const parsed = ethers.utils.parseUnits(String(amount), decimals);
+
+        const staking = getStakingContract(true);
+        const pool = pools[selectedPool];
+
+        const allowance = await token.allowance(userAddress, STAKING_CONTRACT_ADDRESS);
+        if (allowance.lt(parsed)) {
+          showStatus("Approve AXION first, then press Stake.");
+          return;
+        }
+
+        const tx = await staking.stake(pool.id, parsed);
+        showStatus("Stake transaction sent. Waiting for confirmation...");
+        await tx.wait();
+
+        showStatus("Stake successful. Your position is now locked on-chain.");
+
+        $("stakeAmount").value = "";
+        await loadAxionBalance();
+        await loadStakingStats();
+        await loadUserPositions();
+        calculateRewards();
+      } catch (error) {
+        console.error(error);
+        const reason = error?.data?.message || error?.error?.message || error?.message || "";
+        if (reason.includes("MINIMUM_10000_AXION")) showStatus("Minimum stake amount is 10,000 AXION.");
+        else if (reason.includes("POOL_INACTIVE")) showStatus("Selected pool is inactive.");
+        else if (reason.includes("PAUSED")) showStatus("Staking is currently paused.");
+        else showStatus("Stake transaction failed or was rejected.");
+      }
+    }
+
+    async function withdrawPosition(positionId) {
+      if (!userAddress) {
+        await connectWallet();
+        return;
+      }
+
+      try {
+        const staking = getStakingContract(true);
+        const tx = await staking.withdraw(positionId);
+        showStatus("Withdraw transaction sent. Waiting for confirmation...");
+        await tx.wait();
+
+        showStatus("Withdraw successful. Principal and reward were transferred.");
+        await loadAxionBalance();
+        await loadStakingStats();
+        await loadUserPositions();
+      } catch (error) {
+        console.error(error);
+        const reason = error?.data?.message || error?.error?.message || error?.message || "";
+        if (reason.includes("LOCK_NOT_FINISHED")) showStatus("Lock period is not finished yet.");
+        else if (reason.includes("INSUFFICIENT_CONTRACT_BALANCE")) showStatus("Contract balance is not enough for principal + reward yet.");
+        else showStatus("Withdraw failed or was rejected.");
+      }
+    }
+
+    async function loadUserPositions() {
+      try {
+        if (!provider || !userAddress) return;
+
+        const staking = getStakingContract(false);
+        const token = getTokenContract(false);
+        const decimals = await token.decimals();
+        const positions = await staking.getUserPositions(userAddress);
+        const grid = $("positionsGrid");
+
+        const activePositions = positions.filter(p => !p.withdrawn);
+
+        if (!activePositions.length) {
+          grid.innerHTML = `<div class="empty">No active staking position found. Connect wallet and stake AXION to create your first position.</div>`;
+          return;
+        }
+
+        grid.innerHTML = activePositions.map(p => {
+          const pool = poolById[Number(p.poolId)] || { name: "Unknown Pool", apy: 0, days: 0 };
+          const amount = Number(ethers.utils.formatUnits(p.amount, decimals));
+          const reward = Number(ethers.utils.formatUnits(p.reward, decimals));
+          const start = new Date(Number(p.startTime) * 1000);
+          const unlock = new Date(Number(p.unlockTime) * 1000);
+          const matured = Date.now() >= unlock.getTime();
+
+          return `
+            <div class="position">
+              <div class="inner">
+                <h3>Position #${p.id.toString()}</h3>
+                <div class="lines">
+                  <div class="line"><span>Pool</span><strong>${pool.name}</strong></div>
+                  <div class="line"><span>Amount</span><strong>${formatNumber(amount, 4)} AXION</strong></div>
+                  <div class="line"><span>Reward</span><strong>${formatNumber(reward, 4)} AXION</strong></div>
+                  <div class="line"><span>Start Date</span><strong>${start.toLocaleDateString("en-US")}</strong></div>
+                  <div class="line"><span>Unlock Date</span><strong>${unlock.toLocaleDateString("en-US")}</strong></div>
+                  <div class="line"><span>Status</span><strong>${matured ? "Ready To Withdraw" : "Locked"}</strong></div>
+                </div>
+                <div class="position-actions">
+                  <button class="btn btn-dark" disabled>Claim Included</button>
+                  <button class="btn" ${matured ? "" : "disabled"} onclick="withdrawPosition('${p.id.toString()}')">${matured ? "Withdraw" : "Locked"}</button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    $("connectBtn").addEventListener("click", connectWallet);
+    $("approveBtn").addEventListener("click", approveAxion);
+    $("stakeBtn").addEventListener("click", stakeAxion);
+    $("stakeAmount").addEventListener("input", calculateRewards);
+    $("poolSelect").addEventListener("change", e => selectPool(e.target.value));
+    $("mobileToggle").addEventListener("click", () => $("navLinks").classList.toggle("open"));
+    document.querySelectorAll(".nav-links a").forEach(a => a.addEventListener("click", () => $("navLinks").classList.remove("open")));
+
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", () => location.reload());
+      window.ethereum.on("chainChanged", () => location.reload());
+    }
+
+    loadStakingStats();
+    calculateRewards();
   </script>
 </body>
 </html>
