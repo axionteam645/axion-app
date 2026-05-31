@@ -4,26 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AXION App | Staking & NFT Hub</title>
-  <meta name="description" content="AXION App is the official staking and NFT hub for the AXION ecosystem. Stake AXION, earn rewards, and access future Genesis NFT utilities." />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#050812" />
+  <meta name="description" content="AXION Staking and NFT Hub. Lock AXION, earn ecosystem rewards, and access future Genesis NFT utilities." />
+  <meta name="theme-color" content="#05050a" />
   <link rel="canonical" href="https://app.axiondefi.com/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="AXION" />
   <meta property="og:title" content="AXION App | Staking & NFT Hub" />
-  <meta property="og:description" content="Stake AXION, earn ecosystem rewards, and prepare for AXION Genesis NFTs." />
-  <meta property="og:url" content="https://app.axiondefi.com/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AXION App | Staking & NFT Hub" />
-  <meta name="twitter:description" content="Official AXION staking and NFT hub." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
-
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" />
-
+  <meta property="og:description" content="Stake AXION and prepare for AXION Genesis NFT utilities." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -31,319 +19,68 @@
 
   <style>
     :root{
-      --bg:#050812;
-      --panel:#0a1020;
-      --panel2:#0d1529;
-      --text:#eef5ff;
-      --muted:#9ba8c7;
-      --line:rgba(255,255,255,.09);
-      --gold:#ffc95c;
-      --gold2:#ff8a1f;
-      --cyan:#4ed8ff;
-      --blue:#5f8cff;
-      --purple:#a85cff;
-      --pink:#ff5cb8;
-      --green:#43f3b1;
-      --red:#ff5c7a;
-      --shadow:0 24px 70px rgba(0,0,0,.45);
-      --max:1220px;
+      --bg:#05050a;--bg2:#090912;--card:#0d0d16;--card2:#12121f;--text:#f5f7ff;--muted:#a7abc2;--soft:#d7d9e8;
+      --line:rgba(255,255,255,.105);--line2:rgba(255,255,255,.16);--gold:#f7c86b;--gold2:#d89b35;--gold3:#fff0b7;
+      --orange:#ff8b2c;--blue:#65d7ff;--violet:#8d65ff;--pink:#ff5dba;--green:#47f3ad;--red:#ff5f7a;
+      --shadow:0 28px 90px rgba(0,0,0,.58);--shadow2:0 14px 44px rgba(0,0,0,.36);--max:1240px;
+      --logo:url('https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG');
     }
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;color:var(--text);background:#05050a;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+      radial-gradient(circle at 18% 12%,rgba(247,200,107,.18),transparent 24%),
+      radial-gradient(circle at 78% 0%,rgba(101,215,255,.14),transparent 25%),
+      radial-gradient(circle at 72% 70%,rgba(141,101,255,.15),transparent 28%),
+      linear-gradient(180deg,#040407 0%,#080811 48%,#070914 100%)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+      linear-gradient(rgba(247,200,107,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(101,215,255,.035) 1px,transparent 1px);
+      background-size:72px 72px;mask-image:radial-gradient(circle at center,#000 0%,transparent 80%);opacity:.58}
+    .aurora{position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:conic-gradient(from 140deg,transparent,rgba(247,200,107,.09),rgba(101,215,255,.08),rgba(141,101,255,.08),transparent 55%);filter:blur(70px);animation:spin 18s linear infinite;opacity:.75}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    a{text-decoration:none;color:inherit} button,input,select{font:inherit} img{max-width:100%;display:block} section{scroll-margin-top:104px}
+    .container{width:min(calc(100% - 32px),var(--max));margin:auto}.gradient{background:linear-gradient(90deg,#fff,#fff1be 28%,#8be5ff 58%,#d4c8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 15% 0%, rgba(78,216,255,.18), transparent 27%),
-        radial-gradient(circle at 85% 8%, rgba(168,92,255,.18), transparent 28%),
-        radial-gradient(circle at 50% 95%, rgba(255,201,92,.10), transparent 30%),
-        linear-gradient(180deg,#02050d 0%,#050812 42%,#070b18 100%);
-      overflow-x:hidden;
-    }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      pointer-events:none;
-      background-image:radial-gradient(rgba(255,255,255,.48) .7px, transparent .7px);
-      background-size:38px 38px;
-      opacity:.08;
-    }
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-      background:
-        linear-gradient(rgba(78,216,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168,92,255,.035) 1px, transparent 1px);
-      background-size:86px 86px;
-      mask-image:radial-gradient(circle at center,#000 0%,transparent 82%);
-      opacity:.45;
-    }
+    .nav-wrap{position:sticky;top:0;z-index:50;background:rgba(5,5,10,.72);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
+    .nav{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .brand-mark{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(247,200,107,.2),rgba(255,255,255,.035));border:1px solid rgba(247,200,107,.34);box-shadow:0 0 26px rgba(247,200,107,.13),inset 0 1px 0 rgba(255,255,255,.12);overflow:hidden}
+    .brand-mark img{width:100%;height:100%;object-fit:cover}.brand strong{font-size:17px;letter-spacing:.22em;font-weight:950}.brand small{display:none}
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:8px;flex:1}.nav-links a{padding:11px 13px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#cfd2e3;transition:.2s}
+    .nav-links a:hover,.nav-links a.active{color:#101018;background:linear-gradient(90deg,var(--gold),var(--gold3));box-shadow:0 0 22px rgba(247,200,107,.16)}.nav-actions{display:flex;align-items:center;gap:10px}.mobile-toggle{display:none;background:transparent;border:0;color:#fff;font-size:32px;cursor:pointer}
+    .btn{min-height:50px;padding:0 22px;border:0;border-radius:999px;cursor:pointer;font-weight:950;color:#090912;background:linear-gradient(90deg,var(--gold),var(--gold3),var(--orange));box-shadow:0 16px 38px rgba(247,200,107,.23);display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;transition:.18s}.btn:hover{transform:translateY(-2px);box-shadow:0 22px 52px rgba(247,200,107,.32)}.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}.btn-dark{color:#fff;background:rgba(255,255,255,.055);border:1px solid var(--line);box-shadow:none}.btn-blue{background:linear-gradient(90deg,var(--blue),#7e91ff,var(--violet));box-shadow:0 16px 38px rgba(101,215,255,.16)}
 
-    a{color:inherit;text-decoration:none}
-    button,input,select{font:inherit}
-    img{max-width:100%;display:block}
-    section{scroll-margin-top:105px}
-    .container{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
-    .gradient-text{background:linear-gradient(90deg,#fff 0%,#b9eaff 28%,#d7c4ff 60%,#ffe1a7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero{padding:94px 0 38px}.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:26px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid var(--line);color:#fff0bd;font-size:12px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}.dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(247,200,107,.11),0 0 22px rgba(247,200,107,.65)}
+    h1{margin:20px 0 18px;font-size:clamp(48px,7vw,92px);line-height:.92;letter-spacing:-.075em}.hero p{max-width:760px;color:var(--muted);font-size:17px;line-height:1.78}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.hero-note{margin-top:18px;color:#d9d8c8;font-size:13px;line-height:1.65;max-width:680px}
+    .hero-orbit{position:relative;min-height:570px;border-radius:38px;overflow:hidden;border:1px solid rgba(247,200,107,.18);background:linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:var(--shadow)}
+    .hero-orbit:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 50% 34%,rgba(247,200,107,.26),transparent 30%),radial-gradient(circle at 70% 78%,rgba(101,215,255,.13),transparent 28%),linear-gradient(145deg,rgba(247,200,107,.08),transparent 40%,rgba(141,101,255,.08));pointer-events:none}.hero-orbit:after{content:"";position:absolute;inset:24px;border-radius:32px;border:1px solid rgba(255,255,255,.09);pointer-events:none}
+    .big-logo{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:min(420px,82%);filter:drop-shadow(0 34px 70px rgba(0,0,0,.55)) drop-shadow(0 0 38px rgba(247,200,107,.25));animation:float 5.4s ease-in-out infinite}@keyframes float{50%{transform:translate(-50%,-54%)}}
+    .orbit-ring{position:absolute;left:50%;top:42%;width:78%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(247,200,107,.18);transform:translate(-50%,-50%);box-shadow:inset 0 0 55px rgba(247,200,107,.06),0 0 50px rgba(101,215,255,.06)}.orbit-ring.two{width:58%;border-style:dashed;border-color:rgba(101,215,255,.18);animation:spin 26s linear infinite}
+    .hero-mini{position:absolute;left:24px;right:24px;bottom:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.hero-mini .mini{padding:16px;border-radius:20px;background:rgba(5,5,10,.62);border:1px solid var(--line);backdrop-filter:blur(12px)}.mini span{display:block;color:#aeb4cb;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:950;margin-bottom:7px}.mini strong{font-size:18px}.mini.gold{border-color:rgba(247,200,107,.28);box-shadow:0 0 20px rgba(247,200,107,.08)}
 
-    .nav-wrap{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(4,8,18,.72);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      min-height:82px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:9px 16px 9px 9px;
-      border-radius:999px;
-      background:linear-gradient(90deg,rgba(255,201,92,.16),rgba(255,140,31,.10));
-      border:1px solid rgba(255,201,92,.24);
-      box-shadow:0 0 22px rgba(255,201,92,.08);
-      flex-shrink:0;
-    }
-    .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover}
-    .brand strong{display:block;font-size:16px;letter-spacing:.16em;line-height:1}
-    .brand span{display:block;margin-top:4px;color:#ffe3aa;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-    .nav-links{display:flex;align-items:center;justify-content:center;gap:18px;flex:1}
-    .nav-links a{font-size:12px;font-weight:850;color:#c5d4f4;letter-spacing:.08em;text-transform:uppercase;transition:.2s ease}
-    .nav-links a:hover{color:#fff}
-    .nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .section{padding:86px 0 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px}.section-head h2{font-size:clamp(34px,4.6vw,64px);line-height:1;letter-spacing:-.06em;margin-top:14px}.section-head p{max-width:600px;color:var(--muted);line-height:1.75}
+    .stats{padding:30px 0 8px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat,.card,.pool,.info,.position,.nft-box{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid var(--line);box-shadow:var(--shadow2)}
+    .stat:before,.card:before,.pool:before,.info:before,.position:before,.nft-box:before{content:"";position:absolute;inset:0;background-image:var(--logo);background-repeat:no-repeat;background-position:right -42px bottom -48px;background-size:170px;opacity:.055;pointer-events:none}.stat:after,.pool:after,.card:after,.nft-box:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(247,200,107,.08),transparent 36%,rgba(101,215,255,.05));pointer-events:none}.inner{position:relative;z-index:1;padding:26px}.stat{padding:22px}.stat span{display:block;color:var(--muted);font-size:12px;font-weight:950;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px}.stat strong{font-size:clamp(24px,2.5vw,34px);letter-spacing:-.045em}.stat small{display:block;color:#c5c7d7;margin-top:8px;line-height:1.5}
 
-    .btn{
-      border:none;
-      cursor:pointer;
-      border-radius:999px;
-      min-height:48px;
-      padding:0 22px;
-      font-weight:900;
-      color:#07101f;
-      background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
-      box-shadow:0 16px 36px rgba(95,140,255,.22);
-      transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:9px;
-      white-space:nowrap;
-    }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(95,140,255,.3)}
-    .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
-    .btn-gold{background:linear-gradient(90deg,var(--gold),var(--gold2));box-shadow:0 16px 38px rgba(255,154,35,.25)}
-    .btn-dark{color:var(--text);background:rgba(255,255,255,.055);border:1px solid var(--line);box-shadow:none}
-    .btn-green{background:linear-gradient(90deg,var(--green),var(--cyan));box-shadow:0 16px 38px rgba(67,243,177,.18)}
-    .mobile-toggle{display:none;border:none;background:transparent;color:#fff;font-size:32px;cursor:pointer}
+    .pool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.pool{transition:.25s}.pool:hover{transform:translateY(-7px);border-color:rgba(247,200,107,.32);box-shadow:var(--shadow),0 0 32px rgba(247,200,107,.12)}.pool.selected{border-color:rgba(247,200,107,.62);box-shadow:0 0 0 1px rgba(247,200,107,.16),var(--shadow),0 0 42px rgba(247,200,107,.2)}.pool-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.pool h3{font-size:28px;letter-spacing:-.04em;margin-bottom:8px}.pool p{color:var(--muted);line-height:1.65;font-size:14px}.apy{min-width:96px;text-align:center;padding:14px;border-radius:20px;background:linear-gradient(180deg,rgba(247,200,107,.24),rgba(216,155,53,.11));border:1px solid rgba(247,200,107,.32)}.apy strong{display:block;color:#fff0b7;font-size:27px}.apy span{font-size:11px;font-weight:950;letter-spacing:.14em;color:#ffe9a5}.lines{display:grid;gap:10px;margin:20px 0}.line{display:flex;justify-content:space-between;gap:12px;padding:13px 14px;border-radius:16px;background:rgba(0,0,0,.16);border:1px solid var(--line);font-size:14px}.line span:first-child{color:var(--muted)}.pool .btn{width:100%}
 
-    .hero{padding:92px 0 42px}
-    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:28px;align-items:center}
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      color:#dce8ff;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    .pulse-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(67,243,177,.08),0 0 18px rgba(67,243,177,.55)}
-    h1{margin:22px 0 18px;font-size:clamp(46px,7vw,86px);line-height:.96;letter-spacing:-.065em}
-    .hero p{max-width:760px;color:var(--muted);font-size:17px;line-height:1.8}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .hero-note{margin-top:18px;display:flex;gap:10px;align-items:flex-start;color:#cbd9f4;font-size:13px;line-height:1.7}
+    .stake-layout{display:grid;grid-template-columns:.92fr 1.08fr;gap:20px;align-items:start}.stake-box{display:grid;gap:14px}.field label{display:block;margin:0 0 8px;color:#e6e8f6;font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}.input,.select{width:100%;border-radius:20px;border:1px solid var(--line);background:#0a0a13;color:#fff;outline:none}.select{height:58px;padding:0 16px;font-weight:850}.input{display:flex;align-items:center;padding:6px 8px 6px 17px}.input input{width:100%;height:56px;border:0;outline:0;background:transparent;color:#fff;font-size:24px;font-weight:900}.input span{padding:0 13px;color:#ffe4a3;font-weight:950}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quick button{height:44px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:#fff;font-weight:950;cursor:pointer}.quick button:hover{background:rgba(247,200,107,.12);border-color:rgba(247,200,107,.24)}.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc{display:grid;gap:12px}.calc-row{display:flex;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(0,0,0,.17);border:1px solid var(--line)}.calc-row span{color:var(--muted);font-size:12px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.calc-row strong{text-align:right}.status{display:none;margin-top:12px;padding:15px 16px;border-radius:18px;border:1px solid rgba(247,200,107,.28);background:rgba(247,200,107,.09);color:#fff0c6;line-height:1.6;font-size:14px}.status.show{display:block}
 
-    .glass-card{
-      position:relative;
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:28px;
-      background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.028));
-      box-shadow:var(--shadow);
-    }
-    .glass-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(140deg,rgba(78,216,255,.09),transparent 30%,transparent 68%,rgba(255,201,92,.08)),
-        radial-gradient(circle at 100% 0%,rgba(168,92,255,.12),transparent 28%);
-      pointer-events:none;
-    }
-    .card-inner{position:relative;z-index:1;padding:26px}
+    .positions-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.empty{grid-column:1/-1;padding:34px;border-radius:28px;border:1px dashed rgba(247,200,107,.22);background:rgba(247,200,107,.045);text-align:center;color:#d7d9e8;line-height:1.7}.position h3{font-size:23px;margin-bottom:12px}.position-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .info-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.info{min-height:130px}.info strong{display:block;font-size:15px;margin-bottom:8px}.info p{color:var(--muted);font-size:13px;line-height:1.65}
+    .nft-box{display:grid;grid-template-columns:.82fr 1.18fr;gap:22px;align-items:center}.nft-art{min-height:390px;border-radius:28px;border:1px solid rgba(247,200,107,.22);background:radial-gradient(circle at 50% 36%,rgba(247,200,107,.24),transparent 30%),linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));display:grid;place-items:center;position:relative;overflow:hidden}.nft-art:before{content:"";position:absolute;inset:-30%;background-image:var(--logo);background-size:430px;background-repeat:no-repeat;background-position:center;opacity:.08;filter:blur(.2px);transform:rotate(-14deg)}.nft-orb{width:210px;height:210px;border-radius:44px;background:linear-gradient(145deg,rgba(247,200,107,.28),rgba(255,255,255,.05));border:1px solid rgba(247,200,107,.38);box-shadow:0 0 46px rgba(247,200,107,.25),0 36px 90px rgba(0,0,0,.5);display:grid;place-items:center;z-index:1}.nft-orb img{width:150px;height:150px;object-fit:contain}.utility-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}.utility{padding:16px;border-radius:18px;background:rgba(0,0,0,.16);border:1px solid var(--line)}.utility strong{display:block;margin-bottom:6px}.utility p{color:var(--muted);font-size:13px;line-height:1.6}
+    .footer{margin-top:90px;padding:38px 0 54px;border-top:1px solid var(--line);color:#cbd0e0;text-align:center}.footer-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.footer-links a{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
 
-    .hero-panel-logo{display:flex;justify-content:center;margin-bottom:20px}
-    .hero-panel-logo img{width:min(310px,90%);filter:drop-shadow(0 18px 38px rgba(0,0,0,.35)) drop-shadow(0 0 20px rgba(255,201,92,.12))}
-    .staking-preview{display:grid;gap:14px}
-    .preview-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .preview-row span{font-size:13px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
-    .preview-row strong{font-size:18px;text-align:right}
-
-    .stats{padding:28px 0 10px}
-    .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-    .stat-card{padding:22px;border-radius:22px;background:rgba(255,255,255,.045);border:1px solid var(--line);box-shadow:0 14px 40px rgba(0,0,0,.22)}
-    .stat-card span{display:block;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
-    .stat-card strong{display:block;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.04em}
-    .stat-card small{display:block;margin-top:8px;color:#cad8f3;line-height:1.5}
-
-    .section{padding:88px 0 0}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px}
-    .section-head h2{font-size:clamp(34px,4.6vw,62px);line-height:1;letter-spacing:-.05em;margin-top:14px}
-    .section-head p{max-width:580px;color:var(--muted);line-height:1.75}
-
-    .pool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .pool-card{position:relative;overflow:hidden;border-radius:28px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));box-shadow:var(--shadow);transition:.25s ease}
-    .pool-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18)}
-    .pool-card.selected{border-color:rgba(255,201,92,.55);box-shadow:0 0 0 1px rgba(255,201,92,.14),0 28px 72px rgba(0,0,0,.48),0 0 34px rgba(255,201,92,.18)}
-    .pool-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 90% 0%,rgba(255,201,92,.16),transparent 30%),linear-gradient(140deg,rgba(78,216,255,.07),transparent 45%,rgba(168,92,255,.07))}
-    .pool-card:nth-child(2)::before{background:radial-gradient(circle at 90% 0%,rgba(78,216,255,.18),transparent 30%),linear-gradient(140deg,rgba(95,140,255,.08),transparent 45%,rgba(168,92,255,.09))}
-    .pool-card:nth-child(3)::before{background:radial-gradient(circle at 90% 0%,rgba(168,92,255,.22),transparent 30%),linear-gradient(140deg,rgba(255,201,92,.08),transparent 45%,rgba(255,92,184,.10))}
-    .pool-inner{position:relative;z-index:1;padding:26px}
-    .pool-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:22px}
-    .pool-name h3{font-size:26px;letter-spacing:-.04em;margin-bottom:8px}
-    .pool-name span{color:var(--muted);font-size:13px;line-height:1.6}
-    .apy-badge{min-width:86px;text-align:center;padding:12px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,201,92,.20),rgba(255,140,31,.12));border:1px solid rgba(255,201,92,.28)}
-    .apy-badge strong{display:block;font-size:24px;letter-spacing:-.04em;color:#ffe4a3}
-    .apy-badge span{font-size:11px;font-weight:900;color:#fff1cf;letter-spacing:.12em}
-    .pool-details{display:grid;gap:10px;margin:18px 0}
-    .detail-line{display:flex;justify-content:space-between;gap:12px;padding:13px 14px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#dce7ff;font-size:14px}
-    .detail-line span:first-child{color:var(--muted)}
-    .pool-card .btn{width:100%;margin-top:6px}
-
-    .stake-layout{display:grid;grid-template-columns:.92fr 1.08fr;gap:20px;align-items:start}
-    .stake-box{display:grid;gap:14px}
-    .field label{display:block;margin-bottom:8px;color:#d7e4ff;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-    .input-wrap{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:18px;padding:6px 6px 6px 16px}
-    .input-wrap input{width:100%;min-height:54px;border:none;outline:none;background:transparent;color:#fff;font-size:22px;font-weight:850}
-    .input-wrap span{padding:0 14px;color:#ffd98d;font-weight:900;white-space:nowrap}
-    .quick-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .quick-buttons button{min-height:42px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:#eaf2ff;font-weight:900;cursor:pointer}
-    .quick-buttons button:hover{background:rgba(255,255,255,.08)}
-    .select-pool{width:100%;min-height:56px;border-radius:18px;border:1px solid var(--line);background:#0b1325;color:#fff;padding:0 16px;font-weight:850;outline:none}
-    .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
-    .action-grid .btn{width:100%}
-
-    .calc-card{display:grid;gap:12px}
-    .calc-row{display:flex;justify-content:space-between;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .calc-row span{color:var(--muted);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-    .calc-row strong{text-align:right;font-size:17px}
-    .status-message{display:none;margin-top:12px;padding:15px 16px;border-radius:18px;border:1px solid rgba(67,243,177,.28);background:rgba(67,243,177,.09);color:#dffff2;line-height:1.6;font-size:14px}
-    .status-message.show{display:block}
-    .warning{border-color:rgba(255,201,92,.26);background:rgba(255,201,92,.08);color:#fff0c9}
-
-    .positions-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .position-empty{grid-column:1/-1;padding:28px;border-radius:24px;border:1px dashed rgba(255,255,255,.18);background:rgba(255,255,255,.03);color:#cbd9f4;line-height:1.7;text-align:center}
-    .position-card{padding:22px;border-radius:24px;background:rgba(255,255,255,.045);border:1px solid var(--line);box-shadow:0 14px 40px rgba(0,0,0,.22)}
-    .position-card h3{font-size:22px;letter-spacing:-.03em;margin-bottom:12px}
-    .mini-lines{display:grid;gap:10px}
-    .mini-line{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px}
-    .mini-line span:first-child{color:var(--muted)}
-    .position-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-
-    .info-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-    .info-item{padding:18px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.04);min-height:116px}
-    .info-item strong{display:block;font-size:15px;margin-bottom:8px;color:#fff}
-    .info-item p{font-size:13px;line-height:1.65;color:var(--muted)}
-
-    .nft-card{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;align-items:center}
-    .nft-preview{min-height:360px;border-radius:28px;border:1px solid rgba(255,201,92,.24);background:
-      radial-gradient(circle at 50% 36%,rgba(255,201,92,.22),transparent 30%),
-      radial-gradient(circle at 70% 68%,rgba(168,92,255,.16),transparent 30%),
-      linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
-      display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-    .nft-preview::before{content:"AXION";font-size:56px;font-weight:950;letter-spacing:.16em;color:rgba(255,255,255,.08);position:absolute;transform:rotate(-18deg)}
-    .nft-orb{width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8dd,#ffc95c 28%,#ff8a1f 55%,#4ed8ff 100%);box-shadow:0 0 46px rgba(255,201,92,.28),0 32px 80px rgba(0,0,0,.42);position:relative;z-index:1;display:grid;place-items:center}
-    .nft-orb img{width:112px;height:112px;border-radius:50%;object-fit:cover}
-    .utility-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
-    .utility{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .utility strong{display:block;margin-bottom:6px}
-    .utility p{color:var(--muted);font-size:13px;line-height:1.6}
-
-    .footer{margin-top:90px;padding:38px 0 54px;border-top:1px solid var(--line);color:#cbd9f4;text-align:center}
-    .footer-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .footer-links a{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid var(--line);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-
-    .hidden{display:none!important}
-
-    @media (max-width:1080px){
-      .hero-grid,.stake-layout,.nft-card{grid-template-columns:1fr}
-      .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .pool-grid{grid-template-columns:1fr}
-      .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    }
-    @media (max-width:820px){
-      .nav{min-height:74px}
-      .nav-links{position:fixed;left:16px;right:16px;top:84px;display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px;border-radius:22px;background:rgba(7,12,25,.96);border:1px solid var(--line);box-shadow:var(--shadow)}
-      .nav-links.open{display:flex}
-      .nav-links a{padding:15px;border-radius:14px}
-      .nav-links a:hover{background:rgba(255,255,255,.06)}
-      .mobile-toggle{display:block}
-      .brand span{display:none}
-      .brand strong{font-size:14px}
-      .brand img{width:38px;height:38px}
-      .nav-actions .btn{display:none}
-      .hero{padding-top:58px}
-      .hero-actions .btn{width:100%}
-      .card-inner{padding:20px}
-      .positions-grid,.utility-grid{grid-template-columns:1fr}
-      .action-grid,.position-actions{grid-template-columns:1fr}
-    }
-    @media (max-width:560px){
-      .container{width:min(calc(100% - 24px),var(--max))}
-      .stats-grid,.info-grid{grid-template-columns:1fr}
-      .section{padding-top:64px}
-      .preview-row,.calc-row{align-items:flex-start;flex-direction:column}
-      .preview-row strong,.calc-row strong{text-align:left}
-      .quick-buttons{grid-template-columns:1fr 1fr 1fr}
-      .nft-preview{min-height:280px}
-      .nft-orb{width:150px;height:150px}
-      .nft-orb img{width:88px;height:88px}
-    }
+    @media(max-width:1080px){.hero-grid,.stake-layout,.nft-box{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.pool-grid{grid-template-columns:1fr}.info-grid{grid-template-columns:repeat(2,1fr)}.hero-orbit{min-height:500px}}
+    @media(max-width:820px){.nav{min-height:74px}.nav-links{position:fixed;left:16px;right:16px;top:84px;display:none;flex-direction:column;align-items:stretch;padding:12px;border-radius:24px;background:rgba(8,8,16,.96);border:1px solid var(--line);box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-links a{border-radius:15px}.mobile-toggle{display:block}.nav-actions .btn{display:none}.brand-mark{width:46px;height:46px}.hero{padding-top:60px}.hero-actions .btn{width:100%}.inner{padding:21px}.positions-grid,.utility-grid{grid-template-columns:1fr}.actions,.position-actions{grid-template-columns:1fr}}
+    @media(max-width:560px){.container{width:min(calc(100% - 24px),var(--max))}.stats-grid,.info-grid{grid-template-columns:1fr}.section{padding-top:64px}.hero-orbit{min-height:420px}.big-logo{width:86%}.hero-mini{grid-template-columns:1fr;left:16px;right:16px;bottom:16px}.calc-row{flex-direction:column}.calc-row strong{text-align:left}.nft-art{min-height:300px}.nft-orb{width:160px;height:160px}.nft-orb img{width:114px;height:114px}h1{font-size:clamp(44px,14vw,70px)}}
   </style>
 </head>
 <body>
+  <div class="aurora"></div>
   <header class="nav-wrap">
     <nav class="container nav">
-      <a href="#home" class="brand" aria-label="AXION Home">
-        <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" />
-        <div>
-          <strong>AXION</strong>
-          <span>Staking & NFT Hub</span>
-        </div>
-      </a>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#stake">Stake</a>
-        <a href="#pools">Pools</a>
-        <a href="#positions">My Stakes</a>
-        <a href="#nft">NFT</a>
-        <a href="#security">Security</a>
-      </div>
-
-      <div class="nav-actions">
-        <button class="btn btn-dark" id="connectBtn">Connect Wallet</button>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
-      </div>
+      <a href="#home" class="brand" aria-label="AXION Home"><span class="brand-mark"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" alt="AXION Logo"></span><div><strong>AXION</strong><small></small></div></a>
+      <div class="nav-links" id="navLinks"><a href="#home">Home</a><a href="#stake">Stake</a><a href="#pools">Pools</a><a href="#positions">My Stakes</a><a href="#nft">NFT</a><a href="#security">Security</a></div>
+      <div class="nav-actions"><button class="btn btn-dark" id="connectBtn">Connect Wallet</button><button class="mobile-toggle" id="mobileToggle">☰</button></div>
     </nav>
   </header>
 
@@ -351,485 +88,59 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow"><span class="pulse-dot"></span> AXION STAKING IS LIVE</div>
-          <h1 class="gradient-text">AXION Staking Hub</h1>
-          <p>Lock AXION into ecosystem staking pools, earn rewards, and support long-term network growth. NFT utilities will be added as the next layer of the AXION App.</p>
-          <div class="hero-actions">
-            <button class="btn btn-gold" onclick="scrollToSection('stake')">Start Staking</button>
-            <button class="btn btn-dark" onclick="scrollToSection('pools')">View Pools</button>
-            <button class="btn btn-dark" onclick="scrollToSection('nft')">NFT Coming Soon</button>
-          </div>
-          <div class="hero-note">
-            <span>◆</span>
-            <span>Rewards are designed to be paid from a funded reward pool. No minting is required, keeping the AXION supply model clean and transparent.</span>
-          </div>
+          <div class="eyebrow"><span class="dot"></span> AXION STAKING HUB</div>
+          <h1 class="gradient">Lock AXION. Earn Ecosystem Rewards.</h1>
+          <p>Stake AXION into locked reward pools designed for long-term ecosystem growth. The NFT module stays ready as the next premium layer of the AXION App.</p>
+          <div class="hero-actions"><button class="btn" onclick="scrollToSection('stake')">Start Staking</button><button class="btn btn-dark" onclick="scrollToSection('pools')">View Pools</button><button class="btn btn-dark" onclick="scrollToSection('nft')">NFT Coming Soon</button></div>
+          <div class="hero-note">Rewards are designed for a prefunded staking pool model. No mint function is required for staking rewards.</div>
         </div>
-
-        <div class="glass-card">
-          <div class="card-inner">
-            <div class="hero-panel-logo">
-              <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION" />
-            </div>
-            <div class="staking-preview">
-              <div class="preview-row"><span>Connected Wallet</span><strong id="walletShort">Not Connected</strong></div>
-              <div class="preview-row"><span>Your AXION Balance</span><strong id="walletBalance">0 AXION</strong></div>
-              <div class="preview-row"><span>Selected Pool</span><strong id="heroSelectedPool">Genesis Pool</strong></div>
-              <div class="preview-row"><span>Estimated Reward</span><strong id="heroReward">0 AXION</strong></div>
-            </div>
-          </div>
+        <div class="hero-orbit">
+          <div class="orbit-ring"></div><div class="orbit-ring two"></div>
+          <img class="big-logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" alt="AXION Mainnet Logo">
+          <div class="hero-mini"><div class="mini gold"><span>Wallet</span><strong id="walletShort">Not Connected</strong></div><div class="mini"><span>AXION Balance</span><strong id="walletBalance">0 AXION</strong></div><div class="mini"><span>Selected Pool</span><strong id="heroSelectedPool">Genesis Pool</strong></div><div class="mini gold"><span>Estimated Reward</span><strong id="heroReward">0 AXION</strong></div></div>
         </div>
       </div>
     </section>
 
-    <section class="stats">
-      <div class="container stats-grid">
-        <div class="stat-card"><span>Total Locked</span><strong id="totalLocked">0 AXION</strong><small>AXION locked across staking pools.</small></div>
-        <div class="stat-card"><span>Active Stakers</span><strong id="activeStakers">0</strong><small>Unique wallet positions.</small></div>
-        <div class="stat-card"><span>Reward Pool</span><strong id="rewardPool">50M AXION</strong><small>Allocated for staking rewards.</small></div>
-        <div class="stat-card"><span>Average APY</span><strong>45%</strong><small>Based on available lock pools.</small></div>
-      </div>
-    </section>
+    <section class="stats"><div class="container stats-grid"><div class="stat"><span>Total Locked</span><strong id="totalLocked">0 AXION</strong><small>AXION locked across pools.</small></div><div class="stat"><span>Active Stakers</span><strong id="activeStakers">0</strong><small>Unique staking positions.</small></div><div class="stat"><span>Reward Pool</span><strong id="rewardPool">50M AXION</strong><small>Allocated reward supply.</small></div><div class="stat"><span>Average APY</span><strong>45%</strong><small>Based on active pools.</small></div></div></section>
 
-    <section class="section" id="pools">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">LOCKED STAKING POOLS</div>
-            <h2 class="gradient-text">Choose Your Pool</h2>
-          </div>
-          <p>Flexible staking is not included. AXION staking is focused on locked pools that reduce circulating supply and reward long-term ecosystem supporters.</p>
-        </div>
+    <section class="section" id="pools"><div class="container"><div class="section-head"><div><div class="eyebrow">LOCKED STAKING POOLS</div><h2 class="gradient">Choose Your Pool</h2></div><p>No flexible pool. AXION staking is built around locked pools to support supply reduction and stronger holder commitment.</p></div><div class="pool-grid">
+      <article class="pool selected" data-pool="genesis"><div class="inner"><div class="pool-top"><div><h3>Genesis Pool</h3><p>Balanced entry pool for early ecosystem participants.</p></div><div class="apy"><strong>20%</strong><span>APY</span></div></div><div class="lines"><div class="line"><span>Lock Period</span><strong>90 Days</strong></div><div class="line"><span>Early Unstake</span><strong>No</strong></div><div class="line"><span>Reward</span><strong>AXION</strong></div></div><button class="btn" onclick="selectPool('genesis')">Select Genesis</button></div></article>
+      <article class="pool" data-pool="validator"><div class="inner"><div class="pool-top"><div><h3>Validator Pool</h3><p>Higher reward tier for longer commitment.</p></div><div class="apy"><strong>40%</strong><span>APY</span></div></div><div class="lines"><div class="line"><span>Lock Period</span><strong>180 Days</strong></div><div class="line"><span>Early Unstake</span><strong>No</strong></div><div class="line"><span>Reward</span><strong>AXION</strong></div></div><button class="btn btn-blue" onclick="selectPool('validator')">Select Validator</button></div></article>
+      <article class="pool" data-pool="ecosystem"><div class="inner"><div class="pool-top"><div><h3>Ecosystem Pool</h3><p>Premium tier for strongest long-term holders.</p></div><div class="apy"><strong>75%</strong><span>APY</span></div></div><div class="lines"><div class="line"><span>Lock Period</span><strong>365 Days</strong></div><div class="line"><span>Early Unstake</span><strong>No</strong></div><div class="line"><span>Reward</span><strong>AXION</strong></div></div><button class="btn btn-blue" onclick="selectPool('ecosystem')">Select Ecosystem</button></div></article>
+    </div></div></section>
 
-        <div class="pool-grid">
-          <article class="pool-card selected" data-pool="genesis">
-            <div class="pool-inner">
-              <div class="pool-top">
-                <div class="pool-name"><h3>Genesis Pool</h3><span>Balanced staking for early ecosystem participants.</span></div>
-                <div class="apy-badge"><strong>20%</strong><span>APY</span></div>
-              </div>
-              <div class="pool-details">
-                <div class="detail-line"><span>Lock Period</span><strong>90 Days</strong></div>
-                <div class="detail-line"><span>Early Unstake</span><strong>No</strong></div>
-                <div class="detail-line"><span>Reward Type</span><strong>AXION</strong></div>
-              </div>
-              <button class="btn btn-gold" onclick="selectPool('genesis')">Select Genesis</button>
-            </div>
-          </article>
+    <section class="section" id="stake"><div class="container"><div class="section-head"><div><div class="eyebrow">STAKE AXION</div><h2 class="gradient">Stake Panel</h2></div><p>Connect wallet, select a pool, approve AXION, and stake into the selected locked pool.</p></div><div class="stake-layout">
+      <div class="card"><div class="inner stake-box"><div class="field"><label>Selected Pool</label><select class="select" id="poolSelect"><option value="genesis">Genesis Pool — 90 Days — 20% APY</option><option value="validator">Validator Pool — 180 Days — 40% APY</option><option value="ecosystem">Ecosystem Pool — 365 Days — 75% APY</option></select></div><div class="field"><label>Amount To Stake</label><div class="input"><input id="stakeAmount" type="number" min="0" step="0.0001" placeholder="0.00"><span>AXION</span></div></div><div class="quick"><button onclick="setQuickAmount(25)">25%</button><button onclick="setQuickAmount(50)">50%</button><button onclick="setQuickAmount(100)">100%</button></div><div class="actions"><button class="btn btn-dark" id="approveBtn">Approve</button><button class="btn" id="stakeBtn">Stake</button></div><div class="status" id="stakeStatus">Demo mode: staking transaction logic is ready for smart contract integration.</div></div></div>
+      <div class="card"><div class="inner calc"><div class="calc-row"><span>Your Balance</span><strong id="calcBalance">0 AXION</strong></div><div class="calc-row"><span>APY</span><strong id="calcApy">20%</strong></div><div class="calc-row"><span>Lock Period</span><strong id="calcLock">90 Days</strong></div><div class="calc-row"><span>Estimated Reward</span><strong id="calcReward">0 AXION</strong></div><div class="calc-row"><span>Total Return</span><strong id="calcReturn">0 AXION</strong></div><div class="calc-row"><span>Unlock Date</span><strong id="calcUnlock">-</strong></div><div class="calc-row"><span>Early Exit</span><strong>No early unstake</strong></div></div></div>
+    </div></div></section>
 
-          <article class="pool-card" data-pool="validator">
-            <div class="pool-inner">
-              <div class="pool-top">
-                <div class="pool-name"><h3>Validator Pool</h3><span>Higher rewards for stronger long-term commitment.</span></div>
-                <div class="apy-badge"><strong>40%</strong><span>APY</span></div>
-              </div>
-              <div class="pool-details">
-                <div class="detail-line"><span>Lock Period</span><strong>180 Days</strong></div>
-                <div class="detail-line"><span>Early Unstake</span><strong>No</strong></div>
-                <div class="detail-line"><span>Reward Type</span><strong>AXION</strong></div>
-              </div>
-              <button class="btn" onclick="selectPool('validator')">Select Validator</button>
-            </div>
-          </article>
+    <section class="section" id="positions"><div class="container"><div class="section-head"><div><div class="eyebrow">MY STAKING POSITIONS</div><h2 class="gradient">Your Stakes</h2></div><p>After contract integration, this section will read active staking positions directly from chain.</p></div><div class="positions-grid" id="positionsGrid"><div class="empty">No active staking position found. Connect wallet and stake AXION to create your first position.</div></div></div></section>
 
-          <article class="pool-card" data-pool="ecosystem">
-            <div class="pool-inner">
-              <div class="pool-top">
-                <div class="pool-name"><h3>Ecosystem Pool</h3><span>Premium staking tier for the strongest holders.</span></div>
-                <div class="apy-badge"><strong>75%</strong><span>APY</span></div>
-              </div>
-              <div class="pool-details">
-                <div class="detail-line"><span>Lock Period</span><strong>365 Days</strong></div>
-                <div class="detail-line"><span>Early Unstake</span><strong>No</strong></div>
-                <div class="detail-line"><span>Reward Type</span><strong>AXION</strong></div>
-              </div>
-              <button class="btn" onclick="selectPool('ecosystem')">Select Ecosystem</button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="section" id="security"><div class="container"><div class="section-head"><div><div class="eyebrow">SECURITY MODEL</div><h2 class="gradient">Clean Reward Logic</h2></div><p>The recommended staking model uses a prefunded reward pool instead of minting new tokens.</p></div><div class="info-grid"><div class="info"><div class="inner"><strong>Fixed Supply</strong><p>Rewards are paid from a funded pool.</p></div></div><div class="info"><div class="inner"><strong>Locked Pools</strong><p>All pools use fixed unlock dates.</p></div></div><div class="info"><div class="inner"><strong>No Hidden Fees</strong><p>Amount, APY and lock period are shown clearly.</p></div></div><div class="info"><div class="inner"><strong>On-Chain Claims</strong><p>Claims and unstake actions should be contract verified.</p></div></div><div class="info"><div class="inner"><strong>Reward Pool</strong><p>The contract should hold enough AXION rewards.</p></div></div></div></div></section>
 
-    <section class="section" id="stake">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">STAKE AXION</div>
-            <h2 class="gradient-text">Stake Panel</h2>
-          </div>
-          <p>Connect your wallet, select a pool, enter the amount, approve AXION, and stake into the selected locked pool.</p>
-        </div>
-
-        <div class="stake-layout">
-          <div class="glass-card">
-            <div class="card-inner stake-box">
-              <div class="field">
-                <label>Selected Pool</label>
-                <select class="select-pool" id="poolSelect">
-                  <option value="genesis">Genesis Pool — 90 Days — 20% APY</option>
-                  <option value="validator">Validator Pool — 180 Days — 40% APY</option>
-                  <option value="ecosystem">Ecosystem Pool — 365 Days — 75% APY</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label>Amount To Stake</label>
-                <div class="input-wrap">
-                  <input id="stakeAmount" type="number" min="0" step="0.0001" placeholder="0.00" />
-                  <span>AXION</span>
-                </div>
-              </div>
-
-              <div class="quick-buttons">
-                <button onclick="setQuickAmount(25)">25%</button>
-                <button onclick="setQuickAmount(50)">50%</button>
-                <button onclick="setQuickAmount(100)">100%</button>
-              </div>
-
-              <div class="action-grid">
-                <button class="btn btn-dark" id="approveBtn">Approve</button>
-                <button class="btn btn-gold" id="stakeBtn">Stake</button>
-              </div>
-
-              <div class="status-message warning" id="stakeStatus">Demo mode: staking transaction logic is ready for smart contract integration.</div>
-            </div>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-inner calc-card">
-              <div class="calc-row"><span>Your Balance</span><strong id="calcBalance">0 AXION</strong></div>
-              <div class="calc-row"><span>APY</span><strong id="calcApy">20%</strong></div>
-              <div class="calc-row"><span>Lock Period</span><strong id="calcLock">90 Days</strong></div>
-              <div class="calc-row"><span>Estimated Reward</span><strong id="calcReward">0 AXION</strong></div>
-              <div class="calc-row"><span>Total Return</span><strong id="calcReturn">0 AXION</strong></div>
-              <div class="calc-row"><span>Unlock Date</span><strong id="calcUnlock">-</strong></div>
-              <div class="calc-row"><span>Early Exit</span><strong>No early unstake</strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="positions">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">MY STAKING POSITIONS</div>
-            <h2 class="gradient-text">Your Stakes</h2>
-          </div>
-          <p>After smart contract integration, this section will read your active staking positions directly from the blockchain.</p>
-        </div>
-
-        <div class="positions-grid" id="positionsGrid">
-          <div class="position-empty">No active staking position found. Connect your wallet and stake AXION to create your first position.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="security">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">STAKING SECURITY MODEL</div>
-            <h2 class="gradient-text">Clean Reward Logic</h2>
-          </div>
-          <p>The recommended staking model uses a prefunded reward pool instead of minting new tokens. This keeps the total supply stable and easier to explain.</p>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-item"><strong>Fixed Supply</strong><p>No staking mint function is required. Rewards come from the funded pool.</p></div>
-          <div class="info-item"><strong>Locked Pools</strong><p>All pools have fixed unlock dates. No flexible stake is used.</p></div>
-          <div class="info-item"><strong>No Hidden Fees</strong><p>The UI presents staking amount, APY, lock period, and estimated reward clearly.</p></div>
-          <div class="info-item"><strong>On-Chain Claims</strong><p>Claim and unstake actions should be verified on-chain through the staking contract.</p></div>
-          <div class="info-item"><strong>Reward Pool</strong><p>The contract should hold enough AXION to cover future reward obligations.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="nft">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">NFT MARKETPLACE</div>
-            <h2 class="gradient-text">AXION Genesis NFTs</h2>
-          </div>
-          <p>NFT sales will become the next module of the AXION App. For now, the NFT section is prepared as a premium coming-soon page.</p>
-        </div>
-
-        <div class="glass-card">
-          <div class="card-inner nft-card">
-            <div class="nft-preview">
-              <div class="nft-orb">
-                <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION NFT" />
-              </div>
-            </div>
-            <div>
-              <div class="eyebrow">COMING SOON</div>
-              <h2 class="gradient-text" style="font-size:clamp(34px,4vw,58px);line-height:1;margin:18px 0 14px;letter-spacing:-.05em;">Genesis NFT Sale</h2>
-              <p style="color:var(--muted);line-height:1.8;font-size:16px;">AXION Genesis NFTs will be designed for ecosystem utility, future access, game integration, and possible staking boost mechanics.</p>
-              <div class="utility-grid">
-                <div class="utility"><strong>Staking Boost</strong><p>Potential reward multiplier for NFT holders.</p></div>
-                <div class="utility"><strong>Premium Access</strong><p>Access to special AXION ecosystem features.</p></div>
-                <div class="utility"><strong>Game Utility</strong><p>Future integration with AXION Game assets.</p></div>
-                <div class="utility"><strong>Airdrop Eligibility</strong><p>Possible future ecosystem reward eligibility.</p></div>
-              </div>
-              <div class="hero-actions">
-                <button class="btn btn-dark" disabled>Mint Coming Soon</button>
-                <button class="btn btn-gold" onclick="scrollToSection('stake')">Stake AXION First</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="section" id="nft"><div class="container"><div class="section-head"><div><div class="eyebrow">NFT MARKETPLACE</div><h2 class="gradient">AXION Genesis NFTs</h2></div><p>NFT sales will become the next premium module of the AXION App.</p></div><div class="nft-box"><div class="inner nft-art"><div class="nft-orb"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXMAINNETLOGO.PNG" alt="AXION NFT"></div></div><div class="inner"><div class="eyebrow">COMING SOON</div><h2 class="gradient" style="font-size:clamp(34px,4vw,58px);line-height:1;margin:18px 0 14px;letter-spacing:-.055em">Genesis NFT Sale</h2><p style="color:var(--muted);line-height:1.8;font-size:16px">AXION Genesis NFTs will be designed for ecosystem utility, future access, game integration, and possible staking boost mechanics.</p><div class="utility-grid"><div class="utility"><strong>Staking Boost</strong><p>Potential reward multiplier for NFT holders.</p></div><div class="utility"><strong>Premium Access</strong><p>Access to special ecosystem features.</p></div><div class="utility"><strong>Game Utility</strong><p>Future AXION Game integration.</p></div><div class="utility"><strong>Airdrop Eligibility</strong><p>Possible future ecosystem rewards.</p></div></div><div class="hero-actions"><button class="btn btn-dark" disabled>Mint Coming Soon</button><button class="btn" onclick="scrollToSection('stake')">Stake AXION First</button></div></div></div></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <strong>AXION App</strong>
-      <p style="margin-top:8px;">Official staking and NFT hub for the AXION ecosystem.</p>
-      <div class="footer-links">
-        <a href="https://www.axiondefi.com/" target="_blank" rel="noopener">Website</a>
-        <a href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a>
-        <a href="https://x.com/axiondefixx" target="_blank" rel="noopener">X / Twitter</a>
-        <a href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener">BscScan</a>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container"><strong>AXION App</strong><p style="margin-top:8px">Official staking and NFT hub for the AXION ecosystem.</p><div class="footer-links"><a href="https://www.axiondefi.com/" target="_blank" rel="noopener">Website</a><a href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a><a href="https://x.com/axiondefixx" target="_blank" rel="noopener">X / Twitter</a><a href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener">BscScan</a></div></div></footer>
 
   <script>
-    const AXION_TOKEN_ADDRESS = "0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd";
-    const BSC_CHAIN_ID = "0x38";
-    const BSC_PARAMS = {
-      chainId: BSC_CHAIN_ID,
-      chainName: "BNB Smart Chain",
-      nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
-      rpcUrls: ["https://bsc-dataseed.binance.org/"],
-      blockExplorerUrls: ["https://bscscan.com/"]
-    };
-
-    const AXION_ABI = [
-      "function balanceOf(address account) view returns (uint256)",
-      "function decimals() view returns (uint8)",
-      "function symbol() view returns (string)",
-      "function approve(address spender,uint256 amount) returns (bool)",
-      "function allowance(address owner,address spender) view returns (uint256)"
-    ];
-
-    const STAKING_CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000";
-
-    const pools = {
-      genesis: { name: "Genesis Pool", apy: 20, days: 90 },
-      validator: { name: "Validator Pool", apy: 40, days: 180 },
-      ecosystem: { name: "Ecosystem Pool", apy: 75, days: 365 }
-    };
-
-    let provider;
-    let signer;
-    let userAddress = "";
-    let axionBalance = 0;
-    let selectedPool = "genesis";
-
-    const $ = (id) => document.getElementById(id);
-
-    function formatNumber(value, max = 4){
-      const num = Number(value || 0);
-      return new Intl.NumberFormat("en-US", { maximumFractionDigits: max }).format(num);
-    }
-
-    function shortAddress(address){
-      if(!address) return "Not Connected";
-      return address.slice(0,6) + "..." + address.slice(-4);
-    }
-
-    function scrollToSection(id){
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({ behavior:"smooth", block:"start" });
-    }
-
-    async function ensureBsc(){
-      if(!window.ethereum) return false;
-      const currentChain = await window.ethereum.request({ method:"eth_chainId" });
-      if(currentChain === BSC_CHAIN_ID) return true;
-      try{
-        await window.ethereum.request({ method:"wallet_switchEthereumChain", params:[{ chainId:BSC_CHAIN_ID }] });
-        return true;
-      }catch(error){
-        if(error.code === 4902){
-          await window.ethereum.request({ method:"wallet_addEthereumChain", params:[BSC_PARAMS] });
-          return true;
-        }
-        throw error;
-      }
-    }
-
-    async function connectWallet(){
-      if(!window.ethereum){
-        showStatus("MetaMask or a compatible Web3 wallet is required.", true);
-        return;
-      }
-      try{
-        await ensureBsc();
-        provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        signer = provider.getSigner();
-        userAddress = await signer.getAddress();
-        $("connectBtn").textContent = shortAddress(userAddress);
-        $("walletShort").textContent = shortAddress(userAddress);
-        await loadAxionBalance();
-        calculateRewards();
-      }catch(error){
-        console.error(error);
-        showStatus("Wallet connection failed. Please try again.", true);
-      }
-    }
-
-    async function loadAxionBalance(){
-      try{
-        if(!provider || !userAddress) return;
-        const token = new ethers.Contract(AXION_TOKEN_ADDRESS, AXION_ABI, provider);
-        const raw = await token.balanceOf(userAddress);
-        const decimals = await token.decimals();
-        axionBalance = Number(ethers.utils.formatUnits(raw, decimals));
-        $("walletBalance").textContent = formatNumber(axionBalance, 4) + " AXION";
-        $("calcBalance").textContent = formatNumber(axionBalance, 4) + " AXION";
-      }catch(error){
-        console.error(error);
-        axionBalance = 0;
-      }
-    }
-
-    function selectPool(poolKey){
-      selectedPool = poolKey;
-      $("poolSelect").value = poolKey;
-      document.querySelectorAll(".pool-card").forEach(card => card.classList.remove("selected"));
-      const selected = document.querySelector(`.pool-card[data-pool="${poolKey}"]`);
-      if(selected) selected.classList.add("selected");
-      calculateRewards();
-      scrollToSection("stake");
-    }
-
-    function setQuickAmount(percent){
-      if(!axionBalance){
-        $("stakeAmount").value = "0";
-      }else{
-        $("stakeAmount").value = (axionBalance * percent / 100).toFixed(4);
-      }
-      calculateRewards();
-    }
-
-    function calculateRewards(){
-      const amount = Number($("stakeAmount").value || 0);
-      const pool = pools[selectedPool];
-      const reward = amount * (pool.apy / 100) * (pool.days / 365);
-      const totalReturn = amount + reward;
-      const unlock = new Date(Date.now() + pool.days * 24 * 60 * 60 * 1000);
-
-      $("calcApy").textContent = pool.apy + "%";
-      $("calcLock").textContent = pool.days + " Days";
-      $("calcReward").textContent = formatNumber(reward, 4) + " AXION";
-      $("calcReturn").textContent = formatNumber(totalReturn, 4) + " AXION";
-      $("calcUnlock").textContent = amount > 0 ? unlock.toLocaleDateString("en-US", { year:"numeric", month:"short", day:"numeric" }) : "-";
-      $("heroSelectedPool").textContent = pool.name;
-      $("heroReward").textContent = formatNumber(reward, 4) + " AXION";
-    }
-
-    function showStatus(message, warning = false){
-      const el = $("stakeStatus");
-      el.textContent = message;
-      el.classList.add("show");
-      if(warning) el.classList.add("warning");
-      else el.classList.remove("warning");
-    }
-
-    async function approveAxion(){
-      const amount = Number($("stakeAmount").value || 0);
-      if(!userAddress){
-        await connectWallet();
-        return;
-      }
-      if(!amount || amount <= 0){
-        showStatus("Enter a valid AXION amount first.", true);
-        return;
-      }
-      if(STAKING_CONTRACT_ADDRESS === "0x0000000000000000000000000000000000000000"){
-        showStatus("Staking contract address is not added yet. Add the deployed staking contract address before live approve.", true);
-        return;
-      }
-      try{
-        const token = new ethers.Contract(AXION_TOKEN_ADDRESS, AXION_ABI, signer);
-        const decimals = await token.decimals();
-        const parsed = ethers.utils.parseUnits(String(amount), decimals);
-        const tx = await token.approve(STAKING_CONTRACT_ADDRESS, parsed);
-        showStatus("Approve transaction sent. Waiting for confirmation...");
-        await tx.wait();
-        showStatus("AXION approved successfully. You can now stake.");
-      }catch(error){
-        console.error(error);
-        showStatus("Approve transaction failed or was rejected.", true);
-      }
-    }
-
-    async function stakeAxion(){
-      const amount = Number($("stakeAmount").value || 0);
-      if(!userAddress){
-        await connectWallet();
-        return;
-      }
-      if(!amount || amount <= 0){
-        showStatus("Enter a valid AXION amount first.", true);
-        return;
-      }
-      if(STAKING_CONTRACT_ADDRESS === "0x0000000000000000000000000000000000000000"){
-        createDemoPosition();
-        showStatus("Demo position created. Live staking will work after the staking contract address and ABI are added.");
-        return;
-      }
-      showStatus("Live stake function will be connected after staking contract ABI is added.", true);
-    }
-
-    function createDemoPosition(){
-      const amount = Number($("stakeAmount").value || 0);
-      const pool = pools[selectedPool];
-      const reward = amount * (pool.apy / 100) * (pool.days / 365);
-      const start = new Date();
-      const unlock = new Date(Date.now() + pool.days * 24 * 60 * 60 * 1000);
-      const grid = $("positionsGrid");
-      grid.innerHTML = `
-        <div class="position-card">
-          <h3>Position #1</h3>
-          <div class="mini-lines">
-            <div class="mini-line"><span>Pool</span><strong>${pool.name}</strong></div>
-            <div class="mini-line"><span>Amount</span><strong>${formatNumber(amount,4)} AXION</strong></div>
-            <div class="mini-line"><span>APY</span><strong>${pool.apy}%</strong></div>
-            <div class="mini-line"><span>Start Date</span><strong>${start.toLocaleDateString("en-US")}</strong></div>
-            <div class="mini-line"><span>Unlock Date</span><strong>${unlock.toLocaleDateString("en-US")}</strong></div>
-            <div class="mini-line"><span>Estimated Reward</span><strong>${formatNumber(reward,4)} AXION</strong></div>
-            <div class="mini-line"><span>Status</span><strong>Active</strong></div>
-          </div>
-          <div class="position-actions">
-            <button class="btn btn-dark" disabled>Claim</button>
-            <button class="btn btn-dark" disabled>Unstake</button>
-          </div>
-        </div>
-      `;
-      $("totalLocked").textContent = formatNumber(amount,4) + " AXION";
-      $("activeStakers").textContent = "1";
-    }
-
-    $("connectBtn").addEventListener("click", connectWallet);
-    $("approveBtn").addEventListener("click", approveAxion);
-    $("stakeBtn").addEventListener("click", stakeAxion);
-    $("stakeAmount").addEventListener("input", calculateRewards);
-    $("poolSelect").addEventListener("change", (e) => selectPool(e.target.value));
-    $("mobileToggle").addEventListener("click", () => $("navLinks").classList.toggle("open"));
-    document.querySelectorAll(".nav-links a").forEach(link => link.addEventListener("click", () => $("navLinks").classList.remove("open")));
-
-    if(window.ethereum){
-      window.ethereum.on("accountsChanged", () => window.location.reload());
-      window.ethereum.on("chainChanged", () => window.location.reload());
-    }
-
-    calculateRewards();
+    const AXION_TOKEN_ADDRESS="0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd",BSC_CHAIN_ID="0x38",BSC_PARAMS={chainId:BSC_CHAIN_ID,chainName:"BNB Smart Chain",nativeCurrency:{name:"BNB",symbol:"BNB",decimals:18},rpcUrls:["https://bsc-dataseed.binance.org/"],blockExplorerUrls:["https://bscscan.com/"]};
+    const AXION_ABI=["function balanceOf(address account) view returns (uint256)","function decimals() view returns (uint8)","function approve(address spender,uint256 amount) returns (bool)","function allowance(address owner,address spender) view returns (uint256)"];
+    const STAKING_CONTRACT_ADDRESS="0x0000000000000000000000000000000000000000";
+    const pools={genesis:{name:"Genesis Pool",apy:20,days:90},validator:{name:"Validator Pool",apy:40,days:180},ecosystem:{name:"Ecosystem Pool",apy:75,days:365}};
+    let provider,signer,userAddress="",axionBalance=0,selectedPool="genesis";const $=id=>document.getElementById(id);function formatNumber(v,m=4){return new Intl.NumberFormat("en-US",{maximumFractionDigits:m}).format(Number(v||0))}function shortAddress(a){return a?a.slice(0,6)+"..."+a.slice(-4):"Not Connected"}function scrollToSection(id){const e=$(id);if(e)e.scrollIntoView({behavior:"smooth",block:"start"})}
+    async function ensureBsc(){if(!window.ethereum)return false;const c=await window.ethereum.request({method:"eth_chainId"});if(c===BSC_CHAIN_ID)return true;try{await window.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:BSC_CHAIN_ID}]});return true}catch(e){if(e.code===4902){await window.ethereum.request({method:"wallet_addEthereumChain",params:[BSC_PARAMS]});return true}throw e}}
+    async function connectWallet(){if(!window.ethereum){showStatus("MetaMask or a compatible Web3 wallet is required.");return}try{await ensureBsc();provider=new ethers.providers.Web3Provider(window.ethereum);await provider.send("eth_requestAccounts",[]);signer=provider.getSigner();userAddress=await signer.getAddress();$("connectBtn").textContent=shortAddress(userAddress);$("walletShort").textContent=shortAddress(userAddress);await loadAxionBalance();calculateRewards()}catch(e){console.error(e);showStatus("Wallet connection failed. Please try again.")}}
+    async function loadAxionBalance(){try{if(!provider||!userAddress)return;const t=new ethers.Contract(AXION_TOKEN_ADDRESS,AXION_ABI,provider),raw=await t.balanceOf(userAddress),dec=await t.decimals();axionBalance=Number(ethers.utils.formatUnits(raw,dec));$("walletBalance").textContent=formatNumber(axionBalance,4)+" AXION";$("calcBalance").textContent=formatNumber(axionBalance,4)+" AXION"}catch(e){console.error(e);axionBalance=0}}
+    function selectPool(k){selectedPool=k;$("poolSelect").value=k;document.querySelectorAll(".pool").forEach(c=>c.classList.remove("selected"));const s=document.querySelector(`.pool[data-pool="${k}"]`);if(s)s.classList.add("selected");calculateRewards();scrollToSection("stake")}
+    function setQuickAmount(p){$("stakeAmount").value=axionBalance?(axionBalance*p/100).toFixed(4):"0";calculateRewards()}
+    function calculateRewards(){const a=Number($("stakeAmount").value||0),p=pools[selectedPool],r=a*(p.apy/100)*(p.days/365),tr=a+r,u=new Date(Date.now()+p.days*864e5);$("calcApy").textContent=p.apy+"%";$("calcLock").textContent=p.days+" Days";$("calcReward").textContent=formatNumber(r,4)+" AXION";$("calcReturn").textContent=formatNumber(tr,4)+" AXION";$("calcUnlock").textContent=a>0?u.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"}):"-";$("heroSelectedPool").textContent=p.name;$("heroReward").textContent=formatNumber(r,4)+" AXION"}
+    function showStatus(m){const e=$("stakeStatus");e.textContent=m;e.classList.add("show")}
+    async function approveAxion(){const a=Number($("stakeAmount").value||0);if(!userAddress){await connectWallet();return}if(!a||a<=0){showStatus("Enter a valid AXION amount first.");return}if(STAKING_CONTRACT_ADDRESS==="0x0000000000000000000000000000000000000000"){showStatus("Staking contract address is not added yet. Add the deployed staking contract address before live approve.");return}try{const t=new ethers.Contract(AXION_TOKEN_ADDRESS,AXION_ABI,signer),d=await t.decimals(),parsed=ethers.utils.parseUnits(String(a),d),tx=await t.approve(STAKING_CONTRACT_ADDRESS,parsed);showStatus("Approve transaction sent. Waiting for confirmation...");await tx.wait();showStatus("AXION approved successfully. You can now stake.")}catch(e){console.error(e);showStatus("Approve transaction failed or was rejected.")}}
+    async function stakeAxion(){const a=Number($("stakeAmount").value||0);if(!userAddress){await connectWallet();return}if(!a||a<=0){showStatus("Enter a valid AXION amount first.");return}if(STAKING_CONTRACT_ADDRESS==="0x0000000000000000000000000000000000000000"){createDemoPosition();showStatus("Demo position created. Live staking will work after staking contract address and ABI are added.");return}showStatus("Live stake function will be connected after staking contract ABI is added.")}
+    function createDemoPosition(){const a=Number($("stakeAmount").value||0),p=pools[selectedPool],r=a*(p.apy/100)*(p.days/365),s=new Date(),u=new Date(Date.now()+p.days*864e5),g=$("positionsGrid");g.innerHTML=`<div class="position"><div class="inner"><h3>Position #1</h3><div class="lines"><div class="line"><span>Pool</span><strong>${p.name}</strong></div><div class="line"><span>Amount</span><strong>${formatNumber(a,4)} AXION</strong></div><div class="line"><span>APY</span><strong>${p.apy}%</strong></div><div class="line"><span>Start Date</span><strong>${s.toLocaleDateString("en-US")}</strong></div><div class="line"><span>Unlock Date</span><strong>${u.toLocaleDateString("en-US")}</strong></div><div class="line"><span>Reward</span><strong>${formatNumber(r,4)} AXION</strong></div><div class="line"><span>Status</span><strong>Active</strong></div></div><div class="position-actions"><button class="btn btn-dark" disabled>Claim</button><button class="btn btn-dark" disabled>Unstake</button></div></div></div>`;$("totalLocked").textContent=formatNumber(a,4)+" AXION";$("activeStakers").textContent="1"}
+    $("connectBtn").addEventListener("click",connectWallet);$("approveBtn").addEventListener("click",approveAxion);$("stakeBtn").addEventListener("click",stakeAxion);$("stakeAmount").addEventListener("input",calculateRewards);$("poolSelect").addEventListener("change",e=>selectPool(e.target.value));$("mobileToggle").addEventListener("click",()=>$("navLinks").classList.toggle("open"));document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>$("navLinks").classList.remove("open")));if(window.ethereum){window.ethereum.on("accountsChanged",()=>location.reload());window.ethereum.on("chainChanged",()=>location.reload())}calculateRewards();
   </script>
 </body>
 </html>
