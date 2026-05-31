@@ -348,15 +348,59 @@
       return new ethers.Contract(STAKING_CONTRACT_ADDRESS, STAKING_ABI, withSigner ? signer : provider);
     }
 
-    async function connectWallet() {
-      if (!window.ethereum) {
-        showStatus("MetaMask or a compatible Web3 wallet is required.");
-        return;
-      }
+    function isMobileDevice() {
+      return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+    }
 
+    function getCurrentDappUrl() {
+      if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+        return window.location.host + window.location.pathname + window.location.search;
+      }
+      return "app.axiondefi.com";
+    }
+
+    function openInMetaMask() {
+      const dappUrl = getCurrentDappUrl();
+      const metamaskUrl = "https://metamask.app.link/dapp/" + dappUrl;
+      showStatus("Opening this page inside MetaMask mobile browser...");
+      window.location.href = metamaskUrl;
+    }
+
+    async function waitForEthereumProvider(timeoutMs = 1800) {
+      if (window.ethereum) return window.ethereum;
+
+      const startedAt = Date.now();
+      return new Promise(resolve => {
+        const timer = setInterval(() => {
+          if (window.ethereum) {
+            clearInterval(timer);
+            resolve(window.ethereum);
+          }
+
+          if (Date.now() - startedAt >= timeoutMs) {
+            clearInterval(timer);
+            resolve(null);
+          }
+        }, 100);
+      });
+    }
+
+    async function connectWallet() {
       try {
+        const injectedProvider = await waitForEthereumProvider();
+
+        if (!injectedProvider) {
+          if (isMobileDevice()) {
+            openInMetaMask();
+            return;
+          }
+
+          showStatus("MetaMask or a compatible Web3 wallet is required.");
+          return;
+        }
+
         await ensureBsc();
-        provider = new ethers.providers.Web3Provider(window.ethereum);
+        provider = new ethers.providers.Web3Provider(injectedProvider);
         await provider.send("eth_requestAccounts", []);
         signer = provider.getSigner();
         userAddress = await signer.getAddress();
@@ -373,7 +417,12 @@
         showStatus("Wallet connected. You can approve and stake AXION.");
       } catch (error) {
         console.error(error);
-        showStatus("Wallet connection failed. Please try again.");
+        const reason = error?.data?.message || error?.error?.message || error?.message || "";
+        if (reason.includes("User rejected") || reason.includes("user rejected")) {
+          showStatus("Wallet connection was rejected.");
+        } else {
+          showStatus("Wallet connection failed. Please try again.");
+        }
       }
     }
 
